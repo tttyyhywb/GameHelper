@@ -1,0 +1,37 @@
+    /* 下列是查找OK后的代码
+     Dota2MatchDetails details;
+     MainListAdapter mainListAdapter;
+
+     mainList = (ListView) view.findViewById(R.id.main_list);
+
+     request.getData("https://api.steampowered.com/IDOTA2Match_570/GetMatchDetails/V001/?key=07000CBBE0A53DB404881143C118DDF7&match_id=1642872049");
+
+
+    BaseRequest request = new BaseRequest() {
+
+        @Override
+        protected void afterSuccess(String responseResult) {
+
+            Gson gson = new Gson();
+
+            Dota2MatchDetails dota2MatchDetails = new Dota2MatchDetails();
+            Result<Dota2MatchDetails> result = new Result(dota2MatchDetails);
+
+            result = gson.fromJson(responseResult, new TypeToken<Result<Dota2MatchDetails>>() {
+            }.getType());
+
+            details = result.getResult();
+
+            Log.e("-----------", details.toString());
+
+            mainListAdapter = new MainListAdapter(getActivity(), details.getPlayers());
+            mainList.setAdapter(mainListAdapter);
+
+
+        }
+
+        @Override
+        protected void afterFail() {
+
+        }
+    };*/

@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">My Gamehelper</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="data">数据</string>
+    <string name="discover">发现</string>
+    <string name="me">我</string>
+    <string name="kda">K/D/A</string>
+    <string name="result">结果</string>
+    <string name="level">Level</string>
+    <string name="endtiem">结束时间</string>
+    <string name="nosuer">暂无用户...点击搜索</string>
+    <string name="input_userId">请输入账号ID</string>
+    <string name="userid">用户名</string>
+    <string name="cant_find">找不到用户？点这里</string>
+    <string name="matchid">比赛编号</string>
+</resources>

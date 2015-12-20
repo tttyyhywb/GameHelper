@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#363636"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <ImageButton
+            android:id="@+id/img_search_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/abc_ic_ab_back_holo_dark" />
+
+        <EditText
+            android:id="@+id/edit_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/img_search_back"
+            android:layout_weight="1"
+            android:hint="@string/input_userId"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
+
+        <ImageButton
+            android:id="@+id/img_search_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/edit_search"
+            android:layout_alignRight="@+id/edit_search"
+            android:layout_centerVertical="true"
+            android:src="@drawable/abc_ic_clear_mtrl_alpha" />
+    </RelativeLayout>
+
+    <include layout="@layout/dota2_search_matchid_title"></include>
+
+    <ListView
+        android:id="@+id/search_matchsid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
+
+    <include layout="@layout/dota2_search_userid_title"></include>
+
+    <ListView
+        android:id="@+id/user_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
+
+
+</LinearLayout>

@@ -1,0 +1,9 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="main_list_text_size">10sp</dimen>
+    <dimen name="search_userid_title_size">17sp</dimen>
+    <color name="background_grew">#F8F8FF</color>
+    <dimen name="dota2_preview_padding">45dp</dimen>
+</resources>

@@ -1,0 +1,25 @@
+//url : https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=07000CBBE0A53DB404881143C118DDF7&steamids=76561198100023908
+//steamids:steam账号(64-bit)
+//如何将32-bit账号转换为64-bit 参阅http://dev.dota2.com/showthread.php?t=58317
+{
+	"response": {
+		"players": [
+			{
+				"steamid": "76561198100023908",
+				"communityvisibilitystate": 3,
+				"profilestate": 1,
+				"personaname": "卡通专区",
+				"lastlogoff": 1437242989,
+				"profileurl": "http://steamcommunity.com/profiles/76561198100023908/",
+				"avatar": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/eb/eb89dcaad32cc26b3be6e63177faffc06c494f82.jpg",
+				"avatarmedium": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/eb/eb89dcaad32cc26b3be6e63177faffc06c494f82_medium.jpg",
+				"avatarfull": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/eb/eb89dcaad32cc26b3be6e63177faffc06c494f82_full.jpg",
+				"personastate": 0,
+				"primaryclanid": "103582791429521408",
+				"timecreated": 1374824730,
+				"personastateflags": 0
+			}
+		]
+
+	}
+}

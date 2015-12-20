@@ -1,0 +1,27 @@
+key=07000CBBE0A53DB404881143C118DDF7
+
+(GetMatchHistory)              https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/v001/
+(GetMatchDetails)              https://api.steampowered.com/IDOTA2Match_570/GetMatchDetails/v001/
+(GetHeroes)                    https://api.steampowered.com/IEconDOTA2_570/GetHeroes/v0001/
+(GetPlayerSummaries)           https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/
+(EconomySchema)                https://api.steampowered.com/IEconItems_570/GetSchema/v0001/
+(GetLeagueListing)             https://api.steampowered.com/IDOTA2Match_570/GetLeagueListing/v0001/
+(GetLiveLeagueGames)           https://api.steampowered.com/IDOTA2Match_570/GetLiveLeagueGames/v0001/
+(GetMatchHistoryBySequenceNum) https://api.steampowered.com/IDOTA2Match_570/GetMatchHistoryBySequenceNum/v0001/
+(GetTeamInfoByTeamID)          https://api.steampowered.com/IDOTA2Match_570/GetTeamInfoByTeamID/v001/
+
+
+
+https://api.steampowered.com/IDOTA2Match_570/GetMatchDetails/V001/?key=07000CBBE0A53DB404881143C118DDF7&match_id=1544504897
+
+
+https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=07000CBBE0A53DB404881143C118DDF7&steamids=76561198100023908
+139758180
+
+76561197960265728
+        139758180
+76561198100023908
+
+http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=07000CBBE0A53DB404881143C118DDF7&vanityurl=http://steamcommunity.com/139758180/四川岳塔松/
+
+http://api.steampowered.com/IEconDOTA2_570/GetTournamentPrizePool/v1/?key=07000CBBE0A53DB404881143C118DDF7
