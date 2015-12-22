@@ -3,11 +3,11 @@ package kevin.api.base.gameBase;
 /**
  * Created by Kevin on 2015/8/10.
  */
-public class Result<T extends BaseJson> {
+public class ApiResult<T extends BaseJson> {
 
     T result;
 
-    public Result(T result) {
+    public ApiResult(T result) {
       this.result=result;
     }
 
