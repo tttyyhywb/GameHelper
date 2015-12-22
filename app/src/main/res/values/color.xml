@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- login activity -->
+    <color name="login_btn_sign_up_background">#C4FFFFFF</color>
+    <color name="login_btn_sign_up_text">#000000</color>
+    <color name="login_btn_login_in_background">#20000000</color>
+    <color name="login_btn_login_in_text">#FFFFFF</color>
+</resources>

@@ -1,4 +1,4 @@
-package kevin.mygamehelper.data.adapter;
+package kevin.mygamehelper.data.utils;
 
 import android.content.Context;
 import android.content.Intent;

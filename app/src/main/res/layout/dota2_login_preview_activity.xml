@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_login">
+
+    <RelativeLayout
+        android:id="@+id/rl_login_preview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+        <LinearLayout
+            android:id="@+id/ll_login_preview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true">
+
+            <Button
+                android:id="@+id/btn_sign_up"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/sing_up"
+                android:textColor="@color/login_btn_sign_up_text"/>
+
+            <Button
+                android:id="@+id/btn_login_in"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/login"
+                android:textColor="@color/login_btn_login_in_text"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_skip_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/skip_login"
+            android:layout_alignRight="@id/ll_login_preview"
+            android:layout_above="@id/ll_login_preview"
+            android:layout_marginRight="10sp"
+            android:layout_marginBottom="12sp"
+            />
+    </RelativeLayout>
+</RelativeLayout>

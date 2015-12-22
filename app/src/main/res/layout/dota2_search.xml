@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:src="@mipmap/abc_ic_ab_back_holo_dark" />
+            android:src="@mipmap/arrow_back_click" />
 
         <EditText
             android:id="@+id/edit_search"

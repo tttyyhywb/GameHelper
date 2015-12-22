@@ -18,7 +18,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import kevin.api.base.network.BaseRequest;
 import kevin.utils.Utils;
-import kevin.mygamehelper.data.adapter.UserIdListAdapter;
+import kevin.mygamehelper.data.utils.UserIdListAdapter;
 import kevin.api.dota2.jsonResponse.Dota2Url;
 import kevin.api.dota2.jsonResponse.Dota2User;
 import kevin.api.base.gameBase.json.Response;

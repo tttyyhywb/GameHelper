@@ -15,4 +15,9 @@
     <string name="userid">用户名</string>
     <string name="cant_find">找不到用户？点这里</string>
     <string name="matchid">比赛编号</string>
+
+    <!-- 登录页面 -->
+    <string name="login">登陆</string>
+    <string name="sing_up">注册</string>
+    <string name="skip_login">跳过登陆</string>
 </resources>
