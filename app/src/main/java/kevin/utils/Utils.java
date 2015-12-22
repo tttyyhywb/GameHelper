@@ -13,7 +13,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import kevin.api.dota2.jsonResponse.Dota2Equipment;
 import kevin.api.dota2.jsonResponse.Dota2Hero;
-import kevin.api.base.gameBase.json.Result;
+import kevin.api.base.gameBase.Result;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,6 +1,7 @@
 package kevin.utils;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.content.res.Resources;
 
 /**
@@ -39,5 +40,9 @@ public class SysUtils {
 
     public Resources getResource(){
         return mContext.getResources();
+    }
+
+    public AssetManager getAssetManager(){
+        return mContext.getAssets();
     }
 }

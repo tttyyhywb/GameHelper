@@ -1,6 +1,6 @@
 package kevin.api.dota2.jsonResponse;
 
-import kevin.api.base.gameBase.Equipment;
+import kevin.api.base.gameBase.bean.Equipment;
 
 import java.util.ArrayList;
 import java.util.HashMap;

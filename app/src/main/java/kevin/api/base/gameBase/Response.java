@@ -1,6 +1,4 @@
-package kevin.api.base.gameBase.json;
-
-import kevin.api.base.gameBase.BaseJson;
+package kevin.api.base.gameBase;
 
 /**
  * Created by Kevin on 2015/7/23.

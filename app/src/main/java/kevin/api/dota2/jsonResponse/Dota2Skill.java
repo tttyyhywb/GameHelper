@@ -1,7 +1,7 @@
 package kevin.api.dota2.jsonResponse;
 
 
-import kevin.api.base.gameBase.Skill;
+import kevin.api.base.gameBase.bean.Skill;
 
 /**
  * Created by Kevin on 2015/7/20.

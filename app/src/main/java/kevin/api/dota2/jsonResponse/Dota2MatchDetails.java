@@ -1,6 +1,6 @@
 package kevin.api.dota2.jsonResponse;
 
-import kevin.api.base.gameBase.GameEnvirnment;
+import kevin.api.base.gameBase.bean.GameEnvirnment;
 
 import java.util.ArrayList;
 

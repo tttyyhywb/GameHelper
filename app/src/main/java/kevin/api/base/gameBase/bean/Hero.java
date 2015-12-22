@@ -1,4 +1,4 @@
-package kevin.api.base.gameBase;
+package kevin.api.base.gameBase.bean;
 
 
 

@@ -1,7 +1,7 @@
 package kevin.api.dota2.jsonResponse;
 
 
-import kevin.api.base.gameBase.Hero;
+import kevin.api.base.gameBase.bean.Hero;
 
 import java.util.ArrayList;
 import java.util.HashMap;

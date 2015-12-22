@@ -18,7 +18,7 @@ import kevin.api.dota2.jsonResponse.Dota2MatchDetails;
 import kevin.api.dota2.jsonResponse.Dota2MatchHistory;
 import kevin.api.dota2.jsonResponse.Dota2Url;
 import kevin.api.dota2.jsonResponse.Dota2User;
-import kevin.api.base.gameBase.json.Result;
+import kevin.api.base.gameBase.Result;
 import com.kevin.gamehelper.mygamehelper.R;
 import kevin.utils.Watcher;
 import com.lidroid.xutils.BitmapUtils;

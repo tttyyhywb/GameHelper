@@ -1,4 +1,4 @@
-package kevin.api.dota2.DataBase;
+package kevin.database.DataBase;
 
 /**
  * Created by Kevin on 2015/11/11.

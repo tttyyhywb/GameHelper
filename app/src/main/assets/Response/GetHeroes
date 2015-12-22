@@ -553,10 +553,15 @@
 				"name": "winter_wyvern",
 				"id": 112,
 				"localized_name": "Winter Wyvern"
+			},
+			{
+				"name": "arc_warden",
+				"id": 113,
+				"localized_name": "Arc Warden"
 			}
 		]
 		,
 		"status": 200,
-		"count": 110
+		"count": 111
 	}
 }
