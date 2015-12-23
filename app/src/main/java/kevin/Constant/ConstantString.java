@@ -14,4 +14,7 @@ public class ConstantString {
 
     //账户密码
     public static final String PASSWORD = "password";
+
+    //是否首次进入
+    public static final boolean IS_FIRST_COMING = true;
 }

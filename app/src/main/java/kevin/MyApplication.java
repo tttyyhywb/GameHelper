@@ -3,6 +3,7 @@ package kevin;
 import android.app.Application;
 import android.content.Context;
 
+import kevin.database.DataBase.DBHelperDota2;
 import kevin.utils.SPUtils;
 import kevin.utils.SysUtils;
 
@@ -29,7 +30,7 @@ public class MyApplication extends Application {
     }
 
     private void initDatabase(){
-
+        DBHelperDota2.init(this);
     }
 
     private void initOthers(){}

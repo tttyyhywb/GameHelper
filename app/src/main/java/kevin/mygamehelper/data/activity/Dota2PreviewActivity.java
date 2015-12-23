@@ -13,12 +13,12 @@ import com.google.gson.reflect.TypeToken;
 import kevin.api.base.network.BaseRequest;
 import kevin.utils.Utils;
 import kevin.mygamehelper.data.utils.PreviewListAdapter;
-import kevin.api.dota2.jsonResponse.Dota2GameOutline;
-import kevin.api.dota2.jsonResponse.Dota2MatchDetails;
-import kevin.api.dota2.jsonResponse.Dota2MatchHistory;
-import kevin.api.dota2.jsonResponse.Dota2Url;
-import kevin.api.dota2.jsonResponse.Dota2User;
-import kevin.api.base.gameBase.Result;
+import kevin.api.dota2.bean.Dota2GameOutline;
+import kevin.api.dota2.bean.Dota2MatchDetails;
+import kevin.api.dota2.bean.Dota2MatchHistory;
+import kevin.api.dota2.bean.Dota2Url;
+import kevin.api.dota2.bean.Dota2User;
+import kevin.api.base.gameBase.ApiResult;
 import com.kevin.gamehelper.mygamehelper.R;
 import kevin.utils.Watcher;
 import com.lidroid.xutils.BitmapUtils;
@@ -57,7 +57,7 @@ public class Dota2PreviewActivity extends Activity {
         bitmapUtils = new BitmapUtils(this);
         url = new Dota2Url();
         Intent intent = getIntent();
-        account = (Dota2User.Players) intent.getSerializableExtra(Dota2User.DOTA2USER);
+        account = (Dota2User.Players) intent.getSerializableExtra(Dota2User.TAG);
         bitmapUtils.display(imgUserPortrait,account.getAvatarfull());
         tvUsername.setText(account.getPersonaname());
         matchesHistoryListRequest.getData(url.getMatchHistory(Utils.getAccountId(account.getSteamid()),10));
@@ -71,8 +71,8 @@ public class Dota2PreviewActivity extends Activity {
 
             Gson gson = new Gson();
 
-            Result<Dota2MatchHistory> result;
-            result = gson.fromJson(responseResult, new TypeToken<Result<Dota2MatchHistory>>() {
+            ApiResult<Dota2MatchHistory> result;
+            result = gson.fromJson(responseResult, new TypeToken<ApiResult<Dota2MatchHistory>>() {
             }.getType());
 
             matches = result.getResult().getMatches();
@@ -105,9 +105,9 @@ public class Dota2PreviewActivity extends Activity {
         @Override
         protected void afterSuccess(String responseResult) {
             Gson gson = new Gson();
-            Result<Dota2MatchDetails> result;
+            ApiResult<Dota2MatchDetails> result;
 
-            result = gson.fromJson(responseResult, new TypeToken<Result<Dota2MatchDetails>>() {
+            result = gson.fromJson(responseResult, new TypeToken<ApiResult<Dota2MatchDetails>>() {
             }.getType());
             //Log.e("detial", result.getResult().toString());
             setDetial(this.detials, result.getResult());

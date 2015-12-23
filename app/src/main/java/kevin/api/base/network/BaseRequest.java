@@ -1,6 +1,6 @@
 package kevin.api.base.network;
 
-import kevin.api.dota2.jsonResponse.Dota2Url;
+import kevin.api.dota2.bean.Dota2Url;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;

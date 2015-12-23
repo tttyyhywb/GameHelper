@@ -1,4 +1,4 @@
-package kevin.api.dota2.jsonResponse;
+package kevin.api.dota2.bean;
 
 import kevin.utils.Utils;
 

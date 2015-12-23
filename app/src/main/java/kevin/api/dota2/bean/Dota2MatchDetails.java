@@ -1,4 +1,4 @@
-package kevin.api.dota2.jsonResponse;
+package kevin.api.dota2.bean;
 
 import kevin.api.base.gameBase.bean.GameEnvirnment;
 
@@ -9,9 +9,7 @@ import java.util.ArrayList;
  */
 public class Dota2MatchDetails extends GameEnvirnment {
 
-    public final static String DOTA2MATCHDETAILS = "dota2matchdetails";
-
-    public Dota2MatchDetails details;
+    public final static String TAG = "dota2matchdetails";
 
     ArrayList<Dota2Players> players;
     String radiant_win;

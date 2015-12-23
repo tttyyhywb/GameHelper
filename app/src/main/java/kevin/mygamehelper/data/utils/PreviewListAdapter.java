@@ -14,9 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import kevin.utils.Utils;
-import kevin.api.dota2.jsonResponse.Dota2GameOutline;
-import kevin.api.dota2.jsonResponse.Dota2Players;
-import kevin.api.dota2.jsonResponse.Dota2User;
+import kevin.api.dota2.bean.Dota2GameOutline;
+import kevin.api.dota2.bean.Dota2Players;
+import kevin.api.dota2.bean.Dota2User;
 import com.kevin.gamehelper.mygamehelper.R;
 import kevin.mygamehelper.data.activity.Dota2MainMatchActivity;
 import com.lidroid.xutils.BitmapUtils;

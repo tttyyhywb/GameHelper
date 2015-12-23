@@ -11,15 +11,19 @@ import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import kevin.api.dota2.jsonResponse.Dota2Equipment;
-import kevin.api.dota2.jsonResponse.Dota2Hero;
-import kevin.api.base.gameBase.Result;
+
+import kevin.api.dota2.bean.Dota2Equipment;
+import kevin.api.dota2.bean.Dota2Hero;
+import kevin.api.base.gameBase.ApiResult;
+import kevin.database.DataBase.DBHelperDota2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.sql.SQLException;
 import java.util.Map;
 
 /**
@@ -31,12 +35,12 @@ public class Utils {
     AssetManager assetManager;
 
     Dota2Hero dota2Hero = new Dota2Hero();
-    Result<Dota2Hero> resultHero = new Result<Dota2Hero>(dota2Hero);
-    static Map<String, Dota2Hero.Hero> heroes = null;
+    ApiResult<Dota2Hero> resultHero = new ApiResult<Dota2Hero>(dota2Hero);
+    static Map<String, Dota2Hero> heroes = null;
 
     Dota2Equipment dota2Equipment = new Dota2Equipment();
-    Result<Dota2Equipment> resultItem = new Result<Dota2Equipment>(dota2Equipment);
-    static Map<String, Dota2Equipment.Item> items = null;
+    ApiResult<Dota2Equipment> resultItem = new ApiResult<Dota2Equipment>(dota2Equipment);
+    static Map<String, Dota2Equipment> items = null;
 
     public Utils(Context context) {
         this.context = context;
@@ -46,11 +50,18 @@ public class Utils {
         if (heroes == null) {
             try {
                 is = assetManager.open("Response/GetHeroes");
-                resultHero = gson.fromJson(inputSteam2String(is).toString(), new TypeToken<Result<Dota2Hero>>() {
+                resultHero = gson.fromJson(inputSteam2String(is).toString(), new TypeToken<ApiResult<Dota2Hero>>() {
                 }.getType());
                 heroes = resultHero.getResult().getHeroes();
-                //Log.e("hero", heroes.toString());
+
+                DBHelperDota2 dbHelper = DBHelperDota2.getInstance();
+
+                for(Dota2Hero h: resultHero.getResult().get()){
+                    dbHelper.getDao(Dota2Hero.class).create(h);
+                }
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
                 e.printStackTrace();
             } finally {
                 try {
@@ -64,11 +75,19 @@ public class Utils {
         if (items == null) {
             try {
                 is = assetManager.open("Response/GetItems");
-                resultItem = gson.fromJson(inputSteam2String(is).toString(), new TypeToken<Result<Dota2Equipment>>() {
+                resultItem = gson.fromJson(inputSteam2String(is).toString(), new TypeToken<ApiResult<Dota2Equipment>>() {
                 }.getType());
                 items = resultItem.getResult().getItems();
                 //Log.e("item", items.toString());
+
+                DBHelperDota2 dbHelper = DBHelperDota2.getInstance();
+                for(Dota2Equipment item : resultItem.getResult().get()){
+                    dbHelper.getDao(Dota2Equipment.class).create(item);
+                }
+
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
                 e.printStackTrace();
             } finally {
                 try {
@@ -182,8 +201,6 @@ public class Utils {
                 + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         listView.setLayoutParams(params);
     }
-
-
 
     public static String getItemUrl(String itemId, boolean hasAssets) {
         if (hasAssets == true) {

@@ -1,4 +1,4 @@
-package kevin.api.dota2.jsonResponse;
+package kevin.api.dota2.bean;
 
 
 import kevin.api.base.gameBase.bean.Skill;
@@ -8,11 +8,13 @@ import kevin.api.base.gameBase.bean.Skill;
  */
 public class Dota2Skill extends Skill {
 
-    public final static String DOTA2SKILL = "dota2skill";
-
     String ability;
+
     String time;
+
     String level;
+
+    public final static String TAG = "dota2skill";
 
     public String getAbility() {
         return ability;

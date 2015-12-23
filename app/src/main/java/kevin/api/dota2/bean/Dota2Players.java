@@ -1,5 +1,6 @@
-package kevin.api.dota2.jsonResponse;
+package kevin.api.dota2.bean;
 
+import kevin.api.base.gameBase.bean.Competator;
 import kevin.api.base.gameBase.bean.User;
 
 import java.util.ArrayList;
@@ -7,9 +8,9 @@ import java.util.ArrayList;
 /**
  * Created by Kevin on 2015/8/10.
  */
-public class Dota2Players extends User {
+public class Dota2Players extends Competator {
 
-    public final static String DOTA2PLAYERS = "dota2players";
+    public final static String TAG = "dota2players";
 
     String account_id;
     int player_slot;

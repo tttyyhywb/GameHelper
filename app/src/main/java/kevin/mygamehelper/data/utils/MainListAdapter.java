@@ -10,7 +10,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import kevin.utils.Utils;
-import kevin.api.dota2.jsonResponse.Dota2Players;
+import kevin.api.dota2.bean.Dota2Players;
 import com.kevin.gamehelper.mygamehelper.R;
 import com.lidroid.xutils.BitmapUtils;
 

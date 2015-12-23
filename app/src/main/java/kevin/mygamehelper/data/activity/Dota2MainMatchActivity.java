@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
 
-import kevin.api.dota2.jsonResponse.Dota2GameOutline;
-import kevin.api.dota2.jsonResponse.Dota2Players;
+import kevin.api.dota2.bean.Dota2GameOutline;
+import kevin.api.dota2.bean.Dota2Players;
 import com.kevin.gamehelper.mygamehelper.R;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;

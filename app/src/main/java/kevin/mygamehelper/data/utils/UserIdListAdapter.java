@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import kevin.utils.Utils;
-import kevin.api.dota2.jsonResponse.Dota2User;
+import kevin.api.dota2.bean.Dota2User;
 import com.kevin.gamehelper.mygamehelper.R;
 import kevin.mygamehelper.data.activity.Dota2PreviewActivity;
 import com.lidroid.xutils.BitmapUtils;
@@ -100,7 +100,7 @@ public class UserIdListAdapter extends BaseAdapter {
         @Override
         public void onClick(View v) {
             Bundle bundle = new Bundle();
-            bundle.putSerializable(Dota2User.DOTA2USER,data);
+            bundle.putSerializable(Dota2User.TAG,data);
             Intent intent = new Intent();
             intent.setClass(context, Dota2PreviewActivity.class);
             intent.putExtras(bundle);

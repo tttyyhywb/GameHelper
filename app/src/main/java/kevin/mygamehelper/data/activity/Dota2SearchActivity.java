@@ -19,9 +19,9 @@ import com.google.gson.reflect.TypeToken;
 import kevin.api.base.network.BaseRequest;
 import kevin.utils.Utils;
 import kevin.mygamehelper.data.utils.UserIdListAdapter;
-import kevin.api.dota2.jsonResponse.Dota2Url;
-import kevin.api.dota2.jsonResponse.Dota2User;
-import kevin.api.base.gameBase.Response;
+import kevin.api.dota2.bean.Dota2Url;
+import kevin.api.dota2.bean.Dota2User;
+import kevin.api.base.gameBase.ApiResponse;
 import com.kevin.gamehelper.mygamehelper.R;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -107,8 +107,8 @@ public class Dota2SearchActivity extends Activity {
             Gson gson = new Gson();
 
             Dota2User dota2User = new Dota2User();
-            Response<Dota2User> response = new Response(dota2User);
-            response = gson.fromJson(responseResult, new TypeToken<Response<Dota2User>>() {
+            ApiResponse<Dota2User> response = new ApiResponse(dota2User);
+            response = gson.fromJson(responseResult, new TypeToken<ApiResponse<Dota2User>>() {
             }.getType());
             Log.e("..", response.toString());
             if (response.getResponse().getPlayers().size() > 0) {
