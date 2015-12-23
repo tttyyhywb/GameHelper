@@ -26,11 +26,11 @@ import java.util.List;
  */
 public class UserIdListAdapter extends BaseAdapter {
 
-    List<Dota2User.Players>dataList = new ArrayList<Dota2User.Players>();
+    List<Dota2User>dataList = new ArrayList<Dota2User>();
     Context context ;
     BitmapUtils bitmapUtils;
 
-    public UserIdListAdapter(Context context,List<Dota2User.Players> dataList) {
+    public UserIdListAdapter(Context context,List<Dota2User> dataList) {
         this.dataList = dataList;
         this.context = context;
         bitmapUtils = new BitmapUtils(context);
@@ -55,7 +55,7 @@ public class UserIdListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View view = convertView;
-        Dota2User.Players data = dataList.get(position);
+        Dota2User data = dataList.get(position);
         ViewHolder holder;
 
         if(view == null){
@@ -89,10 +89,10 @@ public class UserIdListAdapter extends BaseAdapter {
 
     class Listener implements OnClickListener{
 
-        private Dota2User.Players data;
+        private Dota2User data;
         private Context context;
 
-        public Listener(Dota2User.Players data, Context context) {
+        public Listener(Dota2User data, Context context) {
             this.data = data;
             this.context = context;
         }

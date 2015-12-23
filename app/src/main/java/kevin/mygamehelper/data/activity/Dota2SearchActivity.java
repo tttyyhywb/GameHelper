@@ -42,7 +42,7 @@ public class Dota2SearchActivity extends Activity {
     ImageButton imgSearchDelete;
 
     Dota2Url url = new Dota2Url();
-    ArrayList<Dota2User.Players> users;
+    ArrayList<Dota2User> users;
     UserIdListAdapter userIdListAdapter;
     ListView userList;
 

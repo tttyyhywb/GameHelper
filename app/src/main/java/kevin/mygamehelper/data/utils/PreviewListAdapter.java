@@ -29,13 +29,13 @@ import java.util.ArrayList;
 public class PreviewListAdapter extends BaseAdapter {
 
     ArrayList<Dota2GameOutline> matches;
-    Dota2User.Players account;
+    Dota2User  account;
     Context context;
     AssetManager assetManager;
     BitmapUtils bitmapUtils;
     public final int COUNT = 6;
     Dota2GameOutline match;
-    public PreviewListAdapter(Context context, ArrayList<Dota2GameOutline> matches, Dota2User.Players account) {
+    public PreviewListAdapter(Context context, ArrayList<Dota2GameOutline> matches, Dota2User account) {
         this.account = account;
         this.context = context;
         this.matches = matches;

@@ -33,7 +33,7 @@ import java.util.Observable;
 public class Dota2PreviewActivity extends Activity {
 
     BitmapUtils bitmapUtils;
-    Dota2User.Players account;
+    Dota2User account;
     ArrayList<Dota2GameOutline> matches;
     Dota2Url url;
 
@@ -57,7 +57,7 @@ public class Dota2PreviewActivity extends Activity {
         bitmapUtils = new BitmapUtils(this);
         url = new Dota2Url();
         Intent intent = getIntent();
-        account = (Dota2User.Players) intent.getSerializableExtra(Dota2User.TAG);
+        account = (Dota2User) intent.getSerializableExtra(Dota2User.TAG);
         bitmapUtils.display(imgUserPortrait,account.getAvatarfull());
         tvUsername.setText(account.getPersonaname());
         matchesHistoryListRequest.getData(url.getMatchHistory(Utils.getAccountId(account.getSteamid()),10));
