@@ -12,7 +12,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import kevin.utils.Utils;
+import kevin.utils.D2Utils;
 import kevin.api.dota2.bean.Dota2User;
 import com.kevin.gamehelper.mygamehelper.R;
 import kevin.mygamehelper.data.activity.Dota2PreviewActivity;
@@ -74,7 +74,7 @@ public class UserIdListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.tvUserId.setText(Utils.getAccountId(data.getSteamid()));
+        holder.tvUserId.setText(D2Utils.getAccountId(data.getSteamid()));
         holder.tvUserName.setText(data.getPersonaname());
         bitmapUtils.display(holder.imgUserPortrait,data.getAvatarfull());
         return view;

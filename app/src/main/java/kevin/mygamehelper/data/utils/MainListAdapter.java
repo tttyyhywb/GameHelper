@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import kevin.utils.Utils;
+import kevin.utils.D2Utils;
 import kevin.api.dota2.bean.Dota2Players;
 import com.kevin.gamehelper.mygamehelper.R;
 import com.lidroid.xutils.BitmapUtils;
@@ -80,13 +80,13 @@ public class MainListAdapter extends BaseAdapter {
         holder.tvKda.setText(player.getKills() + "/" + player.getDeaths() + "/" + player.getAssists());
         holder.tvHeroLevel.setText(player.getLevel());
 
-        bitmapUtils.display(holder.imgHero,Utils.getHeroPicHphover(player.getHero_id(),true));
-        bitmapUtils.display( holder.item0,Utils.getItemUrl(player.getItem_0(),true));
-        bitmapUtils.display( holder.item1,Utils.getItemUrl(player.getItem_1(),true));
-        bitmapUtils.display( holder.item2,Utils.getItemUrl(player.getItem_2(),true));
-        bitmapUtils.display( holder.item3,Utils.getItemUrl(player.getItem_3(),true));
-        bitmapUtils.display( holder.item4,Utils.getItemUrl(player.getItem_4(),true));
-        bitmapUtils.display( holder.item5,Utils.getItemUrl(player.getItem_5(),true));
+        bitmapUtils.display(holder.imgHero,D2Utils.getHeroPicHphover(player.getHero_id(),true));
+        bitmapUtils.display( holder.item0,D2Utils.getItemUrl(player.getItem_0(),true));
+        bitmapUtils.display( holder.item1,D2Utils.getItemUrl(player.getItem_1(),true));
+        bitmapUtils.display( holder.item2,D2Utils.getItemUrl(player.getItem_2(),true));
+        bitmapUtils.display( holder.item3,D2Utils.getItemUrl(player.getItem_3(),true));
+        bitmapUtils.display( holder.item4,D2Utils.getItemUrl(player.getItem_4(),true));
+        bitmapUtils.display( holder.item5,D2Utils.getItemUrl(player.getItem_5(),true));
 
         return view;
     }

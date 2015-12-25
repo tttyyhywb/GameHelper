@@ -13,7 +13,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import kevin.utils.Utils;
+import kevin.utils.D2Utils;
 import kevin.api.dota2.bean.Dota2GameOutline;
 import kevin.api.dota2.bean.Dota2Players;
 import kevin.api.dota2.bean.Dota2User;
@@ -70,7 +70,7 @@ public class PreviewListAdapter extends BaseAdapter {
         for(Dota2Players p : match.getDetails().getPlayers()){
 //           Log.e("1", p.getAccount_id());
 //           Log.e("2", Utils.getAccountId(account.getSteamid()));
-            if(p.getAccount_id().equals( Utils.getAccountId(account.getSteamid()))){
+            if(p.getAccount_id().equals( D2Utils.getAccountId(account.getSteamid()))){
                 players = p;
                 break;
             }
@@ -102,7 +102,7 @@ public class PreviewListAdapter extends BaseAdapter {
             holder.tvResult.setTextColor(Color.rgb(56,174,47));
             holder.tvResult.setText("胜利");
         }
-        bitmapUtils.display(holder.picHero,Utils.getHeroPicHphover(players.getHero_id(), true));
+        bitmapUtils.display(holder.picHero,D2Utils.getHeroPicHphover(players.getHero_id(), true));
         holder.tvKda.setText(players.getKills()+"/"+players.getDeaths()+"/"+players.getAssists());
         holder.tvEndTime.setText(match.getDetails().getDuration()/60+"分钟");
         return view;

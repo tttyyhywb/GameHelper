@@ -24,7 +24,7 @@ public class Dota2Hero extends Hero {
 
     String status;
 
-    @DatabaseField(generatedId = true)
+    @DatabaseField(id = true)
     int id;
 
     @DatabaseField(columnName = "name")

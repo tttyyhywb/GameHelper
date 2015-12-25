@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import kevin.api.base.network.BaseRequest;
-import kevin.utils.Utils;
+import kevin.utils.D2Utils;
 import kevin.mygamehelper.data.utils.UserIdListAdapter;
 import kevin.api.dota2.bean.Dota2Url;
 import kevin.api.dota2.bean.Dota2User;
@@ -88,7 +88,7 @@ public class Dota2SearchActivity extends Activity {
         @Override
         public void afterTextChanged(Editable s) {
             mHandler.removeMessages(ISCHANGED);
-            if (s.length() != 0 && Utils.allNumber(s.toString())) {
+            if (s.length() != 0 && D2Utils.allNumber(s.toString())) {
                 imgSearchBack.setVisibility(View.VISIBLE);
                 Message msg = new Message();
                 msg.what = ISCHANGED;

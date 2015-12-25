@@ -14,13 +14,13 @@ public class Dota2Players extends Competator {
 
     String account_id;
     int player_slot;
-    String hero_id;
-    String item_0;
-    String item_1;
-    String item_2;
-    String item_3;
-    String item_4;
-    String item_5;
+    int hero_id;
+    int item_0;
+    int item_1;
+    int item_2;
+    int item_3;
+    int item_4;
+    int item_5;
     int kills;
     int deaths;
     int assists;
@@ -37,6 +37,62 @@ public class Dota2Players extends Competator {
     String level;
     ArrayList<Dota2Skill> ability_upgrades;
 
+    public int getItem_5() {
+        return item_5;
+    }
+
+    public void setItem_5(int item_5) {
+        this.item_5 = item_5;
+    }
+
+    public int getHero_id() {
+        return hero_id;
+    }
+
+    public void setHero_id(int hero_id) {
+        this.hero_id = hero_id;
+    }
+
+    public int getItem_0() {
+        return item_0;
+    }
+
+    public void setItem_0(int item_0) {
+        this.item_0 = item_0;
+    }
+
+    public int getItem_1() {
+        return item_1;
+    }
+
+    public void setItem_1(int item_1) {
+        this.item_1 = item_1;
+    }
+
+    public int getItem_2() {
+        return item_2;
+    }
+
+    public void setItem_2(int item_2) {
+        this.item_2 = item_2;
+    }
+
+    public int getItem_3() {
+        return item_3;
+    }
+
+    public void setItem_3(int item_3) {
+        this.item_3 = item_3;
+    }
+
+    public int getItem_4() {
+        return item_4;
+    }
+
+    public void setItem_4(int item_4) {
+        this.item_4 = item_4;
+    }
+
     public String getAccount_id() {
         return account_id;
     }
@@ -51,62 +107,6 @@ public class Dota2Players extends Competator {
 
     public void setPlayer_slot(int player_slot) {
         this.player_slot = player_slot;
-    }
-
-    public String getHero_id() {
-        return hero_id;
-    }
-
-    public void setHero_id(String hero_id) {
-        this.hero_id = hero_id;
-    }
-
-    public String getItem_0() {
-        return item_0;
-    }
-
-    public void setItem_0(String item_0) {
-        this.item_0 = item_0;
-    }
-
-    public String getItem_1() {
-        return item_1;
-    }
-
-    public void setItem_1(String item_1) {
-        this.item_1 = item_1;
-    }
-
-    public String getItem_2() {
-        return item_2;
-    }
-
-    public void setItem_2(String item_2) {
-        this.item_2 = item_2;
-    }
-
-    public String getItem_3() {
-        return item_3;
-    }
-
-    public void setItem_3(String item_3) {
-        this.item_3 = item_3;
-    }
-
-    public String getItem_4() {
-        return item_4;
-    }
-
-    public void setItem_4(String item_4) {
-        this.item_4 = item_4;
-    }
-
-    public String getItem_5() {
-        return item_5;
-    }
-
-    public void setItem_5(String item_5) {
-        this.item_5 = item_5;
     }
 
     public int getKills() {

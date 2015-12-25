@@ -1,6 +1,7 @@
 package kevin.api.dota2.bean;
 
-import kevin.utils.Utils;
+
+import kevin.utils.D2Utils;
 
 /**
  * Created by kevin on 2015/7/20.
@@ -35,7 +36,7 @@ public class Dota2Url {
      * @return
      */
     public String getPlayerSummaries(String userId) {
-        return DOTA2MAIN + PLAYERSUMMARIES + KEY + "&steamids=" + Utils.getSteamId(userId);
+        return DOTA2MAIN + PLAYERSUMMARIES + KEY + "&steamids=" + D2Utils.getSteamId(userId);
     }
 
 

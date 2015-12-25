@@ -1,6 +1,5 @@
 package kevin.utils;
 
-import android.content.Context;
 import android.content.res.AssetManager;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -11,6 +10,7 @@ import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.j256.ormlite.dao.Dao;
 
 import kevin.api.dota2.bean.Dota2Equipment;
 import kevin.api.dota2.bean.Dota2Hero;
@@ -21,80 +21,81 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.SQLException;
-import java.util.Map;
 
 /**
  * Created by Kevin on 2015/7/21.
  */
-public class Utils {
+public class D2Utils {
 
-    static Context context;
     AssetManager assetManager;
 
     Dota2Hero dota2Hero = new Dota2Hero();
+
     ApiResult<Dota2Hero> resultHero = new ApiResult<Dota2Hero>(dota2Hero);
-    static Map<String, Dota2Hero> heroes = null;
 
     Dota2Equipment dota2Equipment = new Dota2Equipment();
+
     ApiResult<Dota2Equipment> resultItem = new ApiResult<Dota2Equipment>(dota2Equipment);
-    static Map<String, Dota2Equipment> items = null;
 
-    public Utils(Context context) {
-        this.context = context;
-        assetManager = context.getResources().getAssets();
-        Gson gson = new Gson();
-        InputStream is = null;
-        if (heroes == null) {
-            try {
-                is = assetManager.open("Response/GetHeroes");
-                resultHero = gson.fromJson(inputSteam2String(is).toString(), new TypeToken<ApiResult<Dota2Hero>>() {
-                }.getType());
-                heroes = resultHero.getResult().getHeroes();
+    private static D2Utils instantce;
 
-                DBHelperDota2 dbHelper = DBHelperDota2.getInstance();
+    private static DBHelperDota2 dbHelper;
 
-                for(Dota2Hero h: resultHero.getResult().get()){
-                    dbHelper.getDao(Dota2Hero.class).create(h);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    is.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+    private static Dao<Dota2Equipment,Integer> itemDao ;
+
+    private static Dao<Dota2Hero,Integer> heroDao ;
+
+    public static D2Utils getInstantce(){
+        return instantce;
+    }
+
+    public static void init(){
+        if(instantce == null){
+            synchronized (D2Utils.class){
+                if(instantce == null){
+                    instantce = new D2Utils();
                 }
             }
         }
+    }
 
-        if (items == null) {
+    private D2Utils() {
+        assetManager = SysUtils.getInstance().getAssetManager();
+        Gson gson = new Gson();
+        InputStream is = null;
+        dbHelper = DBHelperDota2.getInstance();
+
+        try {
+            itemDao = dbHelper.getDao(Dota2Equipment.class);
+            heroDao = dbHelper.getDao(Dota2Hero.class);
+
+            is = assetManager.open("Response/GetHeroes");
+            resultHero = gson.fromJson(inputSteam2String(is).toString(), new TypeToken<ApiResult<Dota2Hero>>() {
+            }.getType());
+
+            for (Dota2Hero h : resultHero.getResult().get()) {
+                dbHelper.getDao(Dota2Hero.class).create(h);
+            }
+
+            is = assetManager.open("Response/GetItems");
+            resultItem = gson.fromJson(inputSteam2String(is).toString(), new TypeToken<ApiResult<Dota2Equipment>>() {
+            }.getType());
+
+            for (Dota2Equipment item : resultItem.getResult().get()) {
+                dbHelper.getDao(Dota2Equipment.class).create(item);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
             try {
-                is = assetManager.open("Response/GetItems");
-                resultItem = gson.fromJson(inputSteam2String(is).toString(), new TypeToken<ApiResult<Dota2Equipment>>() {
-                }.getType());
-                items = resultItem.getResult().getItems();
-                //Log.e("item", items.toString());
-
-                DBHelperDota2 dbHelper = DBHelperDota2.getInstance();
-                for(Dota2Equipment item : resultItem.getResult().get()){
-                    dbHelper.getDao(Dota2Equipment.class).create(item);
-                }
-
+                is.close();
             } catch (IOException e) {
                 e.printStackTrace();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    is.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
         }
     }
@@ -156,26 +157,40 @@ public class Utils {
         return accountId.matches("[0-9]+");
     }
 
-    public static String getItemUrl(String itemId) {
-       // Log.e("item0", "items/" + items.get(itemId).getName() + "_lg.png");
-        return "items/" + items.get(itemId).getName() + "_lg.png";
-    }
-
-    public static String getHeroPicHphover(String heroId) {
-        Log.e("heroId", heroId);
-        //Log.e("    ",heroes.toString());
-        String name = heroes.get(heroId).getName();
-        return "heroes/" + name + "_hphover.png";
-    }
-    public static String getHeroPicHphover(String string, boolean hasAssets) {
-        if (hasAssets == true) {
-            return "assets/" + getHeroPicHphover(string);
-        } else {
-            return getHeroPicHphover(string);
+    public static String getItemUrl(int itemId) {
+        try {
+            return "items/" + itemDao.queryForId(itemId).getName() + "_lg.png";
+        } catch (SQLException e) {
+            Log.e("getItemUrl","no such item");
+            return null;
         }
     }
-    public static String getHeroPicVert(String heroId) {
-        return "heroes/" + heroes.get(heroId).getName() + "_vert.jpg";
+
+    public static String getHeroPicHphover(int heroId) {
+        try {
+            //Log.e("hero",heroId + heroDao.queryForId(heroId).getName() );
+            return "heroes/" +  heroDao.queryForId(heroId).getName() + "_hphover.png";
+        } catch (SQLException e) {
+            Log.e("getHeroPicHphover","no such hero picture");
+            return null;
+        }
+    }
+
+    public static String getHeroPicHphover(int heroId, boolean hasAssets) {
+        if (hasAssets == true) {
+            return "assets/" + getHeroPicHphover(heroId);
+        } else {
+            return getHeroPicHphover(heroId);
+        }
+    }
+
+    public static String getHeroPicVert(int heroId) {
+        try {
+            return "heroes/" +  heroDao.queryForId(heroId).getName() + "_vert.jpg";
+        } catch (SQLException e) {
+            Log.e("getHeroPicVert","no such heroId");
+            return null;
+        }
     }
 
     /**
@@ -202,7 +217,7 @@ public class Utils {
         listView.setLayoutParams(params);
     }
 
-    public static String getItemUrl(String itemId, boolean hasAssets) {
+    public static String getItemUrl(int itemId, boolean hasAssets) {
         if (hasAssets == true) {
             return "assets/" + getItemUrl(itemId);
         } else {

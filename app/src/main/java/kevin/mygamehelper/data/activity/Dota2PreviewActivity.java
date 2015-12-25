@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import kevin.api.base.network.BaseRequest;
-import kevin.utils.Utils;
+import kevin.utils.D2Utils;
 import kevin.mygamehelper.data.utils.PreviewListAdapter;
 import kevin.api.dota2.bean.Dota2GameOutline;
 import kevin.api.dota2.bean.Dota2MatchDetails;
@@ -60,7 +60,7 @@ public class Dota2PreviewActivity extends Activity {
         account = (Dota2User) intent.getSerializableExtra(Dota2User.TAG);
         bitmapUtils.display(imgUserPortrait,account.getAvatarfull());
         tvUsername.setText(account.getPersonaname());
-        matchesHistoryListRequest.getData(url.getMatchHistory(Utils.getAccountId(account.getSteamid()),10));
+        matchesHistoryListRequest.getData(url.getMatchHistory(D2Utils.getAccountId(account.getSteamid()),10));
     }
 
 

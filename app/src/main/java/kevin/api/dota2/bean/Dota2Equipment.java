@@ -19,7 +19,7 @@ public class Dota2Equipment extends Equipment {
 
     ArrayList<Dota2Equipment> items;
 
-    @DatabaseField(generatedId = true)
+    @DatabaseField(id = true)
     int id;
 
     String status;

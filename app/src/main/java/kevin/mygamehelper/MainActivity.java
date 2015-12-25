@@ -12,7 +12,7 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
-import kevin.utils.Utils;
+import kevin.utils.D2Utils;
 import com.kevin.gamehelper.mygamehelper.R;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.ViewUtils;
@@ -40,14 +40,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     ImageButton imgMe;
     @ViewInject(R.id.img_tab_discover)
     ImageButton imgDiscover;
-    static Utils utils;
+    static D2Utils utils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-        utils = new Utils(this);
+        utils =  D2Utils.getInstantce();
         initView();
         resetView();
         setSelected(0);

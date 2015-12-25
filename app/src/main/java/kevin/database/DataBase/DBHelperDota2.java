@@ -39,7 +39,7 @@ public class DBHelperDota2 extends OrmLiteSqliteOpenHelper {
 
     public static DBHelperDota2 getInstance(){
         if(instance == null){
-            throw(new IllegalArgumentException("instance is null , call init(Context)"));
+            throw(new IllegalArgumentException("instance is null , call init(Context) , D2Utils must be initalize after this"));
         }else{
             return instance;
         }
