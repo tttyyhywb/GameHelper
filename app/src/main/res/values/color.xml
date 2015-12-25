@@ -8,6 +8,8 @@
     <color name="login_btn_login_in_text">#FFFFFF</color>
 
     <!-- search activity -->
+    <color name="search_text_white">#C0000000</color>
+
 
     <!-- common -->
     <color name="background_transparent">#00000000</color>

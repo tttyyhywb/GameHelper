@@ -21,16 +21,20 @@
             android:background="@color/background_transparent"/>
 
         <EditText
+            android:paddingLeft="9sp"
+            android:layout_centerVertical="true"
             android:id="@+id/edit_search"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30sp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/img_search_back"
             android:layout_weight="1"
+            android:layout_marginLeft="5dp"
             android:hint="@string/input_userId"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
+            android:textColor="@color/search_text_white"
+            android:textColorHint="@color/search_text_white"
+            android:textSize="14sp"
             android:layout_marginTop="18dp"
             android:background="@drawable/search_title_bg"/>
 
