@@ -6,4 +6,10 @@
     <color name="login_btn_sign_up_text">#000000</color>
     <color name="login_btn_login_in_background">#40000000</color>
     <color name="login_btn_login_in_text">#FFFFFF</color>
+
+    <!-- search activity -->
+
+    <!-- common -->
+    <color name="background_transparent">#00000000</color>
+
 </resources>

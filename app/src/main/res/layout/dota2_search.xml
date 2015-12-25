@@ -5,18 +5,20 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:paddingLeft="@dimen/search_padding_left"
+        android:paddingRight="@dimen/search_padding_right"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#363636"
-        android:orientation="horizontal"
-        android:padding="5dp">
+        android:background="@drawable/search_title_background_dark"
+        android:orientation="horizontal" >
 
         <ImageButton
             android:id="@+id/img_search_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:src="@mipmap/arrow_back_click" />
+            android:src="@drawable/abc_ic_ab_back_mtrl_am_alpha"
+            android:background="@color/background_transparent"/>
 
         <EditText
             android:id="@+id/edit_search"
@@ -28,16 +30,20 @@
             android:layout_weight="1"
             android:hint="@string/input_userId"
             android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF" />
+            android:textColorHint="#FFFFFF"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/search_title_bg"/>
 
         <ImageButton
+            android:background="@color/background_transparent"
             android:id="@+id/img_search_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/edit_search"
             android:layout_alignRight="@+id/edit_search"
             android:layout_centerVertical="true"
-            android:src="@drawable/abc_ic_clear_mtrl_alpha" />
+            android:visibility="gone"
+            android:layout_marginRight="10dp"/>
     </RelativeLayout>
 
     <include layout="@layout/dota2_search_matchid_title"></include>

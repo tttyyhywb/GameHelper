@@ -6,8 +6,6 @@ import com.j256.ormlite.table.DatabaseTable;
 import kevin.api.base.gameBase.bean.Equipment;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by Kevin on 2015/7/20.
@@ -47,17 +45,6 @@ public class Dota2Equipment extends Equipment {
                 "items=" + items +
                 ", status='" + status + '\'' +
                 '}';
-    }
-
-    public Map<String, Dota2Equipment> getItems() {
-
-        Map<String, Dota2Equipment> map = new HashMap<String, Dota2Equipment>();
-        for (Dota2Equipment item : items) {
-            if (map.get(item.getId()) == null) {
-                map.put(item.getId()+"", item);
-            }
-        }
-        return map;
     }
 
     public ArrayList<Dota2Equipment> get(){
@@ -131,6 +118,5 @@ public class Dota2Equipment extends Equipment {
     public void setLocalized_name(String localized_name) {
         this.localized_name = localized_name;
     }
-
 
 }

@@ -7,557 +7,557 @@
 			{
 				"name": "antimage",
 				"id": 1,
-				"localized_name": "Anti-Mage"
+				"localized_name": "敌法师"
 			},
 			{
 				"name": "axe",
 				"id": 2,
-				"localized_name": "Axe"
+				"localized_name": "斧王"
 			},
 			{
 				"name": "bane",
 				"id": 3,
-				"localized_name": "Bane"
+				"localized_name": "祸乱之源"
 			},
 			{
 				"name": "bloodseeker",
 				"id": 4,
-				"localized_name": "Bloodseeker"
+				"localized_name": "嗜血狂魔"
 			},
 			{
 				"name": "crystal_maiden",
 				"id": 5,
-				"localized_name": "Crystal Maiden"
+				"localized_name": "水晶室女"
 			},
 			{
 				"name": "drow_ranger",
 				"id": 6,
-				"localized_name": "Drow Ranger"
+				"localized_name": "卓尔游侠"
 			},
 			{
 				"name": "earthshaker",
 				"id": 7,
-				"localized_name": "Earthshaker"
+				"localized_name": "撼地者"
 			},
 			{
 				"name": "juggernaut",
 				"id": 8,
-				"localized_name": "Juggernaut"
+				"localized_name": "主宰"
 			},
 			{
 				"name": "mirana",
 				"id": 9,
-				"localized_name": "Mirana"
+				"localized_name": "米拉娜"
 			},
 			{
 				"name": "nevermore",
 				"id": 11,
-				"localized_name": "Shadow Fiend"
+				"localized_name": "影魔"
 			},
 			{
 				"name": "morphling",
 				"id": 10,
-				"localized_name": "Morphling"
+				"localized_name": "变体精灵"
 			},
 			{
 				"name": "phantom_lancer",
 				"id": 12,
-				"localized_name": "Phantom Lancer"
+				"localized_name": "幻影长矛手"
 			},
 			{
 				"name": "puck",
 				"id": 13,
-				"localized_name": "Puck"
+				"localized_name": "帕克"
 			},
 			{
 				"name": "pudge",
 				"id": 14,
-				"localized_name": "Pudge"
+				"localized_name": "帕吉"
 			},
 			{
 				"name": "razor",
 				"id": 15,
-				"localized_name": "Razor"
+				"localized_name": "剃刀"
 			},
 			{
 				"name": "sand_king",
 				"id": 16,
-				"localized_name": "Sand King"
+				"localized_name": "沙王"
 			},
 			{
 				"name": "storm_spirit",
 				"id": 17,
-				"localized_name": "Storm Spirit"
+				"localized_name": "风暴之灵"
 			},
 			{
 				"name": "sven",
 				"id": 18,
-				"localized_name": "Sven"
+				"localized_name": "斯温"
 			},
 			{
 				"name": "tiny",
 				"id": 19,
-				"localized_name": "Tiny"
+				"localized_name": "小小"
 			},
 			{
 				"name": "vengefulspirit",
 				"id": 20,
-				"localized_name": "Vengeful Spirit"
+				"localized_name": "复仇之魂"
 			},
 			{
 				"name": "windrunner",
 				"id": 21,
-				"localized_name": "Windranger"
+				"localized_name": "风行者"
 			},
 			{
 				"name": "zuus",
 				"id": 22,
-				"localized_name": "Zeus"
+				"localized_name": "宙斯"
 			},
 			{
 				"name": "kunkka",
 				"id": 23,
-				"localized_name": "Kunkka"
+				"localized_name": "昆卡"
 			},
 			{
 				"name": "lina",
 				"id": 25,
-				"localized_name": "Lina"
+				"localized_name": "莉娜"
 			},
 			{
 				"name": "lich",
 				"id": 31,
-				"localized_name": "Lich"
+				"localized_name": "巫妖"
 			},
 			{
 				"name": "lion",
 				"id": 26,
-				"localized_name": "Lion"
+				"localized_name": "莱恩"
 			},
 			{
 				"name": "shadow_shaman",
 				"id": 27,
-				"localized_name": "Shadow Shaman"
+				"localized_name": "暗影萨满"
 			},
 			{
 				"name": "slardar",
 				"id": 28,
-				"localized_name": "Slardar"
+				"localized_name": "斯拉达"
 			},
 			{
 				"name": "tidehunter",
 				"id": 29,
-				"localized_name": "Tidehunter"
+				"localized_name": "潮汐猎人"
 			},
 			{
 				"name": "witch_doctor",
 				"id": 30,
-				"localized_name": "Witch Doctor"
+				"localized_name": "巫医"
 			},
 			{
 				"name": "riki",
 				"id": 32,
-				"localized_name": "Riki"
+				"localized_name": "力丸"
 			},
 			{
 				"name": "enigma",
 				"id": 33,
-				"localized_name": "Enigma"
+				"localized_name": "谜团"
 			},
 			{
 				"name": "tinker",
 				"id": 34,
-				"localized_name": "Tinker"
+				"localized_name": "修补匠"
 			},
 			{
 				"name": "sniper",
 				"id": 35,
-				"localized_name": "Sniper"
+				"localized_name": "狙击手"
 			},
 			{
 				"name": "necrolyte",
 				"id": 36,
-				"localized_name": "Necrophos"
+				"localized_name": "瘟疫法师"
 			},
 			{
 				"name": "warlock",
 				"id": 37,
-				"localized_name": "Warlock"
+				"localized_name": "术士"
 			},
 			{
 				"name": "beastmaster",
 				"id": 38,
-				"localized_name": "Beastmaster"
+				"localized_name": "兽王"
 			},
 			{
 				"name": "queenofpain",
 				"id": 39,
-				"localized_name": "Queen of Pain"
+				"localized_name": "痛苦女王"
 			},
 			{
 				"name": "venomancer",
 				"id": 40,
-				"localized_name": "Venomancer"
+				"localized_name": "剧毒术士"
 			},
 			{
 				"name": "faceless_void",
 				"id": 41,
-				"localized_name": "Faceless Void"
+				"localized_name": "虚空假面"
 			},
 			{
 				"name": "skeleton_king",
 				"id": 42,
-				"localized_name": "Wraith King"
+				"localized_name": "冥魂大帝"
 			},
 			{
 				"name": "death_prophet",
 				"id": 43,
-				"localized_name": "Death Prophet"
+				"localized_name": "死亡先知"
 			},
 			{
 				"name": "phantom_assassin",
 				"id": 44,
-				"localized_name": "Phantom Assassin"
+				"localized_name": "幻影刺客"
 			},
 			{
 				"name": "pugna",
 				"id": 45,
-				"localized_name": "Pugna"
+				"localized_name": "帕格纳"
 			},
 			{
 				"name": "templar_assassin",
 				"id": 46,
-				"localized_name": "Templar Assassin"
+				"localized_name": "圣堂刺客"
 			},
 			{
 				"name": "viper",
 				"id": 47,
-				"localized_name": "Viper"
+				"localized_name": "冥界亚龙"
 			},
 			{
 				"name": "luna",
 				"id": 48,
-				"localized_name": "Luna"
+				"localized_name": "露娜"
 			},
 			{
 				"name": "dragon_knight",
 				"id": 49,
-				"localized_name": "Dragon Knight"
+				"localized_name": "龙骑士"
 			},
 			{
 				"name": "dazzle",
 				"id": 50,
-				"localized_name": "Dazzle"
+				"localized_name": "戴泽"
 			},
 			{
 				"name": "rattletrap",
 				"id": 51,
-				"localized_name": "Clockwerk"
+				"localized_name": "发条技师"
 			},
 			{
 				"name": "leshrac",
 				"id": 52,
-				"localized_name": "Leshrac"
+				"localized_name": "拉席克"
 			},
 			{
 				"name": "furion",
 				"id": 53,
-				"localized_name": "Nature's Prophet"
+				"localized_name": "先知"
 			},
 			{
 				"name": "life_stealer",
 				"id": 54,
-				"localized_name": "Lifestealer"
+				"localized_name": "噬魂鬼"
 			},
 			{
 				"name": "dark_seer",
 				"id": 55,
-				"localized_name": "Dark Seer"
+				"localized_name": "黑暗贤者"
 			},
 			{
 				"name": "clinkz",
 				"id": 56,
-				"localized_name": "Clinkz"
+				"localized_name": "克林克兹"
 			},
 			{
 				"name": "omniknight",
 				"id": 57,
-				"localized_name": "Omniknight"
+				"localized_name": "全能骑士"
 			},
 			{
 				"name": "enchantress",
 				"id": 58,
-				"localized_name": "Enchantress"
+				"localized_name": "魅惑魔女"
 			},
 			{
 				"name": "huskar",
 				"id": 59,
-				"localized_name": "Huskar"
+				"localized_name": "哈斯卡"
 			},
 			{
 				"name": "night_stalker",
 				"id": 60,
-				"localized_name": "Night Stalker"
+				"localized_name": "暗夜魔王"
 			},
 			{
 				"name": "broodmother",
 				"id": 61,
-				"localized_name": "Broodmother"
+				"localized_name": "育母蜘蛛"
 			},
 			{
 				"name": "bounty_hunter",
 				"id": 62,
-				"localized_name": "Bounty Hunter"
+				"localized_name": "赏金猎人"
 			},
 			{
 				"name": "weaver",
 				"id": 63,
-				"localized_name": "Weaver"
+				"localized_name": "编织者"
 			},
 			{
 				"name": "jakiro",
 				"id": 64,
-				"localized_name": "Jakiro"
+				"localized_name": "杰奇洛"
 			},
 			{
 				"name": "batrider",
 				"id": 65,
-				"localized_name": "Batrider"
+				"localized_name": "蝙蝠骑士"
 			},
 			{
 				"name": "chen",
 				"id": 66,
-				"localized_name": "Chen"
+				"localized_name": "陈"
 			},
 			{
 				"name": "spectre",
 				"id": 67,
-				"localized_name": "Spectre"
+				"localized_name": "幽鬼"
 			},
 			{
 				"name": "doom_bringer",
 				"id": 69,
-				"localized_name": "Doom"
+				"localized_name": "末日使者"
 			},
 			{
 				"name": "ancient_apparition",
 				"id": 68,
-				"localized_name": "Ancient Apparition"
+				"localized_name": "远古冰魄"
 			},
 			{
 				"name": "ursa",
 				"id": 70,
-				"localized_name": "Ursa"
+				"localized_name": "熊战士"
 			},
 			{
 				"name": "spirit_breaker",
 				"id": 71,
-				"localized_name": "Spirit Breaker"
+				"localized_name": "裂魂人"
 			},
 			{
 				"name": "gyrocopter",
 				"id": 72,
-				"localized_name": "Gyrocopter"
+				"localized_name": "矮人直升机"
 			},
 			{
 				"name": "alchemist",
 				"id": 73,
-				"localized_name": "Alchemist"
+				"localized_name": "炼金术士"
 			},
 			{
 				"name": "invoker",
 				"id": 74,
-				"localized_name": "Invoker"
+				"localized_name": "祈求者"
 			},
 			{
 				"name": "silencer",
 				"id": 75,
-				"localized_name": "Silencer"
+				"localized_name": "沉默术士"
 			},
 			{
 				"name": "obsidian_destroyer",
 				"id": 76,
-				"localized_name": "Outworld Devourer"
+				"localized_name": "殁境神蚀者"
 			},
 			{
 				"name": "lycan",
 				"id": 77,
-				"localized_name": "Lycan"
+				"localized_name": "狼人"
 			},
 			{
 				"name": "brewmaster",
 				"id": 78,
-				"localized_name": "Brewmaster"
+				"localized_name": "酒仙"
 			},
 			{
 				"name": "shadow_demon",
 				"id": 79,
-				"localized_name": "Shadow Demon"
+				"localized_name": "暗影恶魔"
 			},
 			{
 				"name": "lone_druid",
 				"id": 80,
-				"localized_name": "Lone Druid"
+				"localized_name": "德鲁伊"
 			},
 			{
 				"name": "chaos_knight",
 				"id": 81,
-				"localized_name": "Chaos Knight"
+				"localized_name": "混沌骑士"
 			},
 			{
 				"name": "meepo",
 				"id": 82,
-				"localized_name": "Meepo"
+				"localized_name": "米波"
 			},
 			{
 				"name": "treant",
 				"id": 83,
-				"localized_name": "Treant Protector"
+				"localized_name": "树精卫士"
 			},
 			{
 				"name": "ogre_magi",
 				"id": 84,
-				"localized_name": "Ogre Magi"
+				"localized_name": "食人魔魔法师"
 			},
 			{
 				"name": "undying",
 				"id": 85,
-				"localized_name": "Undying"
+				"localized_name": "不朽尸王"
 			},
 			{
 				"name": "rubick",
 				"id": 86,
-				"localized_name": "Rubick"
+				"localized_name": "拉比克"
 			},
 			{
 				"name": "disruptor",
 				"id": 87,
-				"localized_name": "Disruptor"
+				"localized_name": "干扰者"
 			},
 			{
 				"name": "nyx_assassin",
 				"id": 88,
-				"localized_name": "Nyx Assassin"
+				"localized_name": "司夜刺客"
 			},
 			{
 				"name": "naga_siren",
 				"id": 89,
-				"localized_name": "Naga Siren"
+				"localized_name": "娜迦海妖"
 			},
 			{
 				"name": "keeper_of_the_light",
 				"id": 90,
-				"localized_name": "Keeper of the Light"
+				"localized_name": "光之守卫"
 			},
 			{
 				"name": "wisp",
 				"id": 91,
-				"localized_name": "Io"
+				"localized_name": "艾欧"
 			},
 			{
 				"name": "visage",
 				"id": 92,
-				"localized_name": "Visage"
+				"localized_name": "维萨吉"
 			},
 			{
 				"name": "slark",
 				"id": 93,
-				"localized_name": "Slark"
+				"localized_name": "斯拉克"
 			},
 			{
 				"name": "medusa",
 				"id": 94,
-				"localized_name": "Medusa"
+				"localized_name": "美杜莎"
 			},
 			{
 				"name": "troll_warlord",
 				"id": 95,
-				"localized_name": "Troll Warlord"
+				"localized_name": "巨魔战将"
 			},
 			{
 				"name": "centaur",
 				"id": 96,
-				"localized_name": "Centaur Warrunner"
+				"localized_name": "半人马战行者"
 			},
 			{
 				"name": "magnataur",
 				"id": 97,
-				"localized_name": "Magnus"
+				"localized_name": "马格纳斯"
 			},
 			{
 				"name": "shredder",
 				"id": 98,
-				"localized_name": "Timbersaw"
+				"localized_name": "伐木机"
 			},
 			{
 				"name": "bristleback",
 				"id": 99,
-				"localized_name": "Bristleback"
+				"localized_name": "钢背兽"
 			},
 			{
 				"name": "tusk",
 				"id": 100,
-				"localized_name": "Tusk"
+				"localized_name": "巨牙海民"
 			},
 			{
 				"name": "skywrath_mage",
 				"id": 101,
-				"localized_name": "Skywrath Mage"
+				"localized_name": "天怒法师"
 			},
 			{
 				"name": "abaddon",
 				"id": 102,
-				"localized_name": "Abaddon"
+				"localized_name": "亚巴顿"
 			},
 			{
 				"name": "elder_titan",
 				"id": 103,
-				"localized_name": "Elder Titan"
+				"localized_name": "上古巨神"
 			},
 			{
 				"name": "legion_commander",
 				"id": 104,
-				"localized_name": "Legion Commander"
+				"localized_name": "军团指挥官"
 			},
 			{
 				"name": "ember_spirit",
 				"id": 106,
-				"localized_name": "Ember Spirit"
+				"localized_name": "灰烬之灵"
 			},
 			{
 				"name": "earth_spirit",
 				"id": 107,
-				"localized_name": "Earth Spirit"
+				"localized_name": "大地之灵"
 			},
 			{
 				"name": "terrorblade",
 				"id": 109,
-				"localized_name": "Terrorblade"
+				"localized_name": "恐怖利刃"
 			},
 			{
 				"name": "phoenix",
 				"id": 110,
-				"localized_name": "Phoenix"
+				"localized_name": "凤凰"
 			},
 			{
 				"name": "oracle",
 				"id": 111,
-				"localized_name": "Oracle"
+				"localized_name": "神谕者"
 			},
 			{
 				"name": "techies",
 				"id": 105,
-				"localized_name": "Techies"
+				"localized_name": "工程师"
 			},
 			{
 				"name": "winter_wyvern",
 				"id": 112,
-				"localized_name": "Winter Wyvern"
+				"localized_name": "寒冬飞龙"
 			},
 			{
 				"name": "arc_warden",
 				"id": 113,
-				"localized_name": "Arc Warden"
+				"localized_name": "天穹守望者"
 			}
 		]
 		,

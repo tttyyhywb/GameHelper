@@ -90,13 +90,4 @@ public class Dota2Hero extends Hero {
         this.localized_name = localized_name;
     }
 
-    public Map<String, Dota2Hero> getHeroes() {
-        Map<String, Dota2Hero> map = new HashMap<String, Dota2Hero>();
-        for (Dota2Hero hero : heroes) {
-            if (map.get(hero.getId()) == null) {
-                map.put(hero.getId()+"", hero);
-            }
-        }
-        return map;
-    }
 }
