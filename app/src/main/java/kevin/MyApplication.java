@@ -12,6 +12,7 @@ import kevin.utils.SysUtils;
  * Created by Kevin on 2015/12/21.
  */
 public class MyApplication extends Application {
+
     @Override
     public void onCreate() {
         super.onCreate();

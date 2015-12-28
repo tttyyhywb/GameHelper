@@ -78,7 +78,6 @@ public class Dota2SearchActivity extends Activity {
 
     private void init() {
         com.lidroid.xutils.ViewUtils.inject(this);
-        userList = (ListView) findViewById(R.id.user_list);
         etSearch.addTextChangedListener(watcher);
     }
 
@@ -118,7 +117,6 @@ public class Dota2SearchActivity extends Activity {
             }.getType());
             Log.e("..", response.toString());
             if (response.getResponse().getPlayers().size() > 0) {
-                Log.e("-----------", userList.toString());
                 users = response.getResponse().getPlayers();
                 searchRecy.setLayoutManager(new LinearLayoutManager(Dota2SearchActivity.this));
                 searchRecy.setAdapter(new UserIdRecyAdapter(users,Dota2SearchActivity.this));

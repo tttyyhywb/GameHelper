@@ -3,14 +3,18 @@ package kevin.mygamehelper.data.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import kevin.api.base.network.BaseRequest;
+import kevin.mygamehelper.data.utils.PreviewRecyAdapter;
 import kevin.utils.D2Utils;
 import kevin.mygamehelper.data.utils.PreviewListAdapter;
 import kevin.api.dota2.bean.Dota2GameOutline;
@@ -39,10 +43,15 @@ public class Dota2PreviewActivity extends Activity {
 
     @ViewInject(R.id.img_preview_potrait)
     ImageButton imgUserPortrait;
+
     @ViewInject(R.id.tv_preview_username)
     TextView tvUsername;
+
     @ViewInject(R.id.dota2_preview_listview)
     ListView listView;
+
+    @ViewInject(R.id.dota2_preview_recyclerview)
+    RecyclerView myRecyView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,8 +142,11 @@ public class Dota2PreviewActivity extends Activity {
             Log.e("count", count+"");
             if(count == 6){
                 Log.e("aaaaaaa", matches.toString());
-                PreviewListAdapter previewListAdapter = new PreviewListAdapter(Dota2PreviewActivity.this ,matches,account);
-                listView.setAdapter(previewListAdapter);
+//                PreviewListAdapter previewListAdapter = new PreviewListAdapter(Dota2PreviewActivity.this ,matches,account);
+//                listView.setAdapter(previewListAdapter);
+                myRecyView.setLayoutManager(new LinearLayoutManager(Dota2PreviewActivity.this));
+                myRecyView.setAdapter(new PreviewRecyAdapter(Dota2PreviewActivity.this ,matches,account));
+
             }
         }
     };

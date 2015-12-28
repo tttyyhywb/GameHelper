@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class Dota2GameOutline extends GameEnvirnment {
 
-    public final static String DOTA2GAMEDETIALS = "dota2gamedetials";
+    public final static String TAG = "dota2gamedetials";
 
     String match_id ;
     String match_seq_num;

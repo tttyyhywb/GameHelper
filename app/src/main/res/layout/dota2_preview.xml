@@ -35,4 +35,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/dota2_preview_listview"></ListView>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/dota2_preview_recyclerview"/>
+
 </LinearLayout>

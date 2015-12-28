@@ -33,6 +33,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
+            android:layout_marginRight="5dp"
             android:textSize="@dimen/search_userid_title_size" />
     </LinearLayout>
 </LinearLayout>

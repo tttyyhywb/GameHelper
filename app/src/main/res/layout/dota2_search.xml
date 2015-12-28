@@ -52,11 +52,6 @@
 
     <include layout="@layout/dota2_search_userid_title"></include>
 
-    <ListView
-        android:id="@+id/user_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
-
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
