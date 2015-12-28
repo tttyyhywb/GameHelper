@@ -50,13 +50,6 @@
             android:layout_marginRight="10dp"/>
     </RelativeLayout>
 
-    <include layout="@layout/dota2_search_matchid_title"></include>
-
-    <ListView
-        android:id="@+id/search_matchsid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
-
     <include layout="@layout/dota2_search_userid_title"></include>
 
     <ListView

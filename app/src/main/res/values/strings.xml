@@ -10,14 +10,18 @@
     <string name="result">结果</string>
     <string name="level">Level</string>
     <string name="endtiem">结束时间</string>
-    <string name="nosuer">暂无用户...点击搜索</string>
+    <string name="nosuer">你还未添加一个默认的游戏角色</string>
     <string name="input_userId">请输入账号ID</string>
     <string name="userid">用户名</string>
     <string name="cant_find">找不到用户？点这里</string>
     <string name="matchid">比赛编号</string>
+    <string name="players">玩家</string>
 
     <!-- 登录页面 -->
     <string name="login">登陆</string>
     <string name="sing_up">注册</string>
     <string name="skip_login">跳过登陆</string>
+
+    <!-- data fragment -->
+    <string name="data_fragment_content_text">搜索并绑定账号</string>
 </resources>

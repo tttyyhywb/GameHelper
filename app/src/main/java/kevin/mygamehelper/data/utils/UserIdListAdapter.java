@@ -74,7 +74,7 @@ public class UserIdListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.tvUserId.setText(D2Utils.getAccountId(data.getSteamid()));
+        holder.tvUserId.setText("ID:"+D2Utils.getAccountId(data.getSteamid()));
         holder.tvUserName.setText(data.getPersonaname());
         bitmapUtils.display(holder.imgUserPortrait,data.getAvatarfull());
         return view;

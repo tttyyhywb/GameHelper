@@ -3,11 +3,16 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="main_list_text_size">10sp</dimen>
-    <dimen name="search_userid_title_size">17sp</dimen>
+    <dimen name="search_userid_title_size">13sp</dimen>
     <color name="background_grew">#F8F8FF</color>
     <dimen name="dota2_preview_padding">45dp</dimen>
 
     <!-- search activity -->
     <dimen name="search_padding_left">10dp</dimen>
     <dimen name="search_padding_right">20dp</dimen>
+
+    <!-- data fragment -->
+    <dimen name="data_fragment_text_size">12sp</dimen>
+
+
 </resources>
