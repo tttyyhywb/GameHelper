@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -17,8 +19,8 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import kevin.api.base.network.BaseRequest;
+import kevin.mygamehelper.data.utils.UserIdRecyAdapter;
 import kevin.utils.D2Utils;
-import kevin.mygamehelper.data.utils.UserIdListAdapter;
 import kevin.api.dota2.bean.Dota2Url;
 import kevin.api.dota2.bean.Dota2User;
 import kevin.api.base.gameBase.ApiResponse;
@@ -36,14 +38,18 @@ public class Dota2SearchActivity extends Activity {
 
     @ViewInject(R.id.img_search_back)
     ImageButton imgSearchBack;
+
     @ViewInject(R.id.edit_search)
     EditText etSearch;
+
     @ViewInject(R.id.img_search_delete)
     ImageButton imgSearchDelete;
 
+    @ViewInject(R.id.search_recycler)
+    RecyclerView searchRecy;
+
     Dota2Url url = new Dota2Url();
     ArrayList<Dota2User> users;
-    UserIdListAdapter userIdListAdapter;
     ListView userList;
 
     Handler mHandler = new Handler() {
@@ -114,8 +120,8 @@ public class Dota2SearchActivity extends Activity {
             if (response.getResponse().getPlayers().size() > 0) {
                 Log.e("-----------", userList.toString());
                 users = response.getResponse().getPlayers();
-                userIdListAdapter = new UserIdListAdapter(Dota2SearchActivity.this, users);
-                userList.setAdapter(userIdListAdapter);
+                searchRecy.setLayoutManager(new LinearLayoutManager(Dota2SearchActivity.this));
+                searchRecy.setAdapter(new UserIdRecyAdapter(users,Dota2SearchActivity.this));
             }
         }
 

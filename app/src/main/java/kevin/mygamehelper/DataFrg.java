@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.kevin.gamehelper.mygamehelper.R;
 import kevin.mygamehelper.data.activity.Dota2SearchActivity;
@@ -17,7 +17,7 @@ import kevin.mygamehelper.data.activity.Dota2SearchActivity;
  */
 public class DataFrg  extends Fragment {
 
-    RelativeLayout layoutNoUser;
+    TextView tvDataFragmentSearch;
 
     @Nullable
     @Override
@@ -28,15 +28,15 @@ public class DataFrg  extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        layoutNoUser =(RelativeLayout) view.findViewById(R.id.layout_nouser);
-        layoutNoUser.setOnClickListener(onClickListener);
+        tvDataFragmentSearch =(TextView) view.findViewById(R.id.tv_data_frgment_serach);
+        tvDataFragmentSearch.setOnClickListener(onClickListener);
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             switch (v.getId()){
-                case R.id.layout_nouser: {
+                case R.id.tv_data_frgment_serach: {
                     Intent intent = new Intent();
                     intent.setClass(getActivity(),Dota2SearchActivity.class);
                     startActivity(intent);
