@@ -123,4 +123,20 @@ public class Dota2User extends User implements Serializable {
         this.personastateflags = personastateflags;
     }
 
+    @Override
+    public String toString() {
+        return "Dota2User{" +
+                "avatar='" + avatar + '\'' +
+                ", players=" + players +
+                ", steamid='" + steamid + '\'' +
+                ", profilestate='" + profilestate + '\'' +
+                ", profileurl='" + profileurl + '\'' +
+                ", avatarmedium='" + avatarmedium + '\'' +
+                ", avatarfull='" + avatarfull + '\'' +
+                ", personastate='" + personastate + '\'' +
+                ", primaryclanid='" + primaryclanid + '\'' +
+                ", personastateflags='" + personastateflags + '\'' +
+                ", personaname='" + personaname + '\'' +
+                '}';
+    }
 }

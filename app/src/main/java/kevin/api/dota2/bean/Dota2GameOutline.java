@@ -17,17 +17,7 @@ public class Dota2GameOutline extends GameEnvirnment {
     String lobby_type ;
     String radiant_team_id;
     String dire_team_id;
-    ArrayList<Dota2User> players;
-
-    Dota2MatchDetails details;
-
-    public Dota2MatchDetails getDetails() {
-        return details;
-    }
-
-    public void setDetails(Dota2MatchDetails details) {
-        this.details = details;
-    }
+    ArrayList<Dota2Players> players;
 
     public String getMatch_id() {
         return match_id;
@@ -77,11 +67,11 @@ public class Dota2GameOutline extends GameEnvirnment {
         this.dire_team_id = dire_team_id;
     }
 
-    public ArrayList<Dota2User> getPlayers() {
+    public ArrayList<Dota2Players> getPlayers() {
         return players;
     }
 
-    public void setPlayers(ArrayList<Dota2User> players) {
+    public void setPlayers(ArrayList<Dota2Players> players) {
         this.players = players;
     }
 
@@ -95,7 +85,6 @@ public class Dota2GameOutline extends GameEnvirnment {
                 ", radiant_team_id='" + radiant_team_id + '\'' +
                 ", dire_team_id='" + dire_team_id + '\'' +
                 ", players=" + players +
-                ", details=" + details +
                 '}';
     }
 

@@ -183,6 +183,10 @@ public class Dota2MatchDetails extends GameEnvirnment {
         this.engine = engine;
     }
 
+    public void changed(){
+        setChanged();
+    }
+
     @Override
     public String toString() {
         return "Dota2MatchDetails{" +

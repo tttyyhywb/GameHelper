@@ -35,20 +35,7 @@ public class Dota2MainMatchActivity extends Activity {
         ViewUtils.inject(this);
         Intent intent = getIntent();
         match = (Dota2GameOutline) intent.getSerializableExtra(match.TAG);
-        /*
-        ArrayList<Dota2Players> mSublist = new ArrayList<>(match.getDetails().getPlayers().subList(0, 5));
-        MainListAdapter mainListAdapterRadiant = new MainListAdapter(this, mSublist);
-        Log.e("radiant", mSublist.toString());
-        radiantListView.setAdapter(mainListAdapterRadiant);
-        Utils.setListViewHeightBasedOnChildren(radiantListView);
 
-        mSublist = new ArrayList<>(match.getDetails().getPlayers().subList(6, 10));
-        Log.e("radiant", mSublist.toString());
-        MainListAdapter mainListAdapterDire = new MainListAdapter(this, mSublist);
-        direListView.setAdapter(mainListAdapterDire);
-        Utils.setListViewHeightBasedOnChildren(direListView);
-        */
-        ArrayList<Dota2Players> players = match.getDetails().getPlayers();
-        Log.e("eeeeerrrroooorrrrrrr",players.size()+"" );
+
     }
 }
