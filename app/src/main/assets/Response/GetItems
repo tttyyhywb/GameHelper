@@ -2,6 +2,15 @@
 {
 	"result": {
 		"items": [
+		    {
+                "id": 0,
+                "name": "emptyitembg",
+                "cost": 0,
+                "secret_shop": 0,
+                "side_shop": 0,
+                "recipe": 0,
+                "localized_name": "null"
+        	},
 			{
 				"id": 1,
 				"name": "blink",

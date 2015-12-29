@@ -41,6 +41,7 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
     BitmapUtils bitmapUtils;
     Dota2GameOutline match;
     Dota2MatchDetails detail;
+
     public PreviewRecyAdapter(Context context, ArrayList<Dota2GameOutline> matches, Dota2User account, Dota2MatchDetails[] details){
         this.account = account;
         this.context = context;
@@ -60,9 +61,6 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
     public void onBindViewHolder(MyHolder holder, int position) {
 
         match = matches.get(position);
-
-        Log.e("~~~~~~~~~",position + match.toString());
-
         detail=details[position];
         Dota2Players player= null;
         for(Dota2Players p :detail.getPlayers()){
