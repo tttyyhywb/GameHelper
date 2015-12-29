@@ -4,7 +4,7 @@
     <!-- login activity -->
     <color name="login_btn_sign_up_background">#B4FFFFFF</color>
     <color name="login_btn_sign_up_text">#000000</color>
-    <color name="login_btn_login_in_background">#40000000</color>
+    <color name="login_btn_login_in_background">#60000000</color>
     <color name="login_btn_login_in_text">#FFFFFF</color>
 
     <!-- search activity -->

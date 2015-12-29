@@ -36,7 +36,8 @@
             android:textColorHint="@color/search_text_white"
             android:textSize="14sp"
             android:layout_marginTop="18dp"
-            android:background="@drawable/search_title_bg"/>
+            android:background="@drawable/search_title_bg"
+            android:inputType="number"/>
 
         <ImageButton
             android:background="@color/background_transparent"
@@ -50,7 +51,8 @@
             android:layout_marginRight="10dp"/>
     </RelativeLayout>
 
-    <include layout="@layout/dota2_search_userid_title"></include>
+    <include layout="@layout/dota2_search_userid_title"
+       />
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"

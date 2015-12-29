@@ -34,8 +34,6 @@ public class MainRecyAdapter extends RecyclerView.Adapter<MainRecyAdapter.MyHold
         this.match = dota2GameOutline;
         this.detail = detail;
         bitmapUtils = new BitmapUtils(context);
-        Log.e("main",match.toString());
-        Log.e("maindetail",detail.toString());
     }
 
     @Override

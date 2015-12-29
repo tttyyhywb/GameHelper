@@ -11,15 +11,13 @@
         android:layout_height="wrap_content"
         android:background="@color/background_grew">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/img_preview_potrait"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:scaleType="fitXY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:src="@mipmap/ic_launcher"
-            />
+            android:src="@mipmap/ic_launcher" />
 
         <TextView
             android:layout_marginTop="10dp"
@@ -30,11 +28,6 @@
             android:layout_below="@+id/img_preview_potrait"
             android:text="sdsd"/>
     </RelativeLayout>
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/dota2_preview_listview"></ListView>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="wrap_content"

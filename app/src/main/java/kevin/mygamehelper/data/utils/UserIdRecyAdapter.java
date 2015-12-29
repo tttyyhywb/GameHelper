@@ -2,17 +2,23 @@ package kevin.mygamehelper.data.utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kevin.gamehelper.mygamehelper.R;
 import com.lidroid.xutils.BitmapUtils;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,10 +40,19 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
 
     BitmapUtils bitmapUtils;
 
+    DisplayImageOptions options;
+
     public UserIdRecyAdapter(List<Dota2User> data,Context context){
         this.dataList = data;
         this.context = context;
         bitmapUtils = new BitmapUtils(context);
+        options = new DisplayImageOptions.Builder()
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .build();
+
+
     }
 
     @Override
@@ -53,7 +68,8 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
         Dota2User data = dataList.get(position);
         holder.tvUserId.setText("ID:"+ D2Utils.getAccountId(data.getSteamid()));
         holder.tvUserName.setText(data.getPersonaname());
-        bitmapUtils.display(holder.imgUserPortrait,data.getAvatarfull());
+        ImageLoader.getInstance().displayImage( data.getAvatarfull() , holder.imgUserPortrait, options );
+        //bitmapUtils.display(holder.imgUserPortrait,data.getAvatarfull());
         holder.linearLayout.setOnClickListener(new Listener(data));
     }
 
@@ -64,14 +80,14 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
 
     class MyHolder extends RecyclerView.ViewHolder {
 
-        ImageButton imgUserPortrait;
+        ImageView imgUserPortrait;
         TextView tvUserId;
         TextView tvUserName;
         LinearLayout linearLayout;
 
         public MyHolder(View itemView) {
             super(itemView);
-            imgUserPortrait = (ImageButton)itemView.findViewById(R.id.img_search_user_portrait);
+            imgUserPortrait = (ImageView)itemView.findViewById(R.id.img_search_user_portrait);
             tvUserId = (TextView)itemView.findViewById(R.id.tv_search_userid);
             tvUserName = (TextView)itemView.findViewById(R.id.tv_search_username);
             linearLayout =(LinearLayout)itemView.findViewById(R.id.dota2_search_user_list_linearlayout);

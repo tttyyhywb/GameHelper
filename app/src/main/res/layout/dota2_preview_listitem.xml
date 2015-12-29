@@ -10,7 +10,7 @@
         android:layout_height="50dp"
         android:orientation="horizontal">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/img_hero_preview"
             android:layout_width="0dp"
             android:layout_height="match_parent"

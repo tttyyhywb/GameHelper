@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -47,6 +48,9 @@ public class Dota2SearchActivity extends Activity {
 
     @ViewInject(R.id.search_recycler)
     RecyclerView searchRecy;
+
+    @ViewInject(R.id.match_userid_title)
+    LinearLayout llMatchUserTitle;
 
     Dota2Url url = new Dota2Url();
     ArrayList<Dota2User> users;
@@ -109,6 +113,7 @@ public class Dota2SearchActivity extends Activity {
         @Override
         protected void afterSuccess(String responseResult) {
 
+            llMatchUserTitle.setVisibility(View.VISIBLE);
             Gson gson = new Gson();
 
             Dota2User dota2User = new Dota2User();

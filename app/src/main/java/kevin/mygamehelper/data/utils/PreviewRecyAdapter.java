@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -91,7 +92,7 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
 
     class MyHolder extends RecyclerView.ViewHolder{
 
-        ImageButton picHero;
+        ImageView picHero;
         TextView tvResult;
         TextView tvLobbyType;
         TextView tvKda;
@@ -100,7 +101,7 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
 
         public MyHolder(View itemView) {
             super(itemView);
-            picHero = (ImageButton)itemView.findViewById(R.id.img_hero_preview);
+            picHero = (ImageView)itemView.findViewById(R.id.img_hero_preview);
             tvEndTime = (TextView)itemView.findViewById(R.id.tv_end_time);
             tvResult = (TextView)itemView.findViewById(R.id.tv_result);
             tvLobbyType = (TextView)itemView.findViewById(R.id.tv_lobby_type);

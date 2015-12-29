@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -44,7 +45,7 @@ public class Dota2PreviewActivity extends Activity {
     Gson gson = new Gson();
 
     @ViewInject(R.id.img_preview_potrait)
-    ImageButton imgUserPortrait;
+    ImageView imgUserPortrait;
 
     @ViewInject(R.id.tv_preview_username)
     TextView tvUsername;

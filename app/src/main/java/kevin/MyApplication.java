@@ -3,6 +3,9 @@ package kevin;
 import android.app.Application;
 import android.content.Context;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
 import kevin.database.DataBase.DBHelperDota2;
 import kevin.utils.D2Utils;
 import kevin.utils.SPUtils;
@@ -19,7 +22,15 @@ public class MyApplication extends Application {
         initService();
         initDatabase(this);
         initCommonUtils(this);
+        initImageLoader();
         initOthers();
+    }
+
+    private void initImageLoader() {
+        ImageLoaderConfiguration configuration = ImageLoaderConfiguration
+                .createDefault(this);
+
+        ImageLoader.getInstance().init(configuration);
     }
 
     private void initService(){
