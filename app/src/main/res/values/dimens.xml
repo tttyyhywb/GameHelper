@@ -5,7 +5,7 @@
     <dimen name="main_list_text_size">10sp</dimen>
     <dimen name="search_userid_title_size">13sp</dimen>
     <color name="background_grew">#F8F8FF</color>
-    <dimen name="dota2_preview_padding">45dp</dimen>
+    <dimen name="dota2_preview_padding">20dp</dimen>
 
     <!-- search activity -->
     <dimen name="search_padding_left">10dp</dimen>
@@ -14,5 +14,7 @@
     <!-- data fragment -->
     <dimen name="data_fragment_text_size">12sp</dimen>
     <dimen name="data_fragment_text_search_btn_size">13sp</dimen>
+    <dimen name="preview_title_text_size">12sp</dimen>
+    <dimen name="preview_title">15sp</dimen>
 
 </resources>

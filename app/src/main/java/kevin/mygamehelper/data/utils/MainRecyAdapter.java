@@ -6,7 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kevin.gamehelper.mygamehelper.R;
@@ -66,14 +66,14 @@ public class MainRecyAdapter extends RecyclerView.Adapter<MainRecyAdapter.MyHold
     }
 
     class MyHolder extends RecyclerView.ViewHolder {
-        ImageButton imgHero;
-        ImageButton item0;
-        ImageButton item1;
-        ImageButton item2;
-        ImageButton item3;
-        ImageButton item4;
-        ImageButton item5;
-        ImageButton imgPortrait;
+        ImageView imgHero;
+        ImageView item0;
+        ImageView item1;
+        ImageView item2;
+        ImageView item3;
+        ImageView item4;
+        ImageView item5;
+        ImageView imgPortrait;
         TextView tvIsMvp;
         TextView tvHeroLevel;
         TextView tvUserId;
@@ -84,14 +84,14 @@ public class MainRecyAdapter extends RecyclerView.Adapter<MainRecyAdapter.MyHold
 
         public MyHolder(View itemView) {
             super(itemView);
-            imgHero = (ImageButton) itemView.findViewById(R.id.img_hero);
-            imgPortrait = (ImageButton) itemView.findViewById(R.id.img_user_portrait);
-            item0 = (ImageButton) itemView.findViewById(R.id.img_item0);
-            item1 = (ImageButton) itemView.findViewById(R.id.img_item1);
-            item2 = (ImageButton) itemView.findViewById(R.id.img_item2);
-            item3 = (ImageButton) itemView.findViewById(R.id.img_item3);
-            item4 = (ImageButton) itemView.findViewById(R.id.img_item4);
-            item5 = (ImageButton) itemView.findViewById(R.id.img_item5);
+            imgHero = (ImageView) itemView.findViewById(R.id.img_hero);
+            imgPortrait = (ImageView) itemView.findViewById(R.id.img_user_portrait);
+            item0 = (ImageView) itemView.findViewById(R.id.img_item0);
+            item1 = (ImageView) itemView.findViewById(R.id.img_item1);
+            item2 = (ImageView) itemView.findViewById(R.id.img_item2);
+            item3 = (ImageView) itemView.findViewById(R.id.img_item3);
+            item4 = (ImageView) itemView.findViewById(R.id.img_item4);
+            item5 = (ImageView) itemView.findViewById(R.id.img_item5);
             tvIsMvp = (TextView) itemView.findViewById(R.id.tv_is_mvp);
             tvHeroLevel = (TextView) itemView.findViewById(R.id.tv_hero_level);
             tvUserId = (TextView) itemView.findViewById(R.id.tv_user_id);

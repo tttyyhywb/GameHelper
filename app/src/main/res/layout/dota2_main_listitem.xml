@@ -5,10 +5,10 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:layout_marginLeft="15dp"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="6dp"
         android:orientation="horizontal">
 
         <FrameLayout
@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:layout_weight="4">
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/img_hero"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -126,7 +126,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/img_item0"
                     android:layout_margin="3dp"
                     android:layout_width="0dp"
@@ -135,7 +135,7 @@
                     android:background="#e0000000"
                     android:scaleType="fitXY" />
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/img_item1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -144,7 +144,7 @@
                     android:layout_margin="3dp"
                     android:scaleType="fitXY" />
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/img_item2"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -161,7 +161,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/img_item3"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -170,7 +170,7 @@
                     android:layout_margin="3dp"
                     android:scaleType="fitXY" />
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/img_item4"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -179,7 +179,7 @@
                     android:layout_margin="3dp"
                     android:scaleType="fitXY" />
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/img_item5"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -192,7 +192,7 @@
 
         </LinearLayout>
 
-        <ImageButton
+        <ImageView
             android:id="@+id/img_user_portrait"
             android:layout_width="0dp"
             android:layout_height="match_parent"

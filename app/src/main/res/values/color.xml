@@ -13,6 +13,8 @@
     <!-- common -->
     <color name="background_transparent">#00000000</color>
     <color name="white_text_with_alpha">#D0FFFFFF</color>
+    <color name="grew_text_with_alpha">#A0e0e0e0</color>
+    <color name="black_text">#000000</color>
 
     <!-- data fragment -->
     <color name="seventy_precent_alpha">#A0424242</color>

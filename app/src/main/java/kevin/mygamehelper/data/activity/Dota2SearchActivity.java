@@ -97,7 +97,7 @@ public class Dota2SearchActivity extends Activity {
         @Override
         public void afterTextChanged(Editable s) {
             mHandler.removeMessages(ISCHANGED);
-            if (s.length() != 0 && D2Utils.allNumber(s.toString())) {
+            if (s.length() >= 7 && D2Utils.allNumber(s.toString())) {
                 imgSearchBack.setVisibility(View.VISIBLE);
                 Message msg = new Message();
                 msg.what = ISCHANGED;
