@@ -10,17 +10,17 @@ import android.content.res.Resources;
  * 提供系统函数
  * email:493243390@qq.com
  */
-public class SysUtils {
+public class Utils {
 
-    private Context mContext;
+    private static Context mContext;
 
-    private static SysUtils instance;
+    private static Utils instance;
 
-    private SysUtils(Context context){
+    private Utils(Context context){
         this.mContext = context;
     }
 
-    public static SysUtils getInstance(){
+    public static Utils getInstance(){
         if(instance == null){
             throw new IllegalArgumentException("context is null, please call init(Context)");
         }else{
@@ -30,19 +30,27 @@ public class SysUtils {
 
     public static void init(Context context){
         if(instance == null){
-            synchronized (SysUtils.class){
+            synchronized (Utils.class){
                 if(instance == null){
-                    instance = new SysUtils(context);
+                    instance = new Utils(context);
                 }
             }
         }
     }
 
-    public Resources getResource(){
+    public static Resources getResource(){
         return mContext.getResources();
     }
 
-    public AssetManager getAssetManager(){
+    public static AssetManager getAssetManager(){
         return mContext.getAssets();
+    }
+
+    public static int string2int(String s){
+        return Integer.parseInt(s);
+    }
+
+    public static String int2string(long i){
+        return i+"";
     }
 }

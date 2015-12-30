@@ -21,6 +21,8 @@
     <string name="highest_record">最高纪录</string>
     <string name="summary">摘要</string>
     <string name="recent_match">最近比赛</string>
+    <string name="recent_serach">最近查询</string>
+    <string name="recent_clear_history">清楚历史记录</string>
     <!-- 登录页面 -->
     <string name="login">登陆</string>
     <string name="sing_up">注册</string>

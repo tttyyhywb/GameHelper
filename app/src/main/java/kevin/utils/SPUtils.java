@@ -18,7 +18,7 @@ public class SPUtils {
         this.mContext = context;
     }
 
-    public  SPUtils getInstance(){
+    public static SPUtils getInstance(){
         if(instance ==null)
         {
             throw new IllegalArgumentException("instance is null, please call init(Context)");

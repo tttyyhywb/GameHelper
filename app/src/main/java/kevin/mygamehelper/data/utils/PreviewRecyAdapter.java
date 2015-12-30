@@ -63,12 +63,9 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
         match = matches.get(position);
         detail = details[position];
 
-        Log.e("main match", match.toString());
-        Log.e("main detail", detail.toString());
-
         Dota2Players player = null;
         for (Dota2Players p : detail.getPlayers()) {
-            if (p.getAccount_id().equals(D2Utils.getAccountId(account.getSteamid()))) {
+            if (p.getAccount_id().equals(D2Utils.getAccountId(account.getSteamid() ))) {
                 player = p;
                 break;
             }

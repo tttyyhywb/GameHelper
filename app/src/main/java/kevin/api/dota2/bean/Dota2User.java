@@ -1,6 +1,9 @@
 package kevin.api.dota2.bean;
 
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
 import kevin.api.base.gameBase.bean.User;
 
 import java.io.Serializable;
@@ -9,30 +12,41 @@ import java.util.ArrayList;
 /**
  * Created by kevin on 2015/7/20.
  */
+@DatabaseTable(tableName = "dota2_user")
 public class Dota2User extends User implements Serializable {
 
     public final static String TAG = "dota2user";
 
     ArrayList<Dota2User> players;
 
+    @DatabaseField(id=true)
     String steamid;
 
+    @DatabaseField( columnName = "profilestate")
     String profilestate;
 
+    @DatabaseField( columnName = "profileurl")
     String profileurl;
 
+    @DatabaseField( columnName = "avatar")
     String avatar;
 
+    @DatabaseField( columnName = "avatarmedium")
     String avatarmedium;
 
+    @DatabaseField( columnName = "avatarfull")
     String avatarfull;
 
+    @DatabaseField( columnName = "personastate")
     String personastate;
 
+    @DatabaseField( columnName = "primaryclanid")
     String primaryclanid;
 
+    @DatabaseField( columnName = "personastateflags")
     String personastateflags;
 
+    @DatabaseField( columnName = "personaname")
     String personaname;
 
     public ArrayList<Dota2User> getPlayers() {

@@ -69,7 +69,7 @@ public class Dota2PreviewActivity extends Activity {
         account = (Dota2User) intent.getSerializableExtra(Dota2User.TAG);
         bitmapUtils.display(imgUserPortrait, account.getAvatarfull());
         tvUsername.setText(account.getPersonaname());
-        matchesHistoryListRequest.getData(url.getMatchHistory(D2Utils.getAccountId(account.getSteamid()), 10));
+        matchesHistoryListRequest.getData(url.getMatchHistory(D2Utils.getAccountId(account.getSteamid() ), 10));
     }
 
 

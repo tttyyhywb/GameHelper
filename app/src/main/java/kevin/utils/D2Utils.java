@@ -47,6 +47,8 @@ public class D2Utils {
 
     private static Dao<Dota2Hero,Integer> heroDao ;
 
+    static Utils utils = Utils.getInstance();
+
     public static D2Utils getInstantce(){
         return instantce;
     }
@@ -62,7 +64,7 @@ public class D2Utils {
     }
 
     private D2Utils() {
-        assetManager = SysUtils.getInstance().getAssetManager();
+        assetManager = Utils.getInstance().getAssetManager();
         Gson gson = new Gson();
         InputStream is = null;
         dbHelper = DBHelperDota2.getInstance();
@@ -151,6 +153,11 @@ public class D2Utils {
         BigInteger _64BitId = new BigInteger("76561197960265728");
         account = account.subtract(_64BitId);
         return account.toString();
+    }
+
+    public static String getAccountId(long steamId) {
+
+        return getAccountId(utils.int2string(steamId));
     }
 
     public static boolean allNumber(String accountId) {

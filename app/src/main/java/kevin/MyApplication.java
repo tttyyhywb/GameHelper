@@ -9,7 +9,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import kevin.database.DataBase.DBHelperDota2;
 import kevin.utils.D2Utils;
 import kevin.utils.SPUtils;
-import kevin.utils.SysUtils;
+import kevin.utils.Utils;
 
 /**
  * Created by Kevin on 2015/12/21.
@@ -38,7 +38,7 @@ public class MyApplication extends Application {
     }
 
     private void initCommonUtils(Context context){
-        SysUtils.init(this);
+        Utils.init(this);
         SPUtils.init(this);
         D2Utils.init();
     }

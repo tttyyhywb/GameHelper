@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+
     <RelativeLayout
         android:paddingLeft="@dimen/search_padding_left"
         android:paddingRight="@dimen/search_padding_right"
@@ -53,6 +54,38 @@
 
     <include layout="@layout/dota2_search_userid_title"
        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/background_grew"
+        android:visibility="gone"
+        android:id="@+id/ll_history"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/recent_search"
+            android:text="@string/recent_serach"
+            android:textSize="@dimen/search_userid_title_size" />
+
+        <TextView
+            android:gravity="right"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/recent_clear_history"
+            android:text="@string/recent_clear_history"
+            android:textSize="@dimen/search_userid_title_size" />
+
+    </LinearLayout>
+
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"

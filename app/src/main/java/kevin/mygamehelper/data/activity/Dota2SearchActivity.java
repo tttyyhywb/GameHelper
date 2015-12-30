@@ -14,21 +14,29 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import kevin.api.base.network.BaseRequest;
+import kevin.database.DataBase.DBHelperDota2;
 import kevin.mygamehelper.data.utils.UserIdRecyAdapter;
 import kevin.utils.D2Utils;
 import kevin.api.dota2.bean.Dota2Url;
 import kevin.api.dota2.bean.Dota2User;
 import kevin.api.base.gameBase.ApiResponse;
+import kevin.utils.SPUtils;
+import kevin.utils.Utils;
+
+import com.j256.ormlite.dao.Dao;
 import com.kevin.gamehelper.mygamehelper.R;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * Created by kevin on 2015/8/30.
@@ -52,9 +60,18 @@ public class Dota2SearchActivity extends Activity {
     @ViewInject(R.id.match_userid_title)
     LinearLayout llMatchUserTitle;
 
+    @ViewInject(R.id.ll_history)
+    LinearLayout llRecentSearch;
+
+    @ViewInject(R.id.recent_clear_history)
+    TextView clearHistory;
+
     Dota2Url url = new Dota2Url();
     ArrayList<Dota2User> users;
-    ListView userList;
+
+    SPUtils spUtils = SPUtils.getInstance();
+
+    Utils utils = Utils.getInstance();
 
     Handler mHandler = new Handler() {
         @Override
@@ -77,12 +94,27 @@ public class Dota2SearchActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dota2_search);
         init();
-
     }
 
     private void init() {
         com.lidroid.xutils.ViewUtils.inject(this);
         etSearch.addTextChangedListener(watcher);
+        Set<String> steamIds = spUtils.getStringSet(Dota2User.TAG, null);
+        clearHistory.setOnClickListener(listener);
+        if (steamIds != null) {
+            try {
+                Dao<Dota2User, String> dao = DBHelperDota2.getInstance().getDao(Dota2User.class);
+                users = new ArrayList<>();
+                for (String l : steamIds) {
+                    users.add(dao.queryForId(l));
+                }
+                llRecentSearch.setVisibility(View.VISIBLE);
+                llMatchUserTitle.setVisibility(View.GONE);
+                setAdapter(searchRecy,new UserIdRecyAdapter(users, Dota2SearchActivity.this));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     TextWatcher watcher = new TextWatcher() {
@@ -97,6 +129,7 @@ public class Dota2SearchActivity extends Activity {
         @Override
         public void afterTextChanged(Editable s) {
             mHandler.removeMessages(ISCHANGED);
+
             if (s.length() >= 7 && D2Utils.allNumber(s.toString())) {
                 imgSearchBack.setVisibility(View.VISIBLE);
                 Message msg = new Message();
@@ -113,7 +146,6 @@ public class Dota2SearchActivity extends Activity {
         @Override
         protected void afterSuccess(String responseResult) {
 
-            llMatchUserTitle.setVisibility(View.VISIBLE);
             Gson gson = new Gson();
 
             Dota2User dota2User = new Dota2User();
@@ -123,14 +155,35 @@ public class Dota2SearchActivity extends Activity {
             Log.e("..", response.toString());
             if (response.getResponse().getPlayers().size() > 0) {
                 users = response.getResponse().getPlayers();
-                searchRecy.setLayoutManager(new LinearLayoutManager(Dota2SearchActivity.this));
-                searchRecy.setAdapter(new UserIdRecyAdapter(users,Dota2SearchActivity.this));
+                llRecentSearch.setVisibility(View.GONE);
+                llMatchUserTitle.setVisibility(View.VISIBLE);
+                setAdapter(searchRecy,new UserIdRecyAdapter(users, Dota2SearchActivity.this));
             }
         }
 
         @Override
         protected void afterFail() {
-            Toast.makeText(Dota2SearchActivity.this,"请检查网络",Toast.LENGTH_SHORT).show();
+            Toast.makeText(Dota2SearchActivity.this, "请检查网络", Toast.LENGTH_SHORT).show();
         }
     };
+
+    View.OnClickListener listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.recent_clear_history:{
+                    SPUtils.getInstance().remove(Dota2User.TAG);
+                    users = new ArrayList<>();
+                    setAdapter(searchRecy,new UserIdRecyAdapter(users, Dota2SearchActivity.this));
+                    llRecentSearch.setVisibility(View.GONE);
+                }
+            }
+        }
+    };
+
+    private void setAdapter(RecyclerView view, RecyclerView.Adapter adapter){
+        view.setLayoutManager(new LinearLayoutManager(Dota2SearchActivity.this));
+        view.setAdapter(adapter);
+    }
+
 }

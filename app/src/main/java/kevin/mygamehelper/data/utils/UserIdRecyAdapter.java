@@ -20,19 +20,25 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import kevin.api.dota2.bean.Dota2User;
+import kevin.database.DataBase.DBHelperDota2;
 import kevin.mygamehelper.data.activity.Dota2PreviewActivity;
 import kevin.utils.D2Utils;
+import kevin.utils.SPUtils;
+import kevin.utils.Utils;
 
 /**
  * Created by Kevin on 2015/12/28.
  * DESCRIPTION:
  * email:493243390@qq.com
  */
-public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.MyHolder>{
+public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.MyHolder> {
 
     List<Dota2User> dataList = new ArrayList<Dota2User>();
 
@@ -42,7 +48,9 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
 
     DisplayImageOptions options;
 
-    public UserIdRecyAdapter(List<Dota2User> data,Context context){
+    SPUtils spUtils = SPUtils.getInstance();
+
+    public UserIdRecyAdapter(List<Dota2User> data, Context context) {
         this.dataList = data;
         this.context = context;
         bitmapUtils = new BitmapUtils(context);
@@ -51,7 +59,6 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
                 .cacheOnDisk(true)
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 .build();
-
 
     }
 
@@ -66,9 +73,9 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
     @Override
     public void onBindViewHolder(MyHolder holder, int position) {
         Dota2User data = dataList.get(position);
-        holder.tvUserId.setText("ID:"+ D2Utils.getAccountId(data.getSteamid()));
+        holder.tvUserId.setText("ID:" + D2Utils.getAccountId(data.getSteamid()));
         holder.tvUserName.setText(data.getPersonaname());
-        ImageLoader.getInstance().displayImage( data.getAvatarfull() , holder.imgUserPortrait, options );
+        ImageLoader.getInstance().displayImage(data.getAvatarfull(), holder.imgUserPortrait, options);
         //bitmapUtils.display(holder.imgUserPortrait,data.getAvatarfull());
         holder.linearLayout.setOnClickListener(new Listener(data));
     }
@@ -87,10 +94,10 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
 
         public MyHolder(View itemView) {
             super(itemView);
-            imgUserPortrait = (ImageView)itemView.findViewById(R.id.img_search_user_portrait);
-            tvUserId = (TextView)itemView.findViewById(R.id.tv_search_userid);
-            tvUserName = (TextView)itemView.findViewById(R.id.tv_search_username);
-            linearLayout =(LinearLayout)itemView.findViewById(R.id.dota2_search_user_list_linearlayout);
+            imgUserPortrait = (ImageView) itemView.findViewById(R.id.img_search_user_portrait);
+            tvUserId = (TextView) itemView.findViewById(R.id.tv_search_userid);
+            tvUserName = (TextView) itemView.findViewById(R.id.tv_search_username);
+            linearLayout = (LinearLayout) itemView.findViewById(R.id.dota2_search_user_list_linearlayout);
 
         }
     }
@@ -105,12 +112,30 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
 
         @Override
         public void onClick(View v) {
+
             Bundle bundle = new Bundle();
-            bundle.putSerializable(Dota2User.TAG,data);
+            bundle.putSerializable(Dota2User.TAG, data);
             Intent intent = new Intent();
             intent.setClass(context, Dota2PreviewActivity.class);
             intent.putExtras(bundle);
+            Set<String> steamIds = spUtils.getStringSet(data.TAG, null);
+            try {
+                if (steamIds == null) {
+                    steamIds = new HashSet<>();
+                    steamIds.add(data.getSteamid());
+                    spUtils.putStringSet(data.TAG, steamIds);
+                    DBHelperDota2.getInstance().getDao(Dota2User.class).create(data);
+                } else if (!steamIds.contains(data.getSteamid())) {
+                    steamIds.add(data.getSteamid());
+                    spUtils.putStringSet(data.TAG, steamIds);
+                    DBHelperDota2.getInstance().getDao(Dota2User.class).create(data);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             context.startActivity(intent);
         }
-    };
+    }
+
+    ;
 }
