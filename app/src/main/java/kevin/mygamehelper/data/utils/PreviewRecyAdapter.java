@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -36,14 +35,14 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
 
     ArrayList<Dota2GameOutline> matches;
     Dota2MatchDetails[] details;
-    Dota2User  account;
+    Dota2User account;
     Context context;
     AssetManager assetManager;
     BitmapUtils bitmapUtils;
     Dota2GameOutline match;
     Dota2MatchDetails detail;
 
-    public PreviewRecyAdapter(Context context, ArrayList<Dota2GameOutline> matches, Dota2User account, Dota2MatchDetails[] details){
+    public PreviewRecyAdapter(Context context, ArrayList<Dota2GameOutline> matches, Dota2User account, Dota2MatchDetails[] details) {
         this.account = account;
         this.context = context;
         this.matches = matches;
@@ -54,7 +53,7 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
 
     @Override
     public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        MyHolder holder = new MyHolder(LayoutInflater.from(context).inflate(R.layout.dota2_preview_listitem,parent,false));
+        MyHolder holder = new MyHolder(LayoutInflater.from(context).inflate(R.layout.dota2_preview_listitem, parent, false));
         return holder;
     }
 
@@ -62,26 +61,34 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
     public void onBindViewHolder(MyHolder holder, int position) {
 
         match = matches.get(position);
-        detail=details[position];
-        Dota2Players player= null;
-        for(Dota2Players p :detail.getPlayers()){
-            if(p.getAccount_id().equals( D2Utils.getAccountId(account.getSteamid()))){
+        detail = details[position];
+
+        Log.e("main match", match.toString());
+        Log.e("main detail", detail.toString());
+
+        Dota2Players player = null;
+        for (Dota2Players p : detail.getPlayers()) {
+            if (p.getAccount_id().equals(D2Utils.getAccountId(account.getSteamid()))) {
                 player = p;
                 break;
             }
         }
 
-        if((player.getPlayer_slot()>100 && detail.getRadiant_win()=="true")||(player.getPlayer_slot()<100 && detail.getRadiant_win()=="false")){
-            holder.tvResult.setTextColor(Color.rgb(154,11,35));
+        if ((player.getPlayer_slot() > 100 && detail.getRadiant_win() == "true") || (player.getPlayer_slot() < 100 && detail.getRadiant_win() == "false")) {
+            holder.tvResult.setTextColor(Color.rgb(154, 11, 35));
             holder.tvResult.setText("失败");
-        }else{
-            holder.tvResult.setTextColor(Color.rgb(56,174,47));
+        } else {
+            holder.tvResult.setTextColor(Color.rgb(56, 174, 47));
             holder.tvResult.setText("胜利");
         }
-        bitmapUtils.display(holder.picHero,D2Utils.getHeroPicHphover(player.getHero_id(), true));
-        holder.tvKda.setText(player.getKills()+"/"+player.getDeaths()+"/"+player.getAssists());
-        holder.tvEndTime.setText(detail.getDuration()/60+"分钟");
+        bitmapUtils.display(holder.picHero, D2Utils.getHeroPicHphover(player.getHero_id(), true));
+        holder.tvKda.setText(player.getKills() + "/" + player.getDeaths() + "/" + player.getAssists());
+        holder.tvEndTime.setText(detail.getDuration() / 60 + "分钟");
 
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(match.TAG, match);
+        bundle.putSerializable(detail.TAG, detail);
+        holder.llPreview.setTag(bundle);
         holder.llPreview.setOnClickListener(listener);
     }
 
@@ -90,7 +97,7 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
         return details.length;
     }
 
-    class MyHolder extends RecyclerView.ViewHolder{
+    class MyHolder extends RecyclerView.ViewHolder {
 
         ImageView picHero;
         TextView tvResult;
@@ -101,23 +108,22 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
 
         public MyHolder(View itemView) {
             super(itemView);
-            picHero = (ImageView)itemView.findViewById(R.id.img_hero_preview);
-            tvEndTime = (TextView)itemView.findViewById(R.id.tv_end_time);
-            tvResult = (TextView)itemView.findViewById(R.id.tv_result);
-            tvLobbyType = (TextView)itemView.findViewById(R.id.tv_lobby_type);
-            tvKda = (TextView)itemView.findViewById(R.id.tv_kda_preview);
-            llPreview=(LinearLayout)itemView.findViewById(R.id.ll_preview);
+            picHero = (ImageView) itemView.findViewById(R.id.img_hero_preview);
+            tvEndTime = (TextView) itemView.findViewById(R.id.tv_end_time);
+            tvResult = (TextView) itemView.findViewById(R.id.tv_result);
+            tvLobbyType = (TextView) itemView.findViewById(R.id.tv_lobby_type);
+            tvKda = (TextView) itemView.findViewById(R.id.tv_kda_preview);
+            llPreview = (LinearLayout) itemView.findViewById(R.id.ll_preview);
         }
     }
+
 
     View.OnClickListener listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Bundle bundle = new Bundle();
-            bundle.putSerializable(match.TAG, match);
-            bundle.putSerializable(detail.TAG,detail);
+            Bundle bundle = (Bundle)v.getTag();
             Intent intent = new Intent();
-            intent.setClass(context , Dota2MainMatchActivity.class);
+            intent.setClass(context, Dota2MainMatchActivity.class);
             intent.putExtras(bundle);
             context.startActivity(intent);
         }
