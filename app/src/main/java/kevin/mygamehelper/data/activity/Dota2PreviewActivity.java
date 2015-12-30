@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ import kevin.api.base.gameBase.ApiResult;
 
 import com.kevin.gamehelper.mygamehelper.R;
 
+import kevin.utils.SPUtils;
 import kevin.utils.Watcher;
 
 import com.lidroid.xutils.BitmapUtils;
@@ -61,6 +63,7 @@ public class Dota2PreviewActivity extends Activity {
     }
 
     void init() {
+        Log.e("size", SPUtils.getInstance().getStringSet(Dota2User.TAG, null).size()+" ");
         detials = new Dota2MatchDetails[6];
         com.lidroid.xutils.ViewUtils.inject(this);
         bitmapUtils = new BitmapUtils(this);

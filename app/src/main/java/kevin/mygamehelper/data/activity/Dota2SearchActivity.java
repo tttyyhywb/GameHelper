@@ -99,7 +99,7 @@ public class Dota2SearchActivity extends Activity {
     private void init() {
         com.lidroid.xutils.ViewUtils.inject(this);
         etSearch.addTextChangedListener(watcher);
-        Set<String> steamIds = spUtils.getStringSet(Dota2User.TAG, null);
+        Set<String> steamIds = spUtils.getStringSet(Dota2User.TAG, null); 
         clearHistory.setOnClickListener(listener);
         if (steamIds != null) {
             try {
@@ -152,7 +152,6 @@ public class Dota2SearchActivity extends Activity {
             ApiResponse<Dota2User> response = new ApiResponse(dota2User);
             response = gson.fromJson(responseResult, new TypeToken<ApiResponse<Dota2User>>() {
             }.getType());
-            Log.e("..", response.toString());
             if (response.getResponse().getPlayers().size() > 0) {
                 users = response.getResponse().getPlayers();
                 llRecentSearch.setVisibility(View.GONE);

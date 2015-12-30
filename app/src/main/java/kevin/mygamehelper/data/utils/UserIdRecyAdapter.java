@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -118,18 +119,19 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
             Intent intent = new Intent();
             intent.setClass(context, Dota2PreviewActivity.class);
             intent.putExtras(bundle);
-            Set<String> steamIds = spUtils.getStringSet(data.TAG, null);
+            Set<String> steamIds = spUtils.getStringSet(Dota2User.TAG, null);
             try {
                 if (steamIds == null) {
                     steamIds = new HashSet<>();
                     steamIds.add(data.getSteamid());
-                    spUtils.putStringSet(data.TAG, steamIds);
+                    spUtils.putStringSet(Dota2User.TAG, steamIds);
                     DBHelperDota2.getInstance().getDao(Dota2User.class).create(data);
                 } else if (!steamIds.contains(data.getSteamid())) {
                     steamIds.add(data.getSteamid());
-                    spUtils.putStringSet(data.TAG, steamIds);
+                    spUtils.putStringSet(Dota2User.TAG, steamIds);
                     DBHelperDota2.getInstance().getDao(Dota2User.class).create(data);
                 }
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }
