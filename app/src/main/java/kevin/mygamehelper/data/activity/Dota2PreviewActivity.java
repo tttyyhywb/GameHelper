@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import kevin.api.base.network.BaseRequest;
+import kevin.mygamehelper.data.utils.DividerItemDecoration;
 import kevin.mygamehelper.data.utils.PreviewRecyAdapter;
 import kevin.utils.D2Utils;
 import kevin.api.dota2.bean.Dota2GameOutline;

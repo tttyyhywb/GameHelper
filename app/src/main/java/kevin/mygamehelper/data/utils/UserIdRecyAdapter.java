@@ -60,7 +60,6 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
                 .cacheOnDisk(true)
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 .build();
-
     }
 
     @Override
@@ -133,7 +132,5 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
             }
             context.startActivity(intent);
         }
-    }
-
-    ;
+    };
 }
