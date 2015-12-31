@@ -113,7 +113,6 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
 
         @Override
         public void onClick(View v) {
-
             Bundle bundle = new Bundle();
             bundle.putSerializable(Dota2User.TAG, data);
             Intent intent = new Intent();
@@ -123,15 +122,12 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
             try {
                 if (steamIds == null) {
                     steamIds = new HashSet<>();
-                    steamIds.add(data.getSteamid());
-                    spUtils.putStringSet(Dota2User.TAG, steamIds);
-                    DBHelperDota2.getInstance().getDao(Dota2User.class).create(data);
-                } else if (!steamIds.contains(data.getSteamid())) {
-                    steamIds.add(data.getSteamid());
-                    spUtils.putStringSet(Dota2User.TAG, steamIds);
-                    DBHelperDota2.getInstance().getDao(Dota2User.class).create(data);
+                }else{
+                    steamIds = new HashSet<>(steamIds);
                 }
-
+                steamIds.add(data.getSteamid());
+                spUtils.putStringSet(Dota2User.TAG, steamIds);
+                DBHelperDota2.getInstance().getDao(Dota2User.class).create(data);
             } catch (SQLException e) {
                 e.printStackTrace();
             }

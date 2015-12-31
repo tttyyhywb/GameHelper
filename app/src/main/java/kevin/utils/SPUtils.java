@@ -1,7 +1,10 @@
 package kevin.utils;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -80,11 +83,12 @@ public class SPUtils {
     }
 
     public Set<String> getStringSet(String key,Set<String> defValue){
+        Log.e("get",key);
         return mContext.getSharedPreferences(SP_FILE_NAME,Context.MODE_PRIVATE).getStringSet(key,defValue);
     }
 
     public boolean putStringSet(String key,Set<String> value){
-        return mContext.getSharedPreferences(SP_FILE_NAME,Context.MODE_PRIVATE).edit().putStringSet(key, value).commit();
+        return mContext.getSharedPreferences(SP_FILE_NAME,Context.MODE_APPEND).edit().putStringSet(key,value).commit();
     }
 
     public boolean clear(){

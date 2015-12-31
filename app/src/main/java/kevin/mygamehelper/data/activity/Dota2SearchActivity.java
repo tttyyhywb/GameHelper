@@ -69,10 +69,6 @@ public class Dota2SearchActivity extends Activity {
     Dota2Url url = new Dota2Url();
     ArrayList<Dota2User> users;
 
-    SPUtils spUtils = SPUtils.getInstance();
-
-    Utils utils = Utils.getInstance();
-
     Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -99,14 +95,14 @@ public class Dota2SearchActivity extends Activity {
     private void init() {
         com.lidroid.xutils.ViewUtils.inject(this);
         etSearch.addTextChangedListener(watcher);
-        Set<String> steamIds = spUtils.getStringSet(Dota2User.TAG, null); 
+        Set<String> steamIds = SPUtils.getInstance().getStringSet(Dota2User.TAG, null);
         clearHistory.setOnClickListener(listener);
         if (steamIds != null) {
             try {
                 Dao<Dota2User, String> dao = DBHelperDota2.getInstance().getDao(Dota2User.class);
                 users = new ArrayList<>();
-                for (String l : steamIds) {
-                    users.add(dao.queryForId(l));
+                for (String s : steamIds) {
+                    users.add(dao.queryForId(s));
                 }
                 llRecentSearch.setVisibility(View.VISIBLE);
                 llMatchUserTitle.setVisibility(View.GONE);
