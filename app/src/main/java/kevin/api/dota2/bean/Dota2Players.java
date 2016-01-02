@@ -12,6 +12,8 @@ public class Dota2Players extends Competator {
 
     public final static String TAG = "dota2players";
 
+    public int type = 0;
+
     String account_id;
     int player_slot;
     int hero_id;

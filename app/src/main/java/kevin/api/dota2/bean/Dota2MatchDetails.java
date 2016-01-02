@@ -12,7 +12,7 @@ public class Dota2MatchDetails extends GameEnvirnment {
     public final static String TAG = "dota2matchdetails";
 
     ArrayList<Dota2Players> players;
-    String radiant_win;
+    boolean radiant_win;
     int duration;
     String match_seq_num;
     String start_time;
@@ -39,11 +39,11 @@ public class Dota2MatchDetails extends GameEnvirnment {
         this.players = players;
     }
 
-    public String getRadiant_win() {
+    public boolean getRadiant_win() {
         return radiant_win;
     }
 
-    public void setRadiant_win(String radiant_win) {
+    public void setRadiant_win(boolean radiant_win) {
         this.radiant_win = radiant_win;
     }
 

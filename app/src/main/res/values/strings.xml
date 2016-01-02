@@ -30,4 +30,8 @@
 
     <!-- data fragment -->
     <string name="data_fragment_content_text">搜索并绑定账号</string>
+
+    <!-- dota2 -->
+    <string name="radiant">天辉:</string>
+    <string name="dire">夜魇:</string>
 </resources>

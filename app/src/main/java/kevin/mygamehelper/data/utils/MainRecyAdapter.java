@@ -1,6 +1,7 @@
 package kevin.mygamehelper.data.utils;
 
 import android.content.Context;
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,9 @@ import android.widget.TextView;
 
 import com.kevin.gamehelper.mygamehelper.R;
 import com.lidroid.xutils.BitmapUtils;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import kevin.api.dota2.bean.Dota2GameOutline;
 import kevin.api.dota2.bean.Dota2MatchDetails;
@@ -24,39 +28,85 @@ import kevin.utils.D2Utils;
  */
 public class MainRecyAdapter extends RecyclerView.Adapter<MainRecyAdapter.MyHolder> {
 
+    private final static int DATA = 0;
+    private final static int DIRE = 1;
+    private final static int RADIANT = 2;
+
     Context context;
     Dota2GameOutline match;
     Dota2MatchDetails detail;
     BitmapUtils bitmapUtils;
+    ArrayList<Dota2Players> players;
 
-    public MainRecyAdapter(Context context, Dota2GameOutline dota2GameOutline, Dota2MatchDetails detail){
+    public MainRecyAdapter(Context context, Dota2GameOutline dota2GameOutline, Dota2MatchDetails detail) {
         this.context = context;
         this.match = dota2GameOutline;
         this.detail = detail;
         bitmapUtils = new BitmapUtils(context);
+        players = detail.getPlayers();
+
+        players.add(0,new Dota2Players());
+        players.add(6,new Dota2Players());
     }
 
     @Override
     public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        MyHolder holder = new MyHolder(LayoutInflater.from(context).inflate(R.layout.dota2_main_listitem,parent,false));
+        MyHolder holder;
+        switch (viewType) {
+            case RADIANT: {
+                holder = new MyHolder(LayoutInflater.from(context).inflate(R.layout.main_detail_radiant, parent, false));
+                break;
+            }
+            case DIRE: {
+                holder = new MyHolder(LayoutInflater.from(context).inflate(R.layout.main_detail_dire, parent, false));
+                break;
+            }
+            default: {
+                holder = new MyHolder(LayoutInflater.from(context).inflate(R.layout.dota2_main_listitem, parent, false));
+                break;
+            }
+        }
         return holder;
     }
 
     @Override
     public void onBindViewHolder(MyHolder holder, int position) {
-        Dota2Players player = detail.getPlayers().get(position);
-        holder.tvDamagePercent.setText("伤害");
-        holder.tvDamage.setText(player.getHero_damage());
-        holder.tvKda.setText(player.getKills() + "/" + player.getDeaths() + "/" + player.getAssists());
-        holder.tvHeroLevel.setText(player.getLevel());
 
-        bitmapUtils.display(holder.imgHero, D2Utils.getHeroPicHphover(player.getHero_id(),true));
-        bitmapUtils.display( holder.item0,D2Utils.getItemUrl(player.getItem_0(),true));
-        bitmapUtils.display( holder.item1,D2Utils.getItemUrl(player.getItem_1(),true));
-        bitmapUtils.display( holder.item2,D2Utils.getItemUrl(player.getItem_2(),true));
-        bitmapUtils.display( holder.item3,D2Utils.getItemUrl(player.getItem_3(),true));
-        bitmapUtils.display( holder.item4,D2Utils.getItemUrl(player.getItem_4(),true));
-        bitmapUtils.display( holder.item5,D2Utils.getItemUrl(player.getItem_5(),true));
+        switch (getItemViewType(position)) {
+            case RADIANT: {
+                if(detail.getRadiant_win()){
+                    holder.tvWin.setText("胜利");
+                }else {
+                    holder.tvWin.setText("失败");
+                }
+                break;
+            }
+            case DIRE: {
+                if(detail.getRadiant_win()){
+                    holder.tvWin.setText("失败");
+                }else {
+                    holder.tvWin.setText("胜利");
+                }
+                break;
+            }
+            default: {
+                Dota2Players player = players.get(position);
+                holder.tvDamagePercent.setText("伤害");
+                holder.tvDamage.setText(player.getHero_damage());
+                holder.tvKda.setText(player.getKills() + "/" + player.getDeaths() + "/" + player.getAssists());
+                holder.tvHeroLevel.setText(player.getLevel());
+
+                bitmapUtils.display(holder.imgHero, D2Utils.getHeroPicHphover(player.getHero_id(), true));
+                bitmapUtils.display(holder.item0, D2Utils.getItemUrl(player.getItem_0(), true));
+                bitmapUtils.display(holder.item1, D2Utils.getItemUrl(player.getItem_1(), true));
+                bitmapUtils.display(holder.item2, D2Utils.getItemUrl(player.getItem_2(), true));
+                bitmapUtils.display(holder.item3, D2Utils.getItemUrl(player.getItem_3(), true));
+                bitmapUtils.display(holder.item4, D2Utils.getItemUrl(player.getItem_4(), true));
+                bitmapUtils.display(holder.item5, D2Utils.getItemUrl(player.getItem_5(), true));
+
+                break;
+            }
+        }
 
     }
 
@@ -82,6 +132,9 @@ public class MainRecyAdapter extends RecyclerView.Adapter<MainRecyAdapter.MyHold
         TextView tvDamagePercent;
         TextView tvDamage;
 
+        ImageView imgWin;
+        TextView tvWin;
+
         public MyHolder(View itemView) {
             super(itemView);
             imgHero = (ImageView) itemView.findViewById(R.id.img_hero);
@@ -99,6 +152,23 @@ public class MainRecyAdapter extends RecyclerView.Adapter<MainRecyAdapter.MyHold
             tvKda = (TextView) itemView.findViewById(R.id.tv_kda_main);
             tvDamage = (TextView) itemView.findViewById(R.id.tv_damage);
             tvDamagePercent = (TextView) itemView.findViewById(R.id.tv_damage_precent);
+            //title view
+            imgWin = (ImageView) itemView.findViewById(R.id.img_title_win);
+            tvWin = (TextView) itemView.findViewById(R.id.tv_title_win);
         }
     }
+
+
+    @Override
+    public int getItemViewType(int position) {
+        if (position == 0) {
+            return RADIANT;
+        } else if (position == 6) {
+            return DIRE;
+        } else {
+            return DATA;
+        }
+    }
+
+    ;
 }

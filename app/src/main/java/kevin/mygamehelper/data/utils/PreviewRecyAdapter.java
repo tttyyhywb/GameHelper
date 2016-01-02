@@ -71,7 +71,7 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
             }
         }
 
-        if ((player.getPlayer_slot() > 100 && detail.getRadiant_win() == "true") || (player.getPlayer_slot() < 100 && detail.getRadiant_win() == "false")) {
+        if ((player.getPlayer_slot() > 100 && detail.getRadiant_win()) || (player.getPlayer_slot() < 100 && detail.getRadiant_win())) {
             holder.tvResult.setTextColor(Color.rgb(154, 11, 35));
             holder.tvResult.setText("失败");
         } else {
