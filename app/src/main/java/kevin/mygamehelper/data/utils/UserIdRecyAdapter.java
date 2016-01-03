@@ -76,7 +76,7 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
         holder.tvUserId.setText("ID:" + D2Utils.getAccountId(data.getSteamid()));
         holder.tvUserName.setText(data.getPersonaname());
         ImageLoader.getInstance().displayImage(data.getAvatarfull(), holder.imgUserPortrait, options);
-        //bitmapUtils.display(holder.imgUserPortrait,data.getAvatarfull());
+
         holder.linearLayout.setOnClickListener(new Listener(data));
     }
 
