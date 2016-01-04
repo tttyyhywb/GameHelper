@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -55,6 +57,9 @@ public class Dota2PreviewActivity extends Activity {
 
     @ViewInject(R.id.dota2_preview_recyclerview)
     RecyclerView myRecyView;
+
+    @ViewInject(R.id.ll_preview_recy)
+    LinearLayout llRecy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,7 +137,9 @@ public class Dota2PreviewActivity extends Activity {
         @Override
         public void update(Observable observable, Object data) {
             count++;
+            Log.e("count",count+"");
             if (count == 6) {
+                llRecy.setVisibility(View.VISIBLE);
                 myRecyView.setLayoutManager(new LinearLayoutManager(Dota2PreviewActivity.this));
                 myRecyView.setAdapter(new PreviewRecyAdapter(Dota2PreviewActivity.this, matches, account, detials));
             }
