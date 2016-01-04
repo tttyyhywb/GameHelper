@@ -3,8 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_marginTop="10dp"
-    android:layout_marginRight="10dp"
     >
 
     <TextView
@@ -16,6 +14,7 @@
         android:textColor="@color/black_text"/>
 
     <LinearLayout
+        android:paddingRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -47,7 +46,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4"
-            android:text="@string/endtiem"
+            android:text="@string/duration_time"
             android:gravity="center"
             android:textSize="@dimen/preview_title" />
 

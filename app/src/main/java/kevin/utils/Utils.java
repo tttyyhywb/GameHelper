@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 
+import com.kevin.gamehelper.mygamehelper.R;
+
 /**
  * Created by Kevin on 2015/12/22.
  * TODO:supply system methon
@@ -53,4 +55,5 @@ public class Utils {
     public static String int2string(long i){
         return i+"";
     }
+
 }

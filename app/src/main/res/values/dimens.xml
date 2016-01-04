@@ -17,4 +17,6 @@
     <dimen name="preview_title_text_size">12sp</dimen>
     <dimen name="preview_title">15sp</dimen>
 
+    <!-- main details activity -->
+    <dimen name="detail_title_text_size">13sp</dimen>
 </resources>
