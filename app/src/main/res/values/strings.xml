@@ -23,6 +23,8 @@
     <string name="recent_clear_history">清除历史记录</string>
     <string name="duration_time">持续时间</string>
     <string name="competation_type">比赛模式</string>
+    <string name="match_seq">比赛编号</string>
+    <string name="match_detail">比赛详情</string>
 
     <!-- utils中几个月前 -->
     <string name="minute_ago">分钟前</string>

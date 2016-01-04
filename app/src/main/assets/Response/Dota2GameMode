@@ -2,27 +2,27 @@
     "mods": [
         {
             "id" : 0,
-            "name" : "Unknown"
+            "name" : "未知"
         },
         {
             "id" : 1,
-            "name" : "All Pick"
+            "name" : "全阵营选择"
         },
         {
             "id" : 2,
-            "name" : "Captains Mode"
+            "name" : "队长模式"
         },
         {
             "id" : 3,
-            "name" : "Random Draft"
+            "name" : "随机征召"
         },
         {
             "id" : 4,
-            "name" : "Single Draft"
+            "name" : "单一征兆"
         },
         {
             "id" : 5,
-            "name" : "All Random"
+            "name" : "全阵营随机"
         },
         {
             "id" : 6,
@@ -46,11 +46,11 @@
         },
         {
             "id" : 11,
-            "name" : "Mid Only"
+            "name" : "中单模式"
         },
         {
             "id" : 12,
-            "name" : "Least Played"
+            "name" : "生疏模式"
         },
         {
             "id" : 13,
@@ -74,7 +74,7 @@
         },
         {
             "id": 18,
-            "name": "Ability Draft"
+            "name": "技能征召(OMG)"
         },
         {
             "id": 19,
@@ -82,11 +82,11 @@
         },
         {
             "id": 20,
-            "name": "All Random Death Match"
+            "name": "全英雄随机死亡竞赛"
         },
         {
             "id": 21,
-            "name": "1vs1 Solo Mid"
+            "name": "1vs1 Solo"
         }
     ]
 }

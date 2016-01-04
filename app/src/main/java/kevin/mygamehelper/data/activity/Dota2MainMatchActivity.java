@@ -37,6 +37,9 @@ public class Dota2MainMatchActivity extends Activity {
     @ViewInject(R.id.tv_level)
     TextView tvLevel;
 
+    @ViewInject(R.id.tv_match_seq)
+    TextView tvMatchSeq;
+
     @ViewInject(R.id.tv_duration_time)
     TextView tvDurationTime;
 
@@ -61,6 +64,6 @@ public class Dota2MainMatchActivity extends Activity {
         detail = (Dota2MatchDetails) intent.getSerializableExtra(detail.TAG);
 
         tvDurationTime.setText(detail.getDuration()/60+ Utils.getResource().getString(R.string.minute_ago));
-
+        tvMatchSeq.setText(detail.getMatch_seq_num()+"");
     }
 }
