@@ -36,6 +36,10 @@ public class Radar extends View {
 
     Path path;
 
+    private Hexagon startHexagon;
+
+    private Hexagon endHexagon;
+
     private Hexagon currentHexagon;
 
     public static final boolean DRAW_BACKGROUND = true;
@@ -154,9 +158,13 @@ public class Radar extends View {
 
     private void startAnimation() {
 
-        Hexagon startHexagon = new Hexagon(centerX, centerY, centerX, centerY, centerX, centerY, centerX, centerY, centerX, centerY, centerX, centerY);
-        Hexagon endHexagon = new Hexagon(centerX + halfDiameter, centerY + sqrt3diameter, centerX + dia, centerY, centerX + halfDiameter, centerY - sqrt3diameter,
+        startHexagon = new Hexagon(centerX, centerY, centerX, centerY, centerX, centerY, centerX, centerY, centerX, centerY, centerX, centerY);
+        Hexagon end = new Hexagon(centerX + halfDiameter, centerY + sqrt3diameter, centerX + dia, centerY, centerX + halfDiameter, centerY - sqrt3diameter,
                 centerX - halfDiameter, centerY - sqrt3diameter, centerX - dia, centerY, centerX - halfDiameter, centerY + sqrt3diameter);
+
+        if(endHexagon ==null){
+            endHexagon = end;
+        }
 
         ValueAnimator anim = new ValueAnimator().ofObject(new RadarEvaluator(), startHexagon, endHexagon);
         anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -171,8 +179,6 @@ public class Radar extends View {
     }
 
     private void initBackground(Canvas canvas){
-
-
 
         canvas.scale(scaleX, scaleY);
         for (int i = -1; i <= 1; i++) {
@@ -194,5 +200,14 @@ public class Radar extends View {
             draw6point(canvas, hexagon);
         }
         drawing = DRAW_FORWARD;
+    }
+
+    public void prepareAnim(float kda,float damage,float grow,float push ,float live, float comprehensive){
+        endHexagon = new Hexagon((int)(centerX + halfDiameter * kda/100), (int)(centerY + sqrt3diameter *kda/100), //右上
+                (int)(centerX + dia*damage/100), centerY, //右
+                (int)(centerX + halfDiameter*grow/100), (int)(centerY - sqrt3diameter*grow/100),//右下
+                (int)(centerX - halfDiameter*push/100), (int)(centerY - sqrt3diameter*push/100), //左下
+                (int)(centerX - dia*live/100), centerY, //左
+                (int)(centerX - halfDiameter*comprehensive/100), (int)(centerY + sqrt3diameter*comprehensive/100));//左上
     }
 }
