@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 
@@ -19,17 +18,29 @@ import android.view.View;
  */
 public class Radar extends View {
 
-    Paint mPaint;
-    int diameter;
-    int centerX;
-    int centerY;
+    private Paint mPaint;
+
+    public void setBackgroundColor(Color backgroundColor) {
+        this.backgroundColor = backgroundColor;
+    }
+
+    public void setForwardColor(Color forwardColor) {
+        this.forwardColor = forwardColor;
+    }
+
+    private Color backgroundColor;
+    private Color forwardColor;
+
+    private int diameter;
+    private int centerX;
+    private int centerY;
 
     float scaleX = 1;
     float scaleY = 1;
 
     //根号3
-    int sqrt3diameter;
-    int halfDiameter;
+    private int sqrt3diameter;
+    private int halfDiameter;
 
     //临时用于画雷达边(按比例l缩放)  l : 1/4 2/4 3/4 4/4
     int dia;
@@ -42,10 +53,17 @@ public class Radar extends View {
 
     private Hexagon currentHexagon;
 
+    private float kda;
+    private float damage;
+    private float push;
+    private float comprehensive;
+    private float grow;
+    private float live;
+
     public static final boolean DRAW_BACKGROUND = true;
     public static final boolean DRAW_FORWARD = false;
 
-    boolean drawing = DRAW_BACKGROUND;
+    private boolean drawing = DRAW_BACKGROUND;
 
     public Radar(Context context) {
         this(context, null);
@@ -82,7 +100,6 @@ public class Radar extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        //super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
@@ -90,19 +107,23 @@ public class Radar extends View {
         int width;
         int height;
         if (widthMode == MeasureSpec.EXACTLY) {
-            width = widthSize;
+            width = widthSize + getPaddingLeft() + getPaddingRight();
+            centerX = diameter + getPaddingLeft();
         } else {
             float mWidth = diameter;
             int desired = (int) (getPaddingLeft() + mWidth + getPaddingRight());
             width = desired * 2;
+            centerX = width/2;
         }
 
         if (heightMode == MeasureSpec.EXACTLY) {
-            height = heightSize;
+            height = heightSize + getPaddingTop() + getPaddingBottom();
+            centerY = (int) (diameter / 2 * Math.sqrt(3)) + getPaddingTop();
         } else {
             float mHeight = (float) (diameter / 2 * Math.sqrt(3));
             int desired = (int) (getPaddingTop() + mHeight + getPaddingBottom());
             height = desired * 2;
+            centerY = height/2;
         }
 
         if (width / 2 < diameter) {
@@ -119,9 +140,8 @@ public class Radar extends View {
             scaleX = scaleY;
         }
 
-        centerX = diameter + getPaddingLeft();
-        centerY = (int) (diameter / 2 * Math.sqrt(3)) + getPaddingTop();
         setMeasuredDimension(width, height);
+        setEndPoint();
     }
 
     @Override
@@ -133,7 +153,7 @@ public class Radar extends View {
         }else{
             mPaint.setColor(Color.GRAY);
             mPaint.setStyle(Paint.Style.STROKE);
-            mPaint.setStrokeWidth(2f);
+            mPaint.setStrokeWidth(1.3f);
             mPaint.setAlpha(0x60);
             initBackground(canvas);
             mPaint.setColor(Color.BLUE);
@@ -202,12 +222,37 @@ public class Radar extends View {
         drawing = DRAW_FORWARD;
     }
 
-    public void prepareAnim(float kda,float damage,float grow,float push ,float live, float comprehensive){
-        endHexagon = new Hexagon((int)(centerX + halfDiameter * kda/100), (int)(centerY + sqrt3diameter *kda/100), //右上
-                (int)(centerX + dia*damage/100), centerY, //右
-                (int)(centerX + halfDiameter*grow/100), (int)(centerY - sqrt3diameter*grow/100),//右下
-                (int)(centerX - halfDiameter*push/100), (int)(centerY - sqrt3diameter*push/100), //左下
-                (int)(centerX - dia*live/100), centerY, //左
-                (int)(centerX - halfDiameter*comprehensive/100), (int)(centerY + sqrt3diameter*comprehensive/100));//左上
+    public void prepareEndHex(float kda, float damage, float grow, float push , float live, float comprehensive){
+        this.kda = kda;
+        this.damage = damage;
+        this.grow=grow;
+        this.push = push;
+        this.live = live;
+        this.comprehensive = comprehensive;
+    }
+
+    private void setEndPoint(){
+        endHexagon = new Hexagon((int)(centerX + halfDiameter * kda/100), (int)(centerY + sqrt3diameter *kda/100), //右下 kda
+                (int)(centerX + dia*damage/100), centerY, //右 damage
+                (int)(centerX + halfDiameter*grow/100), (int)(centerY - sqrt3diameter*grow/100),//右上 grow
+                (int)(centerX - halfDiameter*push/100), (int)(centerY - sqrt3diameter*push/100), //左上 push
+                (int)(centerX - diameter*live/100), centerY, //左 live
+                (int)(centerX - halfDiameter*comprehensive/100), (int)(centerY + sqrt3diameter*comprehensive/100));//左下 comprehensive
+    }
+
+    public int getDiameter() {
+        return diameter;
+    }
+
+    public void setDiameter(int diameter) {
+        this.diameter = diameter;
+    }
+
+    public Paint getmPaint() {
+        return mPaint;
+    }
+
+    public void setmPaint(Paint mPaint) {
+        this.mPaint = mPaint;
     }
 }
