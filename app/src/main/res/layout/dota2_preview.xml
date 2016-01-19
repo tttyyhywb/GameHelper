@@ -39,53 +39,90 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/ll_comprehension"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/general_statistic"
-                android:textColor="@color/grew_text_with_alpha"
-                android:textSize="@dimen/preview_title_text_size" />
+                android:orientation="vertical">
 
-            <TextView
+                <TextView
+                    android:id="@+id/tv_comprehension"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/general_statistic"
+                    android:textColor="@drawable/dota2_preview_title_selector"
+                    android:textSize="@dimen/preview_title_text_size" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginLeft="@dimen/title_margin"
+                    android:layout_marginRight="@dimen/title_margin"
+                    android:background="@drawable/dota2_preview_divideline_selector" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_radar"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/radar"
-                android:textColor="@color/grew_text_with_alpha"
-                android:textSize="@dimen/preview_title_text_size" />
+                android:orientation="vertical">
 
-            <TextView
+                <TextView
+                    android:id="@+id/tv_radar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/radar"
+                    android:textColor="@drawable/dota2_preview_title_selector"
+                    android:textSize="@dimen/preview_title_text_size" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginLeft="@dimen/title_margin"
+                    android:layout_marginRight="@dimen/title_margin"
+                    android:background="@drawable/dota2_preview_divideline_selector" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_record"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/highest_record"
-                android:textColor="@color/grew_text_with_alpha"
-                android:textSize="@dimen/preview_title_text_size" />
+                android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/tv_record"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/highest_record"
+                    android:textColor="@drawable/dota2_preview_title_selector"
+                    android:textSize="@dimen/preview_title_text_size" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="@dimen/title_margin"
+                    android:layout_marginRight="@dimen/title_margin"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/dota2_preview_divideline_selector" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
+    <android.support.v4.view.ViewPager
+        android:id="@+id/preview_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/ll_preview_recy"
-        android:visibility="gone">
-
-        <include layout="@layout/dota2_preview_listitem_title" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/dota2_preview_recyclerview"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+        android:layout_height="wrap_content"></android.support.v4.view.ViewPager>
 
 </LinearLayout>

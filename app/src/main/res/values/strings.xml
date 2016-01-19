@@ -27,6 +27,7 @@
     <string name="match_detail">比赛详情</string>
 
     <!-- utils中几个月前 -->
+    <string name="minute">分钟</string>
     <string name="minute_ago">分钟前</string>
     <string name="hour_ago">小时前</string>
     <string name="month_ago">个月前</string>

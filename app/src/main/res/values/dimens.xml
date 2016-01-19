@@ -20,4 +20,7 @@
     <!-- main details activity -->
     <dimen name="detail_title_text_size">13sp</dimen>
     <dimen name="detail_title_seq_size">18sp</dimen>
+
+    <!-- dota2 preview -->
+    <dimen name="title_margin">30dp</dimen>
 </resources>

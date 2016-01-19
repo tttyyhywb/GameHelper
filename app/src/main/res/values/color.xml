@@ -17,7 +17,7 @@
     <color name="black_text">#000000</color>
     <color name="divide_line">#10424242</color>
     <color name="title_background">#162228</color>
-
+    <color name="white">#FFFFFF</color>
     <!-- data fragment -->
     <color name="seventy_precent_alpha">#A0424242</color>
 
