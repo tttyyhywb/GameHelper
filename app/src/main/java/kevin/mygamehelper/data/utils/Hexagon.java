@@ -1,4 +1,4 @@
-package kevin.myjjj;
+package kevin.mygamehelper.data.utils;
 
 /**
  * Created by Kevin on 2016/1/14.

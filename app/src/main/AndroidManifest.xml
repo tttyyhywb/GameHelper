@@ -28,15 +28,15 @@
 
         </activity>
 
-        <activity android:name="kevin.mygamehelper.data.activity.Dota2SearchActivity">
+        <activity android:name="kevin.mygamehelper.data.Dota2SearchActivity">
 
         </activity>
 
-        <activity android:name="kevin.mygamehelper.data.activity.Dota2PreviewActivity">
+        <activity android:name="kevin.mygamehelper.data.Dota2PreviewActivity">
 
         </activity>
 
-        <activity android:name="kevin.mygamehelper.data.activity.Dota2MainMatchActivity">
+        <activity android:name="kevin.mygamehelper.data.Dota2MainMatchActivity">
 
         </activity>
     </application>

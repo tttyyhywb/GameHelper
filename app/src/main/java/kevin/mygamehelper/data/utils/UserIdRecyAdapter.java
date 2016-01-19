@@ -5,11 +5,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,8 +16,6 @@ import com.kevin.gamehelper.mygamehelper.R;
 import com.lidroid.xutils.BitmapUtils;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -29,10 +25,9 @@ import java.util.Set;
 
 import kevin.api.dota2.bean.Dota2User;
 import kevin.database.DataBase.DBHelperDota2;
-import kevin.mygamehelper.data.activity.Dota2PreviewActivity;
+import kevin.mygamehelper.data.Dota2PreviewActivity;
 import kevin.utils.D2Utils;
 import kevin.utils.SPUtils;
-import kevin.utils.Utils;
 
 /**
  * Created by Kevin on 2015/12/28.

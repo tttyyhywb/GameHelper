@@ -1,59 +1,46 @@
-package kevin.mygamehelper.data.activity;
+package kevin.mygamehelper.data;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
-import kevin.api.base.network.BaseRequest;
-import kevin.mygamehelper.data.utils.DividerItemDecoration;
-import kevin.mygamehelper.data.utils.PreviewRecyAdapter;
-import kevin.utils.D2Utils;
-import kevin.api.dota2.bean.Dota2GameOutline;
-import kevin.api.dota2.bean.Dota2MatchDetails;
-import kevin.api.dota2.bean.Dota2MatchHistory;
-import kevin.api.dota2.bean.Dota2Url;
-import kevin.api.dota2.bean.Dota2User;
-import kevin.api.base.gameBase.ApiResult;
-
 import com.kevin.gamehelper.mygamehelper.R;
-
-import kevin.utils.SPUtils;
-import kevin.utils.Watcher;
-
-import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
 import java.util.Observable;
 
-/**
- * Created by Kevin on 2015/9/2.
- */
-public class Dota2PreviewActivity extends Activity {
+import kevin.api.base.gameBase.ApiResult;
+import kevin.api.base.network.BaseRequest;
+import kevin.api.dota2.bean.Dota2GameOutline;
+import kevin.api.dota2.bean.Dota2MatchDetails;
+import kevin.api.dota2.bean.Dota2MatchHistory;
+import kevin.api.dota2.bean.Dota2Url;
+import kevin.api.dota2.bean.Dota2User;
+import kevin.mygamehelper.data.utils.PreviewRecyAdapter;
+import kevin.utils.D2Utils;
+import kevin.utils.Watcher;
 
-    BitmapUtils bitmapUtils;
+/**
+ * Created by Kevin on 2016/1/19.
+ * DESCRIPTION:
+ * email:493243390@qq.com
+ */
+public class ComprehensionFrg extends Fragment {
+
     Dota2User account;
     ArrayList<Dota2GameOutline> matches;
     Dota2MatchDetails[] detials;
     Dota2Url url;
     Gson gson = new Gson();
-
-    @ViewInject(R.id.img_preview_potrait)
-    ImageView imgUserPortrait;
-
-    @ViewInject(R.id.tv_preview_username)
-    TextView tvUsername;
 
     @ViewInject(R.id.dota2_preview_recyclerview)
     RecyclerView myRecyView;
@@ -61,23 +48,27 @@ public class Dota2PreviewActivity extends Activity {
     @ViewInject(R.id.ll_preview_recy)
     LinearLayout llRecy;
 
+    public ComprehensionFrg(Dota2User account) {
+        this.account = account;
+    }
+
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.dota2_preview);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.dota2_preview_comprehension,container,false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        llRecy = (LinearLayout)view.findViewById(R.id.ll_preview_recy);
+        myRecyView=(RecyclerView)view.findViewById(R.id.dota2_preview_recyclerview);
         init();
     }
 
     void init() {
-        Log.e("size", SPUtils.getInstance().getStringSet(Dota2User.TAG, null).size()+" ");
-        detials = new Dota2MatchDetails[6];
-        com.lidroid.xutils.ViewUtils.inject(this);
-        bitmapUtils = new BitmapUtils(this);
         url = new Dota2Url();
-        Intent intent = getIntent();
-        account = (Dota2User) intent.getSerializableExtra(Dota2User.TAG);
-        bitmapUtils.display(imgUserPortrait, account.getAvatarfull());
-        tvUsername.setText(account.getPersonaname());
+        detials = new Dota2MatchDetails[6];
         matchesHistoryListRequest.getData(url.getMatchHistory(D2Utils.getAccountId(account.getSteamid() ), 10));
     }
 
@@ -137,11 +128,10 @@ public class Dota2PreviewActivity extends Activity {
         @Override
         public void update(Observable observable, Object data) {
             count++;
-            Log.e("count",count+"");
             if (count == 6) {
                 llRecy.setVisibility(View.VISIBLE);
-                myRecyView.setLayoutManager(new LinearLayoutManager(Dota2PreviewActivity.this));
-                myRecyView.setAdapter(new PreviewRecyAdapter(Dota2PreviewActivity.this, matches, account, detials));
+                myRecyView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                myRecyView.setAdapter(new PreviewRecyAdapter(getActivity(), matches, account, detials));
             }
         }
     };

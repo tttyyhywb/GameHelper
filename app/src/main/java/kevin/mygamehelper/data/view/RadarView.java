@@ -1,4 +1,4 @@
-package kevin.myjjj;
+package kevin.mygamehelper.data.view;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -11,12 +11,17 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 
+import com.kevin.gamehelper.mygamehelper.R;
+
+import kevin.mygamehelper.data.utils.Hexagon;
+import kevin.mygamehelper.data.utils.RadarEvaluator;
+
 /**
  * Created by Kevin on 2016/1/12.
  * DESCRIPTION:
  * email:493243390@qq.com
  */
-public class Radar extends View {
+public class RadarView extends View {
 
     private Paint mPaint;
 
@@ -65,15 +70,15 @@ public class Radar extends View {
 
     private boolean drawing = DRAW_BACKGROUND;
 
-    public Radar(Context context) {
+    public RadarView(Context context) {
         this(context, null);
     }
 
-    public Radar(Context context, AttributeSet attrs) {
+    public RadarView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public Radar(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RadarView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         mPaint = new Paint();

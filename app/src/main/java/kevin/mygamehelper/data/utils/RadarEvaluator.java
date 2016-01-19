@@ -1,4 +1,4 @@
-package kevin.myjjj;
+package kevin.mygamehelper.data.utils;
 
 import android.animation.TypeEvaluator;
 

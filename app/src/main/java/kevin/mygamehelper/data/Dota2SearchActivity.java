@@ -1,4 +1,4 @@
-package kevin.mygamehelper.data.activity;
+package kevin.mygamehelper.data;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -22,14 +22,12 @@ import com.google.gson.reflect.TypeToken;
 
 import kevin.api.base.network.BaseRequest;
 import kevin.database.DataBase.DBHelperDota2;
-import kevin.mygamehelper.data.utils.DividerItemDecoration;
 import kevin.mygamehelper.data.utils.UserIdRecyAdapter;
 import kevin.utils.D2Utils;
 import kevin.api.dota2.bean.Dota2Url;
 import kevin.api.dota2.bean.Dota2User;
 import kevin.api.base.gameBase.ApiResponse;
 import kevin.utils.SPUtils;
-import kevin.utils.Utils;
 
 import com.j256.ormlite.dao.Dao;
 import com.kevin.gamehelper.mygamehelper.R;

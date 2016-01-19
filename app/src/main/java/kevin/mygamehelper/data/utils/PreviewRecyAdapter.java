@@ -6,7 +6,6 @@ import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +22,7 @@ import kevin.api.dota2.bean.Dota2GameOutline;
 import kevin.api.dota2.bean.Dota2MatchDetails;
 import kevin.api.dota2.bean.Dota2Players;
 import kevin.api.dota2.bean.Dota2User;
-import kevin.mygamehelper.data.activity.Dota2MainMatchActivity;
+import kevin.mygamehelper.data.Dota2MainMatchActivity;
 import kevin.utils.D2Utils;
 
 /**

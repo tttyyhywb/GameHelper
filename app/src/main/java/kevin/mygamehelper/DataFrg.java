@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.kevin.gamehelper.mygamehelper.R;
-import kevin.mygamehelper.data.activity.Dota2SearchActivity;
+import kevin.mygamehelper.data.Dota2SearchActivity;
 
 /**
  * Created by Kevin on 2015/8/4.

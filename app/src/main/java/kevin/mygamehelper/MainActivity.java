@@ -1,21 +1,16 @@
 package kevin.mygamehelper;
 
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
-import kevin.api.dota2.bean.Dota2User;
 import kevin.utils.D2Utils;
-import kevin.utils.SPUtils;
 
 import com.kevin.gamehelper.mygamehelper.R;
 import com.lidroid.xutils.view.annotation.ViewInject;
