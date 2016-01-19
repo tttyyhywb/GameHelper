@@ -39,7 +39,6 @@ public class ComprehensionFrg extends Fragment {
     Dota2User account;
     ArrayList<Dota2GameOutline> matches;
     Dota2MatchDetails[] detials;
-    Dota2Url url;
     Gson gson = new Gson();
 
     @ViewInject(R.id.dota2_preview_recyclerview)
@@ -67,9 +66,8 @@ public class ComprehensionFrg extends Fragment {
     }
 
     void init() {
-        url = new Dota2Url();
         detials = new Dota2MatchDetails[6];
-        matchesHistoryListRequest.getData(url.getMatchHistory(D2Utils.getAccountId(account.getSteamid() ), 10));
+        matchesHistoryListRequest.getData(Dota2Url.getMatchHistory(D2Utils.getAccountId(account.getSteamid() ), 10));
     }
 
 
@@ -87,7 +85,7 @@ public class ComprehensionFrg extends Fragment {
 
             for (int i = 0; i < 6; i++) {
                 DetailsRequest detailsRequest = new DetailsRequest(i);
-                detailsRequest.getData(url.getMatchDetials(matches.get(i).getMatch_id()));
+                detailsRequest.getData(Dota2Url.getMatchDetials(matches.get(i).getMatch_id()));
             }
         }
 

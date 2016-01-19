@@ -13,8 +13,6 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
-import kevin.api.dota2.bean.Dota2GameOutline;
-import kevin.api.dota2.bean.Dota2MatchDetails;
 import kevin.api.dota2.bean.Dota2Url;
 import kevin.api.dota2.bean.Dota2User;
 
@@ -34,9 +32,6 @@ public class Dota2PreviewActivity extends FragmentActivity implements  View.OnCl
 
     BitmapUtils bitmapUtils;
     Dota2User account;
-    ArrayList<Dota2GameOutline> matches;
-    Dota2MatchDetails[] detials;
-    Dota2Url url;
     Gson gson = new Gson();
 
     @ViewInject(R.id.preview_content)
@@ -71,7 +66,6 @@ public class Dota2PreviewActivity extends FragmentActivity implements  View.OnCl
     private void init(){
         com.lidroid.xutils.ViewUtils.inject(this);
         bitmapUtils = new BitmapUtils(this);
-        url = new Dota2Url();
         Intent intent = getIntent();
         account = (Dota2User) intent.getSerializableExtra(Dota2User.TAG);
         bitmapUtils.display(imgUserPortrait, account.getAvatarfull());

@@ -19,7 +19,7 @@ public class Dota2Url {
      * @param userId 用户的32bit Id
      * @return url
      */
-    public String getMatchHistory(String userId) {
+    public static String getMatchHistory(String userId) {
         return DOTA2MAIN + MATCHHISTORY + KEY + "&account_id=" + userId;
     }
 
@@ -28,14 +28,14 @@ public class Dota2Url {
      * @param requestCount 要显示的比赛数目
      * @return url
      */
-    public String getMatchHistory(String userId , int requestCount) {
+    public static String getMatchHistory(String userId , int requestCount) {
         return DOTA2MAIN + MATCHHISTORY + KEY + "&account_id=" + userId + "&matches_requested=" + requestCount ;
     }
     /**
      * @param userId 用户的64bit Id
      * @return
      */
-    public String getPlayerSummaries(String userId) {
+    public static String getPlayerSummaries(String userId) {
         return DOTA2MAIN + PLAYERSUMMARIES + KEY + "&steamids=" + D2Utils.getSteamId(userId);
     }
 
@@ -44,17 +44,17 @@ public class Dota2Url {
      * @param matchId 比赛Id
      * @return
      */
-    public String getMatchDetials(String matchId){
+    public static String getMatchDetials(String matchId){
         return DOTA2MAIN + MATCHDETIALS + KEY + "&match_id=" + matchId;
     }
 
     @SuppressWarnings("unused")
-    public String getHero(){
+    public static String getHero(){
         return "https://api.steampowered.com/IEconDOTA2_570/GetHeroes/v0001/?key=07000CBBE0A53DB404881143C118DDF7&language=en_us";
     }
 
     @SuppressWarnings("unused")
-    public String getItem(){
+    public static String getItem(){
         return "https://api.steampowered.com/IEconDOTA2_570/GetGameItems/V001/?key=07000CBBE0A53DB404881143C118DDF7&language=en_us";
     }
 }
