@@ -56,4 +56,7 @@ public class Utils {
         return i+"";
     }
 
+    public static Context getContext(){
+        return mContext;
+    }
 }
