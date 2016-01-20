@@ -13,11 +13,12 @@ import android.widget.LinearLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.kevin.gamehelper.mygamehelper.R;
-import com.lidroid.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
 import java.util.Observable;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import kevin.api.base.gameBase.ApiResult;
 import kevin.api.base.network.BaseRequest;
 import kevin.api.dota2.bean.Dota2GameOutline;
@@ -41,10 +42,10 @@ public class ComprehensionFrg extends Fragment {
     Dota2MatchDetails[] detials;
     Gson gson = new Gson();
 
-    @ViewInject(R.id.dota2_preview_recyclerview)
-    RecyclerView myRecyView;
 
-    @ViewInject(R.id.ll_preview_recy)
+    @Bind(R.id.dota2_preview_recyclerview)
+    RecyclerView myRecyView;
+    @Bind(R.id.ll_preview_recy)
     LinearLayout llRecy;
 
     public ComprehensionFrg(Dota2User account) {
@@ -54,20 +55,20 @@ public class ComprehensionFrg extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.dota2_preview_comprehension,container,false);
+        View view = inflater.inflate(R.layout.dota2_preview_comprehension, container, false);
+        ButterKnife.bind(this, view);
+        return view;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        llRecy = (LinearLayout)view.findViewById(R.id.ll_preview_recy);
-        myRecyView=(RecyclerView)view.findViewById(R.id.dota2_preview_recyclerview);
         init();
     }
 
     void init() {
         detials = new Dota2MatchDetails[6];
-        matchesHistoryListRequest.getData(Dota2Url.getMatchHistory(D2Utils.getAccountId(account.getSteamid() ), 10));
+        matchesHistoryListRequest.getData(Dota2Url.getMatchHistory(D2Utils.getAccountId(account.getSteamid()), 10));
     }
 
 
@@ -94,10 +95,17 @@ public class ComprehensionFrg extends Fragment {
         }
     };
 
-    class DetailsRequest extends BaseRequest{
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
+    }
+
+    class DetailsRequest extends BaseRequest {
 
         int index;
-        public DetailsRequest(int index){
+
+        public DetailsRequest(int index) {
             this.index = index;
         }
 
@@ -109,7 +117,7 @@ public class ComprehensionFrg extends Fragment {
             Dota2MatchDetails oneDetails;
             oneDetails = result.getResult();
             oneDetails.addObserver(watcher);
-            detials[index]=oneDetails;
+            detials[index] = oneDetails;
             oneDetails.changed();
             oneDetails.notifyObservers();
         }
@@ -118,7 +126,9 @@ public class ComprehensionFrg extends Fragment {
         protected void afterFail() {
 
         }
-    };
+    }
+
+    ;
 
     Watcher watcher = new Watcher() {
         int count = 0;

@@ -29,6 +29,8 @@ import java.sql.SQLException;
  */
 public class D2Utils {
 
+    public static final String PREFIX_ASSETS = "assets://";
+
     AssetManager assetManager;
 
     Dota2Hero dota2Hero = new Dota2Hero();
@@ -185,7 +187,7 @@ public class D2Utils {
 
     public static String getHeroPicHphover(int heroId, boolean hasAssets) {
         if (hasAssets == true) {
-            return "assets/" + getHeroPicHphover(heroId);
+            return PREFIX_ASSETS + getHeroPicHphover(heroId);
         } else {
             return getHeroPicHphover(heroId);
         }
@@ -226,7 +228,7 @@ public class D2Utils {
 
     public static String getItemUrl(int itemId, boolean hasAssets) {
         if (hasAssets == true) {
-            return "assets/" + getItemUrl(itemId);
+            return PREFIX_ASSETS + getItemUrl(itemId);
         } else {
             return getItemUrl(itemId);
         }

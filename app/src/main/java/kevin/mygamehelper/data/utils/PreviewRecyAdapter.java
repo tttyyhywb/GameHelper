@@ -14,7 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kevin.gamehelper.mygamehelper.R;
-import com.lidroid.xutils.BitmapUtils;
 
 import java.util.ArrayList;
 
@@ -24,6 +23,7 @@ import kevin.api.dota2.bean.Dota2Players;
 import kevin.api.dota2.bean.Dota2User;
 import kevin.mygamehelper.data.Dota2MainMatchActivity;
 import kevin.utils.D2Utils;
+import kevin.utils.ImgUtils;
 
 /**
  * Created by Kevin on 2015/12/28.
@@ -37,7 +37,6 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
     Dota2User account;
     Context context;
     AssetManager assetManager;
-    BitmapUtils bitmapUtils;
     Dota2GameOutline match;
     Dota2MatchDetails detail;
 
@@ -46,7 +45,6 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
         this.context = context;
         this.matches = matches;
         assetManager = context.getResources().getAssets();
-        bitmapUtils = new BitmapUtils(context);
         this.details = details;
     }
 
@@ -77,7 +75,7 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
             holder.tvResult.setTextColor(Color.rgb(56, 174, 47));
             holder.tvResult.setText("胜利");
         }
-        bitmapUtils.display(holder.picHero, D2Utils.getHeroPicHphover(player.getHero_id(), true));
+        ImgUtils.getInstance().loadImage( D2Utils.getHeroPicHphover(player.getHero_id(), true),holder.picHero);
         holder.tvKda.setText(player.getKills() + "/" + player.getDeaths() + "/" + player.getAssists());
         holder.tvEndTime.setText(detail.getDuration() / 60 + "分钟");
 

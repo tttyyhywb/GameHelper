@@ -10,34 +10,34 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import kevin.utils.D2Utils;
 
 import com.kevin.gamehelper.mygamehelper.R;
-import com.lidroid.xutils.view.annotation.ViewInject;
-import com.lidroid.xutils.ViewUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
-    @ViewInject(R.id.id_viewpager_cont)
+    @Bind(R.id.id_viewpager_cont)
     ViewPager mViewPagerCont;
     private FragmentPagerAdapter mFrgPageAdapter;
     private List<Fragment> mFragments;
 
-    @ViewInject(R.id.ll_data)
-    private LinearLayout mTabData;
-    @ViewInject(R.id.ll_me)
-    private LinearLayout mTabMe;
-    @ViewInject(R.id.ll_discovery)
-    private LinearLayout mTabDiscover;
+    @Bind(R.id.ll_data)
+    LinearLayout mTabData;
+    @Bind(R.id.ll_me)
+    LinearLayout mTabMe;
+    @Bind(R.id.ll_discovery)
+    LinearLayout mTabDiscover;
 
-    @ViewInject(R.id.img_tab_data)
+    @Bind(R.id.img_tab_data)
     ImageButton imgData;
-    @ViewInject(R.id.img_tab_me)
+    @Bind(R.id.img_tab_me)
     ImageButton imgMe;
-    @ViewInject(R.id.img_tab_discover)
+    @Bind(R.id.img_tab_discover)
     ImageButton imgDiscover;
     static D2Utils utils;
 
@@ -58,7 +58,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     }
 
     public void initView() {
-        ViewUtils.inject(this);
+        ButterKnife.bind(this);
 
         Fragment meFrg = new MeFrg();
         Fragment dataFrg = new DataFrg();

@@ -8,15 +8,14 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import kevin.api.dota2.bean.Dota2GameOutline;
 import kevin.api.dota2.bean.Dota2MatchDetails;
 import kevin.mygamehelper.data.utils.MainRecyAdapter;
 import kevin.utils.Utils;
 
 import com.kevin.gamehelper.mygamehelper.R;
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
-
 /**
  * Created by kevin on 2015/9/11.
  */
@@ -25,25 +24,22 @@ public class Dota2MainMatchActivity extends Activity {
     Dota2GameOutline match;
     Dota2MatchDetails detail;
 
-    @ViewInject(R.id.main_match_recycler)
+    @Bind(R.id.main_match_recycler)
     RecyclerView recyclerView;
 
-    @ViewInject(R.id.tv_end_time)
-    TextView tvEndTime;
-
-    @ViewInject(R.id.tv_competation_type)
+    @Bind(R.id.tv_competation_type)
     TextView tvCompetationType;
 
-    @ViewInject(R.id.tv_level)
+    @Bind(R.id.tv_level)
     TextView tvLevel;
 
-    @ViewInject(R.id.tv_match_seq)
+    @Bind(R.id.tv_match_seq)
     TextView tvMatchSeq;
 
-    @ViewInject(R.id.tv_duration_time)
+    @Bind(R.id.tv_duration_time)
     TextView tvDurationTime;
 
-    @ViewInject(R.id.ll_detail_title)
+    @Bind(R.id.ll_detail_title)
     LinearLayout llDetailTile;
 
     @Override
@@ -57,7 +53,7 @@ public class Dota2MainMatchActivity extends Activity {
     }
 
     private void init() {
-        ViewUtils.inject(this);
+        ButterKnife.bind(this);
 
         Intent intent = getIntent();
         match = (Dota2GameOutline) intent.getSerializableExtra(match.TAG);

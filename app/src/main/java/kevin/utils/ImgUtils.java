@@ -44,16 +44,16 @@ public class ImgUtils {
         }
     }
 
-    public void LoadImage(String url,ImageView view,DisplayImageOptions options){
+    public void loadImage(String url,ImageView view,DisplayImageOptions options){
         if(options != null ){
             ImageLoader.getInstance().displayImage(url,view,options);
         }else {
-            ImageLoader.getInstance().displayImage(url, view, defaultOptions);
+            ImageLoader.getInstance().displayImage(url, view);
         }
     }
 
-    public void LoadImage(String url, ImageView view){
-        LoadImage(url,view,options);
+    public void loadImage(String url, ImageView view){
+        loadImage(url,view,defaultOptions);
     }
 
     public void setOptions(DisplayImageOptions options){

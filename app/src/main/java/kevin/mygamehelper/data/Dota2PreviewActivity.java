@@ -17,12 +17,10 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import kevin.api.dota2.bean.Dota2Url;
 import kevin.api.dota2.bean.Dota2User;
+import kevin.utils.ImgUtils;
 
 import com.kevin.gamehelper.mygamehelper.R;
 
-import com.lidroid.xutils.BitmapUtils;
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +30,6 @@ import java.util.List;
  */
 public class Dota2PreviewActivity extends FragmentActivity implements  View.OnClickListener{
 
-    BitmapUtils bitmapUtils;
     Dota2User account;
 
     @Bind(R.id.preview_content)
@@ -66,15 +63,13 @@ public class Dota2PreviewActivity extends FragmentActivity implements  View.OnCl
 
     private void init(){
         ButterKnife.bind(this);
-        bitmapUtils = new BitmapUtils(this);
         Intent intent = getIntent();
         account = (Dota2User) intent.getSerializableExtra(Dota2User.TAG);
-        bitmapUtils.display(imgUserPortrait, account.getAvatarfull());
+        ImgUtils.getInstance().loadImage( account.getAvatarfull(),imgUserPortrait);
         tvUsername.setText(account.getPersonaname());
     }
 
     private void initView(){
-        ViewUtils.inject(this);
 
         Fragment comprehensionFrg = new ComprehensionFrg(account);
         Fragment radarFrg = new RadarFrg();

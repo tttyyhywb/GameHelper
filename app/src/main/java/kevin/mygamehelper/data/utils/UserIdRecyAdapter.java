@@ -13,9 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kevin.gamehelper.mygamehelper.R;
-import com.lidroid.xutils.BitmapUtils;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -41,15 +38,11 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
 
     private Context context;
 
-    BitmapUtils bitmapUtils;
-
     SPUtils spUtils = SPUtils.getInstance();
 
     public UserIdRecyAdapter(List<Dota2User> data, Context context) {
         this.dataList = data;
         this.context = context;
-        bitmapUtils = new BitmapUtils(context);
-
     }
 
     @Override
@@ -65,7 +58,7 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
         Dota2User data = dataList.get(position);
         holder.tvUserId.setText("ID:" + D2Utils.getAccountId(data.getSteamid()));
         holder.tvUserName.setText(data.getPersonaname());
-        ImgUtils.getInstance().LoadImage(data.getAvatarfull(), holder.imgUserPortrait);
+        ImgUtils.getInstance().loadImage(data.getAvatarfull(), holder.imgUserPortrait);
         holder.linearLayout.setOnClickListener(new Listener(data));
     }
 

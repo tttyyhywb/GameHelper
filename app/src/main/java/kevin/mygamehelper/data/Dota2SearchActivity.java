@@ -20,6 +20,8 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import kevin.api.base.network.BaseRequest;
 import kevin.database.DataBase.DBHelperDota2;
 import kevin.mygamehelper.data.utils.UserIdRecyAdapter;
@@ -31,7 +33,6 @@ import kevin.utils.SPUtils;
 
 import com.j256.ormlite.dao.Dao;
 import com.kevin.gamehelper.mygamehelper.R;
-import com.lidroid.xutils.view.annotation.ViewInject;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -44,25 +45,25 @@ public class Dota2SearchActivity extends Activity {
 
     private final int ISCHANGED = 1;
 
-    @ViewInject(R.id.img_search_back)
+    @Bind(R.id.img_search_back)
     ImageButton imgSearchBack;
 
-    @ViewInject(R.id.edit_search)
+    @Bind(R.id.edit_search)
     EditText etSearch;
 
-    @ViewInject(R.id.img_search_delete)
+    @Bind(R.id.img_search_delete)
     ImageButton imgSearchDelete;
 
-    @ViewInject(R.id.search_recycler)
+    @Bind(R.id.search_recycler)
     RecyclerView searchRecy;
 
-    @ViewInject(R.id.match_userid_title)
+    @Bind(R.id.match_userid_title)
     LinearLayout llMatchUserTitle;
 
-    @ViewInject(R.id.ll_history)
+    @Bind(R.id.ll_history)
     LinearLayout llRecentSearch;
 
-    @ViewInject(R.id.recent_clear_history)
+    @Bind(R.id.recent_clear_history)
     TextView clearHistory;
 
     Dota2Url url = new Dota2Url();
@@ -92,7 +93,7 @@ public class Dota2SearchActivity extends Activity {
     }
 
     private void init() {
-        com.lidroid.xutils.ViewUtils.inject(this);
+        ButterKnife.bind(this);
         etSearch.addTextChangedListener(watcher);
         Set<String> steamIds = SPUtils.getInstance().getStringSet(Dota2User.TAG, null);
         clearHistory.setOnClickListener(listener);

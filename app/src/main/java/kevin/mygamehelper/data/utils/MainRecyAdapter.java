@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kevin.gamehelper.mygamehelper.R;
-import com.lidroid.xutils.BitmapUtils;
 
 import java.util.ArrayList;
 
@@ -17,6 +16,7 @@ import kevin.api.dota2.bean.Dota2GameOutline;
 import kevin.api.dota2.bean.Dota2MatchDetails;
 import kevin.api.dota2.bean.Dota2Players;
 import kevin.utils.D2Utils;
+import kevin.utils.ImgUtils;
 
 /**
  * Created by Kevin on 2015/12/29.
@@ -32,14 +32,12 @@ public class MainRecyAdapter extends RecyclerView.Adapter<MainRecyAdapter.MyHold
     Context context;
     Dota2GameOutline match;
     Dota2MatchDetails detail;
-    BitmapUtils bitmapUtils;
     ArrayList<Dota2Players> players;
 
     public MainRecyAdapter(Context context, Dota2GameOutline dota2GameOutline, Dota2MatchDetails detail) {
         this.context = context;
         this.match = dota2GameOutline;
         this.detail = detail;
-        bitmapUtils = new BitmapUtils(context);
         players = detail.getPlayers();
 
         players.add(0,new Dota2Players());
@@ -93,14 +91,13 @@ public class MainRecyAdapter extends RecyclerView.Adapter<MainRecyAdapter.MyHold
                 holder.tvKda.setText(player.getKills() + "/" + player.getDeaths() + "/" + player.getAssists());
                 holder.tvHeroLevel.setText(player.getLevel());
 
-                bitmapUtils.display(holder.imgHero, D2Utils.getHeroPicHphover(player.getHero_id(), true));
-                bitmapUtils.display(holder.item0, D2Utils.getItemUrl(player.getItem_0(), true));
-                bitmapUtils.display(holder.item1, D2Utils.getItemUrl(player.getItem_1(), true));
-                bitmapUtils.display(holder.item2, D2Utils.getItemUrl(player.getItem_2(), true));
-                bitmapUtils.display(holder.item3, D2Utils.getItemUrl(player.getItem_3(), true));
-                bitmapUtils.display(holder.item4, D2Utils.getItemUrl(player.getItem_4(), true));
-                bitmapUtils.display(holder.item5, D2Utils.getItemUrl(player.getItem_5(), true));
-
+                ImgUtils.getInstance().loadImage(D2Utils.getHeroPicHphover(player.getHero_id(),true),holder.imgHero);
+                ImgUtils.getInstance().loadImage(D2Utils.getItemUrl(player.getItem_0(),true),holder.item0);
+                ImgUtils.getInstance().loadImage(D2Utils.getItemUrl(player.getItem_1(),true),holder.item1);
+                ImgUtils.getInstance().loadImage(D2Utils.getItemUrl(player.getItem_2(),true),holder.item2);
+                ImgUtils.getInstance().loadImage(D2Utils.getItemUrl(player.getItem_3(),true),holder.item3);
+                ImgUtils.getInstance().loadImage(D2Utils.getItemUrl(player.getItem_4(),true),holder.item4);
+                ImgUtils.getInstance().loadImage(D2Utils.getItemUrl(player.getItem_5(),true),holder.item5);
                 break;
             }
         }
