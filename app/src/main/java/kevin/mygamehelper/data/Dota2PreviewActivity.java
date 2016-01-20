@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import kevin.api.dota2.bean.Dota2Url;
 import kevin.api.dota2.bean.Dota2User;
 
@@ -32,24 +34,23 @@ public class Dota2PreviewActivity extends FragmentActivity implements  View.OnCl
 
     BitmapUtils bitmapUtils;
     Dota2User account;
-    Gson gson = new Gson();
 
-    @ViewInject(R.id.preview_content)
-    private ViewPager mContent;
+    @Bind(R.id.preview_content)
+    ViewPager mContent;
 
-    @ViewInject(R.id.img_preview_potrait)
+    @Bind(R.id.img_preview_potrait)
     ImageView imgUserPortrait;
 
-    @ViewInject(R.id.tv_preview_username)
+    @Bind(R.id.tv_preview_username)
     TextView tvUsername;
 
-    @ViewInject(R.id.ll_radar)
+    @Bind(R.id.ll_radar)
     LinearLayout llRadar;
 
-    @ViewInject(R.id.ll_record)
+    @Bind(R.id.ll_record)
     LinearLayout llRecord;
 
-    @ViewInject(R.id.ll_comprehension)
+    @Bind(R.id.ll_comprehension)
     LinearLayout llComprehension;
 
     private FragmentPagerAdapter mFrgPageAdapter;
@@ -64,7 +65,7 @@ public class Dota2PreviewActivity extends FragmentActivity implements  View.OnCl
     }
 
     private void init(){
-        com.lidroid.xutils.ViewUtils.inject(this);
+        ButterKnife.bind(this);
         bitmapUtils = new BitmapUtils(this);
         Intent intent = getIntent();
         account = (Dota2User) intent.getSerializableExtra(Dota2User.TAG);

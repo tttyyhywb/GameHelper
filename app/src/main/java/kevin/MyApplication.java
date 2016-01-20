@@ -8,6 +8,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import kevin.database.DataBase.DBHelperDota2;
 import kevin.utils.D2Utils;
+import kevin.utils.ImgUtils;
 import kevin.utils.SPUtils;
 import kevin.utils.Utils;
 
@@ -31,6 +32,8 @@ public class MyApplication extends Application {
                 .createDefault(this);
 
         ImageLoader.getInstance().init(configuration);
+
+        ImgUtils.init();
     }
 
     private void initService(){

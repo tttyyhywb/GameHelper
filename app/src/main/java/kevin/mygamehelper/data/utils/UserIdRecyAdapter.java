@@ -27,6 +27,7 @@ import kevin.api.dota2.bean.Dota2User;
 import kevin.database.DataBase.DBHelperDota2;
 import kevin.mygamehelper.data.Dota2PreviewActivity;
 import kevin.utils.D2Utils;
+import kevin.utils.ImgUtils;
 import kevin.utils.SPUtils;
 
 /**
@@ -42,19 +43,13 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
 
     BitmapUtils bitmapUtils;
 
-    DisplayImageOptions options;
-
     SPUtils spUtils = SPUtils.getInstance();
 
     public UserIdRecyAdapter(List<Dota2User> data, Context context) {
         this.dataList = data;
         this.context = context;
         bitmapUtils = new BitmapUtils(context);
-        options = new DisplayImageOptions.Builder()
-                .cacheInMemory(true)
-                .cacheOnDisk(true)
-                .bitmapConfig(Bitmap.Config.RGB_565)
-                .build();
+
     }
 
     @Override
@@ -70,8 +65,7 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
         Dota2User data = dataList.get(position);
         holder.tvUserId.setText("ID:" + D2Utils.getAccountId(data.getSteamid()));
         holder.tvUserName.setText(data.getPersonaname());
-        ImageLoader.getInstance().displayImage(data.getAvatarfull(), holder.imgUserPortrait, options);
-
+        ImgUtils.getInstance().LoadImage(data.getAvatarfull(), holder.imgUserPortrait);
         holder.linearLayout.setOnClickListener(new Listener(data));
     }
 
@@ -116,7 +110,7 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
             try {
                 if (steamIds == null) {
                     steamIds = new HashSet<>();
-                }else{
+                } else {
                     steamIds = new HashSet<>(steamIds);
                 }
                 steamIds.add(data.getSteamid());
@@ -127,5 +121,7 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
             }
             context.startActivity(intent);
         }
-    };
+    }
+
+    ;
 }

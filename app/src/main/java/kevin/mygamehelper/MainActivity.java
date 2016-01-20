@@ -85,9 +85,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         mViewPagerCont.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {            }
 
             @Override
             public void onPageSelected(int position) {
@@ -95,10 +93,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             }
 
             @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
+            public void onPageScrollStateChanged(int state) {}
         });
+
         mTabData.setOnClickListener(this);
         mTabMe.setOnClickListener(this);
         mTabDiscover.setOnClickListener(this);
