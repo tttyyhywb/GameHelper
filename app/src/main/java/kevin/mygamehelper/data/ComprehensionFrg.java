@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -136,10 +137,12 @@ public class ComprehensionFrg extends Fragment {
         @Override
         public void update(Observable observable, Object data) {
             count++;
+//            Log.e("count",count+"");
             if (count == 6) {
                 llRecy.setVisibility(View.VISIBLE);
                 myRecyView.setLayoutManager(new LinearLayoutManager(getActivity()));
                 myRecyView.setAdapter(new PreviewRecyAdapter(getActivity(), matches, account, detials));
+                count = 0;
             }
         }
     };

@@ -41,7 +41,12 @@
     <!-- data fragment -->
     <string name="data_fragment_content_text">搜索并绑定账号</string>
 
+    <!-- radar fragment -->
+    <string name="radar_title_picture">雷达图</string>
+    <string name="twenty_times">20场</string>
+
     <!-- dota2 -->
     <string name="radiant">天辉:</string>
     <string name="dire">夜魇:</string>
+
 </resources>

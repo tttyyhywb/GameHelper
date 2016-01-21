@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 
@@ -37,6 +38,8 @@ public class RadarView extends View {
     private Color forwardColor;
 
     private int diameter;
+    private int textsize;
+
     private int centerX;
     private int centerY;
 
@@ -93,6 +96,9 @@ public class RadarView extends View {
                     diameter = a.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(
                             TypedValue.COMPLEX_UNIT_SP, 16, getResources().getDisplayMetrics()));
                     break;
+                case R.styleable.radar_view_textsize:
+                    textsize = a.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(
+                            TypedValue.COMPLEX_UNIT_SP, 16, getResources().getDisplayMetrics()));
             }
         }
 
@@ -113,12 +119,17 @@ public class RadarView extends View {
         int height;
         if (widthMode == MeasureSpec.EXACTLY) {
             width = widthSize + getPaddingLeft() + getPaddingRight();
-            centerX = diameter + getPaddingLeft();
+            Log.e("width", getWidth() + "");
+            if (getWidth() / 2 > centerX) {
+                centerX = getWidth() / 2;
+            } else {
+                centerX = diameter + getPaddingLeft();
+            }
         } else {
             float mWidth = diameter;
             int desired = (int) (getPaddingLeft() + mWidth + getPaddingRight());
             width = desired * 2;
-            centerX = width/2;
+            centerX = width / 2;
         }
 
         if (heightMode == MeasureSpec.EXACTLY) {
@@ -128,8 +139,11 @@ public class RadarView extends View {
             float mHeight = (float) (diameter / 2 * Math.sqrt(3));
             int desired = (int) (getPaddingTop() + mHeight + getPaddingBottom());
             height = desired * 2;
-            centerY = height/2;
+            centerY = height / 2;
         }
+
+        width = width + 4 * textsize;
+        height = height + 3 * textsize;
 
         if (width / 2 < diameter) {
             scaleX = width / 2 * 1.0f / diameter;
@@ -146,7 +160,6 @@ public class RadarView extends View {
         }
 
         setMeasuredDimension(width, height);
-        setEndPoint();
     }
 
     @Override
@@ -155,18 +168,19 @@ public class RadarView extends View {
         if (drawing == DRAW_BACKGROUND) {
             drawing = DRAW_FORWARD;
             startAnimation();
-        }else{
+        } else {
             mPaint.setColor(Color.GRAY);
             mPaint.setStyle(Paint.Style.STROKE);
             mPaint.setStrokeWidth(1.3f);
             mPaint.setAlpha(0x60);
             initBackground(canvas);
-            mPaint.setColor(Color.BLUE);
+            mPaint.setColor(Color.parseColor("#c5cae9"));
             mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
             mPaint.setStrokeWidth(1f);
             mPaint.setAlpha(0x30);
-            draw6point(canvas,currentHexagon);
+            draw6point(canvas, currentHexagon);
         }
+        setSixText(canvas);
     }
 
     private void draw6point(Canvas canvas, Hexagon hexagon) {
@@ -187,7 +201,7 @@ public class RadarView extends View {
         Hexagon end = new Hexagon(centerX + halfDiameter, centerY + sqrt3diameter, centerX + dia, centerY, centerX + halfDiameter, centerY - sqrt3diameter,
                 centerX - halfDiameter, centerY - sqrt3diameter, centerX - dia, centerY, centerX - halfDiameter, centerY + sqrt3diameter);
 
-        if(endHexagon ==null){
+        if (endHexagon == null) {
             endHexagon = end;
         }
 
@@ -203,7 +217,7 @@ public class RadarView extends View {
         anim.start();
     }
 
-    private void initBackground(Canvas canvas){
+    private void initBackground(Canvas canvas) {
 
         canvas.scale(scaleX, scaleY);
         for (int i = -1; i <= 1; i++) {
@@ -227,22 +241,36 @@ public class RadarView extends View {
         drawing = DRAW_FORWARD;
     }
 
-    public void prepareEndHex(float kda, float damage, float grow, float push , float live, float comprehensive){
+    public void prepareEndHex(float kda, float damage, float grow, float push, float live, float comprehensive) {
         this.kda = kda;
         this.damage = damage;
-        this.grow=grow;
+        this.grow = grow;
         this.push = push;
         this.live = live;
         this.comprehensive = comprehensive;
     }
 
-    private void setEndPoint(){
-        endHexagon = new Hexagon((int)(centerX + halfDiameter * kda/100), (int)(centerY + sqrt3diameter *kda/100), //右下 kda
-                (int)(centerX + dia*damage/100), centerY, //右 damage
-                (int)(centerX + halfDiameter*grow/100), (int)(centerY - sqrt3diameter*grow/100),//右上 grow
-                (int)(centerX - halfDiameter*push/100), (int)(centerY - sqrt3diameter*push/100), //左上 push
-                (int)(centerX - diameter*live/100), centerY, //左 live
-                (int)(centerX - halfDiameter*comprehensive/100), (int)(centerY + sqrt3diameter*comprehensive/100));//左下 comprehensive
+    private void setEndPoint() {
+        endHexagon = new Hexagon((int) (centerX + halfDiameter * kda / 100), (int) (centerY + sqrt3diameter * kda / 100), //右下 kda
+                (int) (centerX + diameter * damage / 100), centerY, //右 damage
+                (int) (centerX + halfDiameter * grow / 100), (int) (centerY - sqrt3diameter * grow / 100),//右上 grow
+                (int) (centerX - halfDiameter * push / 100), (int) (centerY - sqrt3diameter * push / 100), //左上 push
+                (int) (centerX - diameter * live / 100), centerY, //左 live
+                (int) (centerX - halfDiameter * comprehensive / 100), (int) (centerY + sqrt3diameter * comprehensive / 100));//左下 comprehensive
+    }
+
+    private void setSixText(Canvas canvas) {
+        mPaint.setColor(Color.BLACK);
+        mPaint.setStyle(Paint.Style.FILL);
+        mPaint.setStrokeWidth(1.3f);
+        mPaint.setAlpha(0xFF);
+        mPaint.setTextSize(textsize);
+        canvas.drawText("kda", centerX + halfDiameter, centerY + sqrt3diameter+textsize, mPaint);
+        canvas.drawText("伤害", centerX + diameter, centerY, mPaint);
+        canvas.drawText("发育", centerX + halfDiameter, centerY - sqrt3diameter, mPaint);
+        canvas.drawText("推进", centerX - halfDiameter - 2 * textsize, centerY - sqrt3diameter, mPaint);
+        canvas.drawText("生存", centerX - diameter - 2 * textsize, centerY, mPaint);
+        canvas.drawText("综合", centerX - halfDiameter - 2 * textsize, centerY + sqrt3diameter+textsize, mPaint);
     }
 
     public int getDiameter() {

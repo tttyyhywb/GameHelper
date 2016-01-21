@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="diameter" format="dimension"></attr>
+    <attr name="textsize" format="dimension"></attr>
 
     <declare-styleable name="radar_view">
         <attr name="diameter"/>
+        <attr name="textsize"/>
     </declare-styleable>
 </resources>
