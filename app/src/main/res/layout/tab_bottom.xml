@@ -17,12 +17,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00000000"
-            android:src="@mipmap/ic_data" />
+            android:src="@mipmap/ic_data"
+            android:clickable="false"
+            android:focusable="false"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/data" />
+            android:text="@string/data"
+            android:clickable="false"
+            android:focusable="false"/>
     </LinearLayout>
 
     <LinearLayout
@@ -38,12 +42,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00000000"
-            android:src="@mipmap/ic_discovery" />
+            android:src="@mipmap/ic_discovery"
+            android:clickable="false"
+            android:focusable="false"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/discover" />
+            android:text="@string/discover"
+            android:clickable="false"
+            android:focusable="false"/>
     </LinearLayout>
 
     <LinearLayout
@@ -59,12 +67,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00000000"
-            android:src="@mipmap/ic_me" />
+            android:src="@mipmap/ic_me"
+            android:clickable="false"
+            android:focusable="false"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/me" />
+            android:text="@string/me"
+            android:clickable="false"
+            android:focusable="false"/>
     </LinearLayout>
 
 

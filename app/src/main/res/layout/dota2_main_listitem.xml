@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="卡通图区"
+                android:text="@string/anonymous_player"
                 android:textSize="@dimen/main_list_text_size" />
 
             <LinearLayout
@@ -202,9 +202,10 @@
             android:id="@+id/img_user_portrait"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2.5"
+            android:layout_weight="1.8"
             android:background="#e0000000"
             android:layout_margin="5dp"
+            android:src="@drawable/default_portrait"
             android:scaleType="fitXY" />
 
     </LinearLayout>

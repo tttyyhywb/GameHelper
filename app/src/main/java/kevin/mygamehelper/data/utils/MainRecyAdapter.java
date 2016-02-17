@@ -8,13 +8,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.kevin.gamehelper.mygamehelper.R;
 
 import java.util.ArrayList;
 
+import kevin.api.base.gameBase.ApiResponse;
+import kevin.api.base.network.BaseRequest;
 import kevin.api.dota2.bean.Dota2GameOutline;
 import kevin.api.dota2.bean.Dota2MatchDetails;
 import kevin.api.dota2.bean.Dota2Players;
+import kevin.api.dota2.bean.Dota2Url;
+import kevin.api.dota2.bean.Dota2User;
 import kevin.utils.D2Utils;
 import kevin.utils.ImgUtils;
 
@@ -86,6 +92,12 @@ public class MainRecyAdapter extends RecyclerView.Adapter<MainRecyAdapter.MyHold
             }
             default: {
                 Dota2Players player = players.get(position);
+
+                Dota2Url url = new Dota2Url();
+
+                PlayerName_portrait playerName_portrait = new PlayerName_portrait(holder);
+                playerName_portrait.getData(url.getPlayerSummaries(player.getAccount_id()));
+
                 holder.tvDamagePercent.setText("伤害");
                 holder.tvDamage.setText(player.getHero_damage());
                 holder.tvKda.setText(player.getKills() + "/" + player.getDeaths() + "/" + player.getAssists());
@@ -162,7 +174,37 @@ public class MainRecyAdapter extends RecyclerView.Adapter<MainRecyAdapter.MyHold
         } else {
             return DATA;
         }
-    }
+    };
 
-    ;
+    class PlayerName_portrait extends BaseRequest{
+
+        MyHolder holder;
+
+        PlayerName_portrait(MyHolder myHolder){
+            holder = myHolder;
+        }
+
+        @Override
+        protected void afterSuccess(String responseResult) {
+            Gson gson = new Gson();
+
+            Dota2User dota2User = new Dota2User();
+            ApiResponse<Dota2User> response = new ApiResponse(dota2User);
+            response = gson.fromJson(responseResult, new TypeToken<ApiResponse<Dota2User>>() {
+            }.getType());
+            if (response.getResponse().getPlayers().size() > 0) {
+                Dota2User user =response.getResponse().getPlayers().get(0);
+                if(user.getPersonaname()!=null){
+                    holder.tvUserId.setText(user.getPersonaname());
+                    ImgUtils.getInstance().loadImage(user.getAvatarfull(),holder.imgPortrait);
+                }
+
+            }
+        }
+
+        @Override
+        protected void afterFail() {
+
+        }
+    }
 }
