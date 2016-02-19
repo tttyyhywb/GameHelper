@@ -49,6 +49,7 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
         this.details = details;
     }
 
+    //showCount决定综合页面展示多少item
     public PreviewRecyAdapter(Context context, ArrayList<Dota2GameOutline> matches, Dota2User account, Dota2MatchDetails[] details, int showCount) {
         this(context, matches, account, details);
         if (showCount != 0 && showCount <matches.size()) {

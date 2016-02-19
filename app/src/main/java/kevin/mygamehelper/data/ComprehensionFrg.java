@@ -47,6 +47,10 @@ public class ComprehensionFrg extends Fragment {
     @Bind(R.id.ll_preview_recy)
     LinearLayout llRecy;
 
+    public ComprehensionFrg(){
+
+    }
+
     public ComprehensionFrg(Dota2User account, Dota2MatchDetails[] detials, ArrayList<Dota2GameOutline> matches) {
         this.account = account;
         this.detials = detials;
