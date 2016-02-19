@@ -24,7 +24,6 @@ import kevin.api.dota2.bean.Dota2MatchDetails;
 import kevin.api.dota2.bean.Dota2MatchHistory;
 import kevin.api.dota2.bean.Dota2Url;
 import kevin.api.dota2.bean.Dota2User;
-import kevin.mygamehelper.data.utils.PreviewRecyAdapter;
 import kevin.utils.D2Utils;
 import kevin.utils.ImgUtils;
 import kevin.utils.Watcher;
@@ -40,7 +39,7 @@ import java.util.Observable;
 /**
  * Created by Kevin on 2015/9/2.
  */
-public class Dota2PreviewActivity extends FragmentActivity implements  View.OnClickListener{
+public class Dota2PreviewActivity extends FragmentActivity implements View.OnClickListener {
 
     @Bind(R.id.preview_content)
     ViewPager mContent;
@@ -68,21 +67,24 @@ public class Dota2PreviewActivity extends FragmentActivity implements  View.OnCl
     Dota2MatchDetails[] detials;
     Gson gson = new Gson();
 
+    public int MATCH_COUNT = 20;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dota2_preview);
         init();
-        initView();
+        //initView();  该语句移动至watcher中  当数据完整获取后  进行view初始化
     }
 
-    private void init(){
+    private void init() {
         ButterKnife.bind(this);
         Intent intent = getIntent();
         account = (Dota2User) intent.getSerializableExtra(Dota2User.TAG);
-        ImgUtils.getInstance().loadImage( account.getAvatarfull(),imgUserPortrait);
+        ImgUtils.getInstance().loadImage(account.getAvatarfull(), imgUserPortrait);
         tvUsername.setText(account.getPersonaname());
-        matchesHistoryListRequest.getData(Dota2Url.getMatchHistory(D2Utils.getAccountId(account.getSteamid()), 20));
+        detials = new Dota2MatchDetails[100];
+        matchesHistoryListRequest.getData(Dota2Url.getMatchHistory(D2Utils.getAccountId(account.getSteamid()), MATCH_COUNT));
     }
 
 
@@ -92,11 +94,11 @@ public class Dota2PreviewActivity extends FragmentActivity implements  View.OnCl
         ButterKnife.unbind(this);
     }
 
-    private void initView(){
+    private void initView() {
 
-        Fragment comprehensionFrg = new ComprehensionFrg(account);
-        Fragment radarFrg = new RadarFrg();
-        Fragment recordFrg = new RecordFrg();
+        Fragment comprehensionFrg = new ComprehensionFrg(account, detials, matches);
+        Fragment radarFrg = new RadarFrg(detials);
+        Fragment recordFrg = new RecordFrg(detials);
 
         mFragments = new ArrayList<>();
 
@@ -193,7 +195,7 @@ public class Dota2PreviewActivity extends FragmentActivity implements  View.OnCl
 
             matches = result.getResult().getMatches();
 
-            for (int i = 0; i < 6; i++) {
+            for (int i = 0; i < MATCH_COUNT; i++) {
                 DetailsRequest detailsRequest = new DetailsRequest(i);
                 detailsRequest.getData(Dota2Url.getMatchDetials(matches.get(i).getMatch_id()));
             }
@@ -229,7 +231,9 @@ public class Dota2PreviewActivity extends FragmentActivity implements  View.OnCl
         protected void afterFail() {
 
         }
-    };
+    }
+
+    ;
 
     Watcher watcher = new Watcher() {
         int count = 0;
@@ -237,8 +241,8 @@ public class Dota2PreviewActivity extends FragmentActivity implements  View.OnCl
         @Override
         public void update(Observable observable, Object data) {
             count++;
-            if (count == 6) {
-
+            if (count == 20) {
+                initView();
             }
         }
     };

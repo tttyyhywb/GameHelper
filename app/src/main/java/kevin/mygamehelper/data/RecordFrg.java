@@ -9,15 +9,22 @@ import android.view.ViewGroup;
 
 import com.kevin.gamehelper.mygamehelper.R;
 
+import kevin.api.dota2.bean.Dota2MatchDetails;
+
 /**
  * Created by Kevin on 2016/1/19.
  * DESCRIPTION:
  * email:493243390@qq.com
  */
 public class RecordFrg extends Fragment {
+    Dota2MatchDetails[] detials;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.dota2_preview_record,container,false);
+    }
+
+    public RecordFrg(Dota2MatchDetails[] detials){
+        this.detials = detials;
     }
 }

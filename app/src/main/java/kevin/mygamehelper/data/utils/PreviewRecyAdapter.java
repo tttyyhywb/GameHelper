@@ -39,6 +39,7 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
     AssetManager assetManager;
     Dota2GameOutline match;
     Dota2MatchDetails detail;
+    private int showCount = 0;
 
     public PreviewRecyAdapter(Context context, ArrayList<Dota2GameOutline> matches, Dota2User account, Dota2MatchDetails[] details) {
         this.account = account;
@@ -47,6 +48,14 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
         assetManager = context.getResources().getAssets();
         this.details = details;
     }
+
+    public PreviewRecyAdapter(Context context, ArrayList<Dota2GameOutline> matches, Dota2User account, Dota2MatchDetails[] details, int showCount) {
+        this(context, matches, account, details);
+        if (showCount != 0 && showCount <matches.size()) {
+            this.showCount = showCount;
+        }
+    }
+
 
     @Override
     public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -62,7 +71,7 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
 
         Dota2Players player = null;
         for (Dota2Players p : detail.getPlayers()) {
-            if (p.getAccount_id().equals(D2Utils.getAccountId(account.getSteamid() ))) {
+            if (p.getAccount_id().equals(D2Utils.getAccountId(account.getSteamid()))) {
                 player = p;
                 break;
             }
@@ -75,7 +84,7 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
             holder.tvResult.setTextColor(Color.rgb(56, 174, 47));
             holder.tvResult.setText("胜利");
         }
-        ImgUtils.getInstance().loadImage( D2Utils.getHeroPicHphover(player.getHero_id(), true),holder.picHero);
+        ImgUtils.getInstance().loadImage(D2Utils.getHeroPicHphover(player.getHero_id(), true), holder.picHero);
         holder.tvKda.setText(player.getKills() + "/" + player.getDeaths() + "/" + player.getAssists());
         holder.tvEndTime.setText(detail.getDuration() / 60 + "分钟");
 
@@ -88,7 +97,11 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
 
     @Override
     public int getItemCount() {
-        return details.length;
+        if (showCount < matches.size() && showCount != 0) {
+            return showCount;
+        } else {
+            return matches.size();
+        }
     }
 
     class MyHolder extends RecyclerView.ViewHolder {
@@ -115,7 +128,7 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
     View.OnClickListener listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Bundle bundle = (Bundle)v.getTag();
+            Bundle bundle = (Bundle) v.getTag();
             Intent intent = new Intent();
             intent.setClass(context, Dota2MainMatchActivity.class);
             intent.putExtras(bundle);
