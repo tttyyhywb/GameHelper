@@ -127,9 +127,7 @@ public class ComprehensionFrg extends Fragment {
         protected void afterFail() {
 
         }
-    }
-
-    ;
+    };
 
     Watcher watcher = new Watcher() {
         int count = 0;
@@ -139,10 +137,12 @@ public class ComprehensionFrg extends Fragment {
             count++;
 //            Log.e("count",count+"");
             if (count == 6) {
-                llRecy.setVisibility(View.VISIBLE);
-                myRecyView.setLayoutManager(new LinearLayoutManager(getActivity()));
-                myRecyView.setAdapter(new PreviewRecyAdapter(getActivity(), matches, account, detials));
-                count = 0;
+                if (llRecy != null) {
+                    llRecy.setVisibility(View.VISIBLE);
+                    myRecyView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    myRecyView.setAdapter(new PreviewRecyAdapter(getActivity(), matches, account, detials));
+                    count = 0;
+                }
             }
         }
     };

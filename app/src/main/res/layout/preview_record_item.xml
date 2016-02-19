@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:orientation="horizontal"
+    android:background="@color/background_grew">
+
+    <ImageView
+        android:id="@+id/record_hero_picture"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="12dp"/>
+
+    <TextView
+        android:id="@+id/record_item"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="6"
+        android:textSize="@dimen/data_fragment_text_size"
+        android:layout_marginLeft="14dp"
+        android:gravity="center_vertical"/>
+
+    <TextView
+        android:id="@+id/record_detail"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="@dimen/data_fragment_text_size"/>
+
+    <TextView
+        android:id="@+id/record_win"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:textSize="14sp"/>
+
+</LinearLayout>
