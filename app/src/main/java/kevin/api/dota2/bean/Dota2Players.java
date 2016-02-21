@@ -27,7 +27,7 @@ public class Dota2Players extends Competator {
     int deaths;
     int assists;
     String leaver_status;
-    String gold;
+    int gold;
     int last_hits;
     int denies;
     String gold_per_min;
@@ -143,11 +143,11 @@ public class Dota2Players extends Competator {
         this.leaver_status = leaver_status;
     }
 
-    public String getGold() {
+    public int getGold() {
         return gold;
     }
 
-    public void setGold(String gold) {
+    public void setGold(int gold) {
         this.gold = gold;
     }
 

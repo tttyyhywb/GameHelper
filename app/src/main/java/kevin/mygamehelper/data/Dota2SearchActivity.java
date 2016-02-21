@@ -24,7 +24,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import kevin.api.base.network.BaseRequest;
 import kevin.database.DataBase.DBHelperDota2;
-import kevin.mygamehelper.data.utils.UserIdRecyAdapter;
+import kevin.mygamehelper.data.adapter.UserIdRecyAdapter;
 import kevin.utils.D2Utils;
 import kevin.api.dota2.bean.Dota2Url;
 import kevin.api.dota2.bean.Dota2User;

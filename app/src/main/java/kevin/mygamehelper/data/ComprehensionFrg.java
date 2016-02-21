@@ -5,31 +5,21 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.kevin.gamehelper.mygamehelper.R;
 
 import java.util.ArrayList;
-import java.util.Observable;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import kevin.api.base.gameBase.ApiResult;
-import kevin.api.base.network.BaseRequest;
 import kevin.api.dota2.bean.Dota2GameOutline;
 import kevin.api.dota2.bean.Dota2MatchDetails;
-import kevin.api.dota2.bean.Dota2MatchHistory;
-import kevin.api.dota2.bean.Dota2Url;
 import kevin.api.dota2.bean.Dota2User;
-import kevin.mygamehelper.data.utils.PreviewRecyAdapter;
-import kevin.utils.D2Utils;
-import kevin.utils.Watcher;
+import kevin.mygamehelper.data.adapter.PreviewRecyAdapter;
 
 /**
  * Created by Kevin on 2016/1/19.

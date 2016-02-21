@@ -12,7 +12,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import kevin.api.dota2.bean.Dota2GameOutline;
 import kevin.api.dota2.bean.Dota2MatchDetails;
-import kevin.mygamehelper.data.utils.MainRecyAdapter;
+import kevin.mygamehelper.data.adapter.MainRecyAdapter;
 import kevin.utils.Utils;
 
 import com.kevin.gamehelper.mygamehelper.R;

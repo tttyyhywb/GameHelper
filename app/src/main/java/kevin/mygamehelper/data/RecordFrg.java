@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import kevin.api.dota2.bean.Dota2GameOutline;
 import kevin.api.dota2.bean.Dota2MatchDetails;
+import kevin.api.dota2.bean.Dota2User;
 
 /**
  * Created by Kevin on 2016/1/19.
@@ -22,7 +23,7 @@ import kevin.api.dota2.bean.Dota2MatchDetails;
 public class RecordFrg extends Fragment {
     Dota2MatchDetails[] detials;
     ArrayList<Dota2GameOutline> matches;
-
+    Dota2User account;
     public RecordFrg() {
     }
 
@@ -32,8 +33,9 @@ public class RecordFrg extends Fragment {
         return inflater.inflate(R.layout.dota2_preview_record, container, false);
     }
 
-    public RecordFrg(Dota2MatchDetails[] detials, ArrayList<Dota2GameOutline> matches) {
+    public RecordFrg(Dota2MatchDetails[] detials, ArrayList<Dota2GameOutline> matches,Dota2User account) {
         this.detials = detials;
         this.matches = matches;
+        this.account = account;
     }
 }

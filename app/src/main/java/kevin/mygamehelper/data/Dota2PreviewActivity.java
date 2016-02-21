@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -94,9 +95,14 @@ public class Dota2PreviewActivity extends FragmentActivity implements View.OnCli
 
     private void initView() {
 
+        if(this.isFinishing()){
+            Log.e("isfinishing", "initView: true ");
+            return;
+        }
+
         Fragment comprehensionFrg = new ComprehensionFrg(account, detials, matches);
-        Fragment radarFrg = new RadarFrg(detials,matches);
-        Fragment recordFrg = new RecordFrg(detials,matches);
+        Fragment radarFrg = new RadarFrg(detials,matches,account);
+        Fragment recordFrg = new RecordFrg(detials,matches,account);
 
         mFragments = new ArrayList<>();
 

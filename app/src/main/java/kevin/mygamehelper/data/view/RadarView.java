@@ -14,15 +14,26 @@ import android.view.View;
 
 import com.kevin.gamehelper.mygamehelper.R;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+
+import kevin.api.dota2.bean.Dota2MatchDetails;
+import kevin.api.dota2.bean.Dota2Players;
+import kevin.api.dota2.bean.Dota2User;
+import kevin.mygamehelper.data.utils.FieldGettor;
 import kevin.mygamehelper.data.utils.Hexagon;
 import kevin.mygamehelper.data.utils.RadarEvaluator;
+import kevin.mygamehelper.data.utils.SimpleFieldGettor;
 
 /**
  * Created by Kevin on 2016/1/12.
  * DESCRIPTION:
  * email:493243390@qq.com
  */
-public class RadarView extends View {
+public class RadarView extends View implements FieldGettor {
+
+    Dota2MatchDetails[] detials;
 
     private Paint mPaint;
 
@@ -73,6 +84,8 @@ public class RadarView extends View {
 
     private boolean drawing = DRAW_BACKGROUND;
 
+    FieldGettor fieldGettor;
+
     public RadarView(Context context) {
         this(context, null);
     }
@@ -107,6 +120,8 @@ public class RadarView extends View {
         dia = diameter;
 
         a.recycle();
+
+        setFieldGettor(new SimpleFieldGettor());
     }
 
     @Override
@@ -241,13 +256,23 @@ public class RadarView extends View {
         drawing = DRAW_FORWARD;
     }
 
-    public void prepareEndHex(float kda, float damage, float grow, float push, float live, float comprehensive) {
-        this.kda = kda;
-        this.damage = damage;
-        this.grow = grow;
-        this.push = push;
-        this.live = live;
-        this.comprehensive = comprehensive;
+    public void prepareEndHex(Dota2MatchDetails[] detials, int count , Dota2User account) {
+
+        Dota2Players[] accountDetials = new Dota2Players[count];
+
+        for(int i=0 ; i<count;i++){
+            accountDetials[i]=(detials[i].getPlayer(account));
+        }
+//        Log.e("accountDetials", "prepareEndHex: "+accountDetials );
+//        Log.e("account", "prepareEndHex: "+account );
+        ArrayList<Integer> gold = getFieldAsList(accountDetials,"gold",count);
+        Log.e("gold", "prepareEndHex: "+gold +gold.get(0).getClass().getSimpleName() );
+//        this.kda = kda;
+//        this.damage = damage;
+//        this.grow = grow;
+//        this.push = push;
+//        this.live = live;
+//        this.comprehensive = comprehensive;
     }
 
     private void setEndPoint() {
@@ -265,12 +290,12 @@ public class RadarView extends View {
         mPaint.setStrokeWidth(1.3f);
         mPaint.setAlpha(0xFF);
         mPaint.setTextSize(textsize);
-        canvas.drawText("kda", centerX + halfDiameter, centerY + sqrt3diameter+textsize, mPaint);
+        canvas.drawText("kda", centerX + halfDiameter, centerY + sqrt3diameter + textsize, mPaint);
         canvas.drawText("伤害", centerX + diameter, centerY, mPaint);
         canvas.drawText("发育", centerX + halfDiameter, centerY - sqrt3diameter, mPaint);
         canvas.drawText("推进", centerX - halfDiameter - 2 * textsize, centerY - sqrt3diameter, mPaint);
         canvas.drawText("生存", centerX - diameter - 2 * textsize, centerY, mPaint);
-        canvas.drawText("综合", centerX - halfDiameter - 2 * textsize, centerY + sqrt3diameter+textsize, mPaint);
+        canvas.drawText("综合", centerX - halfDiameter - 2 * textsize, centerY + sqrt3diameter + textsize, mPaint);
     }
 
     public int getDiameter() {
@@ -288,4 +313,22 @@ public class RadarView extends View {
     public void setmPaint(Paint mPaint) {
         this.mPaint = mPaint;
     }
+
+    public void setMatchDetails(Dota2MatchDetails[] detials) {
+        this.detials = detials;
+    }
+
+    public void setFieldGettor(FieldGettor gettor){
+        this.fieldGettor = gettor;
+    }
+
+    @Override
+    public <T, V> ArrayList<T> getFieldAsList(V[] detials, String name, int count) {
+        if (fieldGettor != null) {
+            return fieldGettor.getFieldAsList(detials, name, count);
+        } else {
+            return null;
+        }
+    }
 }
+

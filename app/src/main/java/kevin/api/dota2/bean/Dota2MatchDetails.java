@@ -1,6 +1,9 @@
 package kevin.api.dota2.bean;
 
+import android.util.Log;
+
 import kevin.api.base.gameBase.bean.GameEnvirnment;
+import kevin.utils.D2Utils;
 
 import java.util.ArrayList;
 
@@ -30,6 +33,16 @@ public class Dota2MatchDetails extends GameEnvirnment {
     String negative_votes;
     String game_mode;
     String engine;
+
+    public Dota2Players getPlayer(Dota2User account) {
+        for (int i = 0; i < players.size(); i++) {
+            if(D2Utils.getAccountId(account.getSteamid()).equals(players.get(i).getAccount_id())){
+//                Log.e("compare", "true" );
+                return players.get(i);
+            }
+        }
+        return null;
+    }
 
     public ArrayList<Dota2Players> getPlayers() {
         return players;
@@ -183,7 +196,7 @@ public class Dota2MatchDetails extends GameEnvirnment {
         this.engine = engine;
     }
 
-    public void changed(){
+    public void changed() {
         setChanged();
     }
 
