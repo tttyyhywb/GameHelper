@@ -12,8 +12,6 @@ public class Dota2Players extends Competator {
 
     public final static String TAG = "dota2players";
 
-    public int type = 0;
-
     String account_id;
     int player_slot;
     int hero_id;
@@ -30,14 +28,62 @@ public class Dota2Players extends Competator {
     int gold;
     int last_hits;
     int denies;
-    String gold_per_min;
-    String xp_per_min;
+    int gold_per_min;
+    int xp_per_min;
     String gold_spent;
-    String hero_damage;
-    String tower_damage;
-    String hero_healing;
-    String level;
+    int hero_damage;
+    int tower_damage;
+    int hero_healing;
+    int level;
     ArrayList<Dota2Skill> ability_upgrades;
+
+    public int getGold_per_min() {
+        return gold_per_min;
+    }
+
+    public void setGold_per_min(int gold_per_min) {
+        this.gold_per_min = gold_per_min;
+    }
+
+    public int getXp_per_min() {
+        return xp_per_min;
+    }
+
+    public void setXp_per_min(int xp_per_min) {
+        this.xp_per_min = xp_per_min;
+    }
+
+    public int getHero_damage() {
+        return hero_damage;
+    }
+
+    public void setHero_damage(int hero_damage) {
+        this.hero_damage = hero_damage;
+    }
+
+    public int getTower_damage() {
+        return tower_damage;
+    }
+
+    public void setTower_damage(int tower_damage) {
+        this.tower_damage = tower_damage;
+    }
+
+    public int getHero_healing() {
+        return hero_healing;
+    }
+
+    public void setHero_healing(int hero_healing) {
+        this.hero_healing = hero_healing;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
 
     public int getItem_5() {
         return item_5;
@@ -167,60 +213,12 @@ public class Dota2Players extends Competator {
         this.denies = denies;
     }
 
-    public String getGold_per_min() {
-        return gold_per_min;
-    }
-
-    public void setGold_per_min(String gold_per_min) {
-        this.gold_per_min = gold_per_min;
-    }
-
-    public String getXp_per_min() {
-        return xp_per_min;
-    }
-
-    public void setXp_per_min(String xp_per_min) {
-        this.xp_per_min = xp_per_min;
-    }
-
     public String getGold_spent() {
         return gold_spent;
     }
 
     public void setGold_spent(String gold_spent) {
         this.gold_spent = gold_spent;
-    }
-
-    public String getHero_damage() {
-        return hero_damage;
-    }
-
-    public void setHero_damage(String hero_damage) {
-        this.hero_damage = hero_damage;
-    }
-
-    public String getTower_damage() {
-        return tower_damage;
-    }
-
-    public void setTower_damage(String tower_damage) {
-        this.tower_damage = tower_damage;
-    }
-
-    public String getHero_healing() {
-        return hero_healing;
-    }
-
-    public void setHero_healing(String hero_healing) {
-        this.hero_healing = hero_healing;
-    }
-
-    public String getLevel() {
-        return level;
-    }
-
-    public void setLevel(String level) {
-        this.level = level;
     }
 
     public ArrayList<Dota2Skill> getAbility_upgrades() {

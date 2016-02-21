@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import kevin.api.dota2.bean.Dota2MatchDetails;
 import kevin.api.dota2.bean.Dota2Players;
 import kevin.api.dota2.bean.Dota2User;
+import kevin.mygamehelper.data.utils.Calculator;
 import kevin.mygamehelper.data.utils.FieldGettor;
 import kevin.mygamehelper.data.utils.Hexagon;
 import kevin.mygamehelper.data.utils.RadarEvaluator;
@@ -265,8 +266,9 @@ public class RadarView extends View implements FieldGettor {
         }
 //        Log.e("accountDetials", "prepareEndHex: "+accountDetials );
 //        Log.e("account", "prepareEndHex: "+account );
-        ArrayList<Integer> gold = getFieldAsList(accountDetials,"gold",count);
-        Log.e("gold", "prepareEndHex: "+gold +gold.get(0).getClass().getSimpleName() );
+        ArrayList<Integer> gold = getFieldAsList(accountDetials,"gold_per_min",count);
+        Log.e("gold_per_min", "prepareEndHex: "+gold +gold.get(0).getClass().getSimpleName() );
+        Log.e("radar_gold", "prepareEndHex: "+ Calculator.Ex(gold,500) + " " +Calculator.Ex100(gold,500));
 //        this.kda = kda;
 //        this.damage = damage;
 //        this.grow = grow;

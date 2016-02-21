@@ -1,5 +1,7 @@
 package kevin.mygamehelper.data.utils;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 /**
@@ -16,7 +18,7 @@ public class Calculator {
 
     public static float PRECENT = 0.6f;
 
-    public static float average(ArrayList<Float> array) {
+    public static float average(ArrayList<Integer> array) {
 
         int count = array.size();
         float sum = 0;
@@ -26,7 +28,7 @@ public class Calculator {
         return sum / count;
     }
 
-    public static float variance(ArrayList<Float> array) {
+    public static float variance(ArrayList<Integer> array) {
         int count = array.size();
         float ave = average(array);
         float var = 0;
@@ -36,13 +38,13 @@ public class Calculator {
         return var / count;
     }
 
-    public static double standard_deviation(ArrayList<Float> array) {
+    public static double standard_deviation(ArrayList<Integer> array) {
         return Math.sqrt(variance(array));
     }
 
     ;
 
-    public static float Ex(ArrayList<Float> array) {
+    public static float Ex(ArrayList<Integer> array, int EX) {
 
         int count = array.size();
         float ave = average(array);
@@ -52,14 +54,13 @@ public class Calculator {
 
         for (int i = 0; i < count; i++) {
             float value = array.get(i);
+            Log.e("ex", "Ex: "+ex + " precent :"+ precent(ave, sigma, value)+" value: "+value + " worth :"+ value * precent(ave, sigma, value) * (1-PRECENT)/count);
             ex += value * precent(ave, sigma, value) * (1-PRECENT)/count;
         }
         return ex;
-    }
+    };
 
-    ;
-
-    public static int Ex100(ArrayList<Float> array, float EX) {
+    public static float Ex100(ArrayList<Integer> array, float EX) {
         int count = array.size();
         float ave = average(array);
         float ex;
@@ -76,7 +77,7 @@ public class Calculator {
             ex += 100 * (1-PRECENT) / count * precent(ave, sigma, value);
         }
 
-        return (int) ex;
+        return ex;
     }
 
     public static float precent(float ave, float sigma, float value) {
