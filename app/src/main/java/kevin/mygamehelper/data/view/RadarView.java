@@ -174,7 +174,8 @@ public class RadarView extends View implements FieldGettor {
         } else {
             scaleX = scaleY;
         }
-
+        //由于左边text导致中心右移
+        centerX = centerX + 2 * textsize;
         setMeasuredDimension(width, height);
     }
 
@@ -216,7 +217,6 @@ public class RadarView extends View implements FieldGettor {
         startHexagon = new Hexagon(centerX, centerY, centerX, centerY, centerX, centerY, centerX, centerY, centerX, centerY, centerX, centerY);
         Hexagon end = new Hexagon(centerX + halfDiameter, centerY + sqrt3diameter, centerX + dia, centerY, centerX + halfDiameter, centerY - sqrt3diameter,
                 centerX - halfDiameter, centerY - sqrt3diameter, centerX - dia, centerY, centerX - halfDiameter, centerY + sqrt3diameter);
-
         if (endHexagon == null) {
             endHexagon = end;
         }
@@ -267,14 +267,13 @@ public class RadarView extends View implements FieldGettor {
 //        Log.e("accountDetials", "prepareEndHex: "+accountDetials );
 //        Log.e("account", "prepareEndHex: "+account );
         ArrayList<Integer> gold = getFieldAsList(accountDetials,"gold_per_min",count);
-        Log.e("gold_per_min", "prepareEndHex: "+gold +gold.get(0).getClass().getSimpleName() );
-        Log.e("radar_gold", "prepareEndHex: "+ Calculator.Ex(gold,500) + " " +Calculator.Ex100(gold,500));
-//        this.kda = kda;
-//        this.damage = damage;
-//        this.grow = grow;
-//        this.push = push;
-//        this.live = live;
-//        this.comprehensive = comprehensive;
+        this.kda = 56;
+        this.damage = 67;
+        this.grow = 43;
+        this.push = 64;
+        this.live = 23;
+        this.comprehensive = 77;
+        setEndPoint();
     }
 
     private void setEndPoint() {
