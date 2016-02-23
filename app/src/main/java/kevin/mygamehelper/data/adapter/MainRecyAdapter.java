@@ -99,9 +99,9 @@ public class MainRecyAdapter extends RecyclerView.Adapter<MainRecyAdapter.MyHold
                 playerName_portrait.getData(url.getPlayerSummaries(player.getAccount_id()));
 
                 holder.tvDamagePercent.setText("伤害");
-                holder.tvDamage.setText(player.getHero_damage());
-                holder.tvKda.setText(player.getKills() + "/" + player.getDeaths() + "/" + player.getAssists());
-                holder.tvHeroLevel.setText(player.getLevel());
+                holder.tvDamage.setText((int)player.getHero_damage()+"");
+                holder.tvKda.setText((int)player.getKills() + "/" + (int)player.getDeaths() + "/" + (int)player.getAssists());
+                holder.tvHeroLevel.setText(player.getLevel()+"");
 
                 ImgUtils.getInstance().loadImage(D2Utils.getHeroPicHphover(player.getHero_id(),true),holder.imgHero);
                 ImgUtils.getInstance().loadImage(D2Utils.getItemUrl(player.getItem_0(),true),holder.item0);
@@ -113,7 +113,6 @@ public class MainRecyAdapter extends RecyclerView.Adapter<MainRecyAdapter.MyHold
                 break;
             }
         }
-
     }
 
     @Override

@@ -14,6 +14,7 @@ import android.view.View;
 
 import com.kevin.gamehelper.mygamehelper.R;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -190,12 +191,12 @@ public class RadarView extends View implements FieldGettor {
             mPaint.setColor(Color.GRAY);
             mPaint.setStyle(Paint.Style.STROKE);
             mPaint.setStrokeWidth(1.3f);
-            mPaint.setAlpha(0x60);
+            mPaint.setAlpha(0xA0);
             initBackground(canvas);
             mPaint.setColor(Color.parseColor("#c5cae9"));
             mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
             mPaint.setStrokeWidth(1f);
-            mPaint.setAlpha(0x30);
+            mPaint.setAlpha(0xA0);
             draw6point(canvas, currentHexagon);
         }
         setSixText(canvas);
@@ -261,17 +262,22 @@ public class RadarView extends View implements FieldGettor {
             accountDetials[i] = (detials[i].getPlayer(account));
         }
 
-        ArrayList<Integer> array = getFieldAsList(accountDetials, "deaths", count);
-        this.live = 100 - Calculator.Ex100(array, 5);
+        ArrayList<Float> array = getFieldAsList(accountDetials, "deaths", count);
+        this.live = 100 - Calculator.Ex100(array, 3);
         array = getFieldAsList(accountDetials, "hero_damage", count);
-        this.damage = Calculator.Ex100(array, 500);
-        array = getFieldAsList(accountDetials, "gold_per_min", count);
+        this.damage = Calculator.Ex100(array, 5000);
+        array = getFieldAsList(accountDetials, "xp_per_min", count);
         this.grow = Calculator.Ex100(array, 500);
-        array = getFieldAsList(accountDetials, "gold_per_min", count);
-        this.push = Calculator.Ex100(array, 500);
-        array = getFieldAsList(accountDetials, "gold_per_min", count);
-        this.kda = Calculator.Ex100(array, 500);
-        this.comprehensive = 50;
+        array = getFieldAsList(accountDetials, "tower_damage", count);
+        this.push = Calculator.Ex100(array, 2500);
+        ArrayList<Float> arrayK = getFieldAsList(accountDetials, "kills", count);
+        ArrayList<Float> arrayD = getFieldAsList(accountDetials, "deaths", count);
+        ArrayList<Float> arrayA = getFieldAsList(accountDetials, "assists", count);
+        for(int i=0;i<count;i++){
+            array.add((arrayK.get(i)+arrayD.get(i))/arrayA.get(i));
+        }
+        this.kda = Calculator.Ex100(array, 5);
+        this.comprehensive = (this.live + this.damage + this.grow + this.push + this.kda) / 5;
 
     }
 
@@ -332,6 +338,7 @@ public class RadarView extends View implements FieldGettor {
     @Override
     public <T, V> ArrayList<T> getFieldAsList(V[] detials, String name, int count) {
         if (fieldGettor != null) {
+
             return fieldGettor.getFieldAsList(detials, name, count);
         } else {
             return null;

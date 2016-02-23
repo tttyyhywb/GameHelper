@@ -14,18 +14,18 @@ import java.util.ArrayList;
 import kevin.api.dota2.bean.Dota2GameOutline;
 import kevin.api.dota2.bean.Dota2MatchDetails;
 import kevin.api.dota2.bean.Dota2User;
+import kevin.mygamehelper.data.utils.FieldGettor;
 
 /**
  * Created by Kevin on 2016/1/19.
  * DESCRIPTION:
  * email:493243390@qq.com
  */
-public class RecordFrg extends Fragment {
+public class RecordFrg extends Fragment implements FieldGettor{
     Dota2MatchDetails[] detials;
     ArrayList<Dota2GameOutline> matches;
     Dota2User account;
-    public RecordFrg() {
-    }
+
 
     @Nullable
     @Override
@@ -37,5 +37,11 @@ public class RecordFrg extends Fragment {
         this.detials = detials;
         this.matches = matches;
         this.account = account;
+
+    }
+
+    @Override
+    public <T, V> ArrayList<T> getFieldAsList(V[] detials, String fieldName, int count) {
+        return null;
     }
 }

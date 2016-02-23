@@ -18,17 +18,26 @@ public class Calculator {
 
     public static float PRECENT = 0.6f;
 
-    public static float average(ArrayList<Integer> array) {
+    public static float average(ArrayList<Float> array) {
 
         int count = array.size();
-        float sum = 0;
+        float ave = 0;
         for (int i = 0; i < count; i++) {
-            sum += array.get(i);
+            ave += array.get(i);
         }
-        return sum / count;
+        ave /= count;
+        float realSum = 0;
+        for (int i = 0; i < count; i++) {
+            if (ave > 200 && array.get(i) > (ave * 1.8)) {
+                count--;
+            } else {
+                realSum += array.get(i);
+            }
+        }
+        return realSum / count;
     }
 
-    public static float variance(ArrayList<Integer> array) {
+    public static float variance(ArrayList<Float> array) {
         int count = array.size();
         float ave = average(array);
         float var = 0;
@@ -38,13 +47,13 @@ public class Calculator {
         return var / count;
     }
 
-    public static double standard_deviation(ArrayList<Integer> array) {
+    public static double standard_deviation(ArrayList<Float> array) {
         return Math.sqrt(variance(array));
     }
 
     ;
 
-    public static float Ex(ArrayList<Integer> array, int EX) {
+    public static float Ex(ArrayList<Float> array, int EX) {
 
         int count = array.size();
         float ave = average(array);
@@ -54,27 +63,29 @@ public class Calculator {
 
         for (int i = 0; i < count; i++) {
             float value = array.get(i);
-            Log.e("ex", "Ex: "+ex + " precent :"+ precent(ave, sigma, value)+" value: "+value + " worth :"+ value * precent(ave, sigma, value) * (1-PRECENT)/count);
-            ex += value * precent(ave, sigma, value) * (1-PRECENT)/count;
+            //Log.e("ex", "Ex: "+ex + " precent :"+ precent(ave, sigma, value)+" value: "+value + " worth :"+ value * precent(ave, sigma, value) * (1-PRECENT)/count);
+            ex += value * precent(ave, sigma, value) * (1 - PRECENT) / count;
         }
         return ex;
-    };
+    }
 
-    public static float Ex100(ArrayList<Integer> array, float EX) {
+    ;
+
+    public static float Ex100(ArrayList<Float> array, float EX) {
         int count = array.size();
         float ave = average(array);
         float ex;
         if (ave > EX) {
-            ex = 100*PRECENT;
+            ex = 100 * PRECENT;
         } else {
-            ex = ave / EX * (100 - PRECENT*100);
+            ex = ave / EX * (100 - PRECENT * 100);
         }
 
         float sigma = (float) standard_deviation(array);
 
         for (int i = 0; i < count; i++) {
             float value = array.get(i);
-            ex += 100 * (1-PRECENT) / count * precent(ave, sigma, value);
+            ex += 100 * (1 - PRECENT) / count * precent(ave, sigma, value);
         }
 
         return ex;
