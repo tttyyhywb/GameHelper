@@ -18,6 +18,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
+import kevin.api.dota2.bean.Dota2GameOutline;
 import kevin.api.dota2.bean.Dota2MatchDetails;
 import kevin.api.dota2.bean.Dota2Players;
 import kevin.api.dota2.bean.Dota2User;
@@ -73,12 +74,12 @@ public class RadarView extends View implements FieldGettor {
 
     private Hexagon currentHexagon;
 
-    private float kda;
-    private float damage;
-    private float push;
-    private float comprehensive;
-    private float grow;
-    private float live;
+    private float kda = -1;
+    private float damage = -1;
+    private float push = -1;
+    private float comprehensive = -1;
+    private float grow = -1;
+    private float live = -1;
 
     public static final boolean DRAW_BACKGROUND = true;
     public static final boolean DRAW_FORWARD = false;
@@ -214,12 +215,7 @@ public class RadarView extends View implements FieldGettor {
 
     private void startAnimation() {
 
-        startHexagon = new Hexagon(centerX, centerY, centerX, centerY, centerX, centerY, centerX, centerY, centerX, centerY, centerX, centerY);
-        Hexagon end = new Hexagon(centerX + halfDiameter, centerY + sqrt3diameter, centerX + dia, centerY, centerX + halfDiameter, centerY - sqrt3diameter,
-                centerX - halfDiameter, centerY - sqrt3diameter, centerX - dia, centerY, centerX - halfDiameter, centerY + sqrt3diameter);
-        if (endHexagon == null) {
-            endHexagon = end;
-        }
+        setEndPoint();
 
         ValueAnimator anim = new ValueAnimator().ofObject(new RadarEvaluator(), startHexagon, endHexagon);
         anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -257,32 +253,42 @@ public class RadarView extends View implements FieldGettor {
         drawing = DRAW_FORWARD;
     }
 
-    public void prepareEndHex(Dota2MatchDetails[] detials, int count , Dota2User account) {
+    public void prepareEndHex(ArrayList<Dota2GameOutline> matches, Dota2MatchDetails[] detials, int count, Dota2User account) {
 
         Dota2Players[] accountDetials = new Dota2Players[count];
 
-        for(int i=0 ; i<count;i++){
-            accountDetials[i]=(detials[i].getPlayer(account));
+        for (int i = 0; i < count; i++) {
+            accountDetials[i] = (detials[i].getPlayer(account));
         }
-//        Log.e("accountDetials", "prepareEndHex: "+accountDetials );
-//        Log.e("account", "prepareEndHex: "+account );
-        ArrayList<Integer> gold = getFieldAsList(accountDetials,"gold_per_min",count);
-        this.kda = 56;
-        this.damage = 67;
-        this.grow = 43;
-        this.push = 64;
-        this.live = 23;
-        this.comprehensive = 77;
-        setEndPoint();
+
+        ArrayList<Integer> array = getFieldAsList(accountDetials, "deaths", count);
+        this.live = 100 - Calculator.Ex100(array, 5);
+        array = getFieldAsList(accountDetials, "hero_damage", count);
+        this.damage = Calculator.Ex100(array, 500);
+        array = getFieldAsList(accountDetials, "gold_per_min", count);
+        this.grow = Calculator.Ex100(array, 500);
+        array = getFieldAsList(accountDetials, "gold_per_min", count);
+        this.push = Calculator.Ex100(array, 500);
+        array = getFieldAsList(accountDetials, "gold_per_min", count);
+        this.kda = Calculator.Ex100(array, 500);
+        this.comprehensive = 50;
+
     }
 
     private void setEndPoint() {
-        endHexagon = new Hexagon((int) (centerX + halfDiameter * kda / 100), (int) (centerY + sqrt3diameter * kda / 100), //右下 kda
-                (int) (centerX + diameter * damage / 100), centerY, //右 damage
-                (int) (centerX + halfDiameter * grow / 100), (int) (centerY - sqrt3diameter * grow / 100),//右上 grow
-                (int) (centerX - halfDiameter * push / 100), (int) (centerY - sqrt3diameter * push / 100), //左上 push
-                (int) (centerX - diameter * live / 100), centerY, //左 live
-                (int) (centerX - halfDiameter * comprehensive / 100), (int) (centerY + sqrt3diameter * comprehensive / 100));//左下 comprehensive
+        startHexagon = new Hexagon(centerX, centerY, centerX, centerY, centerX, centerY, centerX, centerY, centerX, centerY, centerX, centerY);
+        if (this.kda != -1) {
+            endHexagon = new Hexagon((int) (centerX + halfDiameter * kda / 100), (int) (centerY + sqrt3diameter * kda / 100), //右下 kda
+                    (int) (centerX + diameter * damage / 100), centerY, //右 damage
+                    (int) (centerX + halfDiameter * grow / 100), (int) (centerY - sqrt3diameter * grow / 100),//右上 grow
+                    (int) (centerX - halfDiameter * push / 100), (int) (centerY - sqrt3diameter * push / 100), //左上 push
+                    (int) (centerX - diameter * live / 100), centerY, //左 live
+                    (int) (centerX - halfDiameter * comprehensive / 100), (int) (centerY + sqrt3diameter * comprehensive / 100));//左下 comprehensive
+        } else if (endHexagon == null) {
+            Hexagon end = new Hexagon(centerX + halfDiameter, centerY + sqrt3diameter, centerX + dia, centerY, centerX + halfDiameter, centerY - sqrt3diameter,
+                    centerX - halfDiameter, centerY - sqrt3diameter, centerX - dia, centerY, centerX - halfDiameter, centerY + sqrt3diameter);
+            endHexagon = end;
+        }
     }
 
     private void setSixText(Canvas canvas) {
@@ -319,7 +325,7 @@ public class RadarView extends View implements FieldGettor {
         this.detials = detials;
     }
 
-    public void setFieldGettor(FieldGettor gettor){
+    public void setFieldGettor(FieldGettor gettor) {
         this.fieldGettor = gettor;
     }
 

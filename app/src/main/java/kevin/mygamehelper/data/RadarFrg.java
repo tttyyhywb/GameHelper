@@ -44,8 +44,7 @@ public class RadarFrg extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dota2_preview_radar, container, false);
         ButterKnife.bind(this, view);
-        radarView = new RadarView(getActivity());
-        radarView.prepareEndHex(detials,20,account);
+        radarView.prepareEndHex(matches,detials,20,account);
 
         return view;
     }
