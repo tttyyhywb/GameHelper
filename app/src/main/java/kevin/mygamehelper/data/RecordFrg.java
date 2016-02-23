@@ -13,8 +13,10 @@ import java.util.ArrayList;
 
 import kevin.api.dota2.bean.Dota2GameOutline;
 import kevin.api.dota2.bean.Dota2MatchDetails;
+import kevin.api.dota2.bean.Dota2Players;
 import kevin.api.dota2.bean.Dota2User;
 import kevin.mygamehelper.data.utils.FieldGettor;
+import kevin.mygamehelper.data.utils.SimpleFieldGettor;
 
 /**
  * Created by Kevin on 2016/1/19.
@@ -25,8 +27,8 @@ public class RecordFrg extends Fragment implements FieldGettor{
     Dota2MatchDetails[] detials;
     ArrayList<Dota2GameOutline> matches;
     Dota2User account;
-
-
+    FieldGettor fieldGettor;
+    int showCount;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,11 +39,26 @@ public class RecordFrg extends Fragment implements FieldGettor{
         this.detials = detials;
         this.matches = matches;
         this.account = account;
+        showCount = matches.size();
+        setFieldGettor(new SimpleFieldGettor());
 
+        Dota2Players[] accountDetials = new Dota2Players[showCount];
+
+        for (int i = 0; i < showCount; i++) {
+            accountDetials[i] = (detials[i].getPlayer(account));
+        }
+
+    }
+    public void setFieldGettor(FieldGettor gettor) {
+        this.fieldGettor = gettor;
     }
 
     @Override
     public <T, V> ArrayList<T> getFieldAsList(V[] detials, String fieldName, int count) {
-        return null;
+        if (fieldGettor != null) {
+            return fieldGettor.getFieldAsList(detials, fieldName, count);
+        } else {
+            return null;
+        }
     }
 }

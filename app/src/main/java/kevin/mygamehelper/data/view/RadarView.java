@@ -89,6 +89,8 @@ public class RadarView extends View implements FieldGettor {
 
     FieldGettor fieldGettor;
 
+    int showCount;
+
     public RadarView(Context context) {
         this(context, null);
     }
@@ -256,9 +258,11 @@ public class RadarView extends View implements FieldGettor {
 
     public void prepareEndHex(ArrayList<Dota2GameOutline> matches, Dota2MatchDetails[] detials, int count, Dota2User account) {
 
-        Dota2Players[] accountDetials = new Dota2Players[count];
+        showCount = count;
 
-        for (int i = 0; i < count; i++) {
+        Dota2Players[] accountDetials = new Dota2Players[showCount];
+
+        for (int i = 0; i < showCount; i++) {
             accountDetials[i] = (detials[i].getPlayer(account));
         }
 
@@ -338,7 +342,6 @@ public class RadarView extends View implements FieldGettor {
     @Override
     public <T, V> ArrayList<T> getFieldAsList(V[] detials, String name, int count) {
         if (fieldGettor != null) {
-
             return fieldGettor.getFieldAsList(detials, name, count);
         } else {
             return null;
