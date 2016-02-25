@@ -86,7 +86,7 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
             holder.tvResult.setText("胜利");
         }
         ImgUtils.getInstance().loadImage(D2Utils.getHeroPicHphover(player.getHero_id(), true), holder.picHero);
-        holder.tvKda.setText(player.getKills() + "/" + player.getDeaths() + "/" + player.getAssists());
+        holder.tvKda.setText((int)player.getKills() + "/" + (int)player.getDeaths() + "/" + (int)player.getAssists());
         holder.tvEndTime.setText(detail.getDuration() / 60 + "分钟");
 
         Bundle bundle = new Bundle();
