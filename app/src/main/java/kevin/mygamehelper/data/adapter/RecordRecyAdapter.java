@@ -46,7 +46,7 @@ public class RecordRecyAdapter extends RecyclerView.Adapter<RecordRecyAdapter.My
 
     @Override
     public void onBindViewHolder(MyHolder holder, int position) {
-        holder.tvRecordDetial.setText(data.get(position).getRecord()+"");
+        holder.tvRecordDetial.setText((int)data.get(position).getRecord()+"");
         if(data.get(position).isIfWin()){
             holder.tvIfWin.setTextColor(Color.rgb(154, 11, 35));
             holder.tvIfWin.setText("失败");
