@@ -13,6 +13,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.kevin.gamehelper.mygamehelper.R;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -26,14 +32,6 @@ import kevin.api.dota2.bean.Dota2User;
 import kevin.utils.D2Utils;
 import kevin.utils.ImgUtils;
 import kevin.utils.Watcher;
-
-import com.google.gson.reflect.TypeToken;
-import com.kevin.gamehelper.mygamehelper.R;
-
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
 
 /**
  * Created by Kevin on 2015/9/2.
@@ -57,6 +55,8 @@ public class Dota2PreviewActivity extends FragmentActivity implements View.OnCli
 
     @Bind(R.id.ll_comprehension)
     LinearLayout llComprehension;
+    @Bind(R.id.loading)
+    ImageView loading;
 
     private FragmentPagerAdapter mFrgPageAdapter;
     private List<Fragment> mFragments;
@@ -72,6 +72,7 @@ public class Dota2PreviewActivity extends FragmentActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dota2_preview);
+        ButterKnife.bind(this);
         init();
         //initView();  该语句移动至watcher中  当数据完整获取后  进行view初始化
     }
@@ -95,14 +96,14 @@ public class Dota2PreviewActivity extends FragmentActivity implements View.OnCli
 
     private void initView() {
 
-        if(this.isFinishing()){
+        if (this.isFinishing()) {
             Log.e("isfinishing", "initView: true ");
             return;
         }
 
         Fragment comprehensionFrg = new ComprehensionFrg(account, detials, matches);
-        Fragment radarFrg = new RadarFrg(detials,matches,account);
-        Fragment recordFrg = new RecordFrg(detials,matches,account);
+        Fragment radarFrg = new RadarFrg(detials, matches, account);
+        Fragment recordFrg = new RecordFrg(detials, matches, account);
 
         mFragments = new ArrayList<>();
 
@@ -147,6 +148,9 @@ public class Dota2PreviewActivity extends FragmentActivity implements View.OnCli
         llRecord.setOnClickListener(this);
         llRadar.setOnClickListener(this);
         llComprehension.setOnClickListener(this);
+
+        loading.setVisibility(View.GONE);
+        mContent.setVisibility(View.VISIBLE);
     }
 
     private void resetView() {
