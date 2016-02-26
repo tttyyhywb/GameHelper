@@ -20,8 +20,8 @@
 
         <Button
             android:id="@+id/twenty_times"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="55dp"
+            android:layout_height="25dp"
             android:layout_alignParentRight="true"
             android:text="@string/twenty_times"
             android:textSize="11sp" />
