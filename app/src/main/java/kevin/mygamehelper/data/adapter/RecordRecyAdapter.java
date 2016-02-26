@@ -1,7 +1,9 @@
 package kevin.mygamehelper.data.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,13 +15,12 @@ import android.widget.TextView;
 
 import com.kevin.gamehelper.mygamehelper.R;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 import kevin.api.dota2.bean.Dota2GameOutline;
 import kevin.api.dota2.bean.Dota2MatchDetails;
 import kevin.api.dota2.bean.Dota2User;
+import kevin.mygamehelper.data.Dota2MainMatchActivity;
 import kevin.mygamehelper.data.utils.RecordItem;
 import kevin.utils.D2Utils;
 import kevin.utils.ImgUtils;
@@ -33,10 +34,14 @@ public class RecordRecyAdapter extends RecyclerView.Adapter<RecordRecyAdapter.My
 
     Context context;
     ArrayList<RecordItem> data;
+    Dota2GameOutline match;
+    Dota2MatchDetails detail;
 
-    public RecordRecyAdapter(Context contexts, ArrayList<RecordItem> data) {
+    public RecordRecyAdapter(Context contexts, ArrayList<RecordItem> data,Dota2GameOutline match , Dota2MatchDetails detial) {
         this.context = contexts;
         this.data = data;
+        this.match = match;
+        this.detail = detial;
         Log.e("recordrecyadater", "RecordRecyAdapter: " + this.data );
     }
 
@@ -60,6 +65,12 @@ public class RecordRecyAdapter extends RecyclerView.Adapter<RecordRecyAdapter.My
         }
         holder.tvRecordItem.setText(data.get(position).getName());
         ImgUtils.getInstance().loadImage(D2Utils.getHeroPicHphover(data.get(position).getHeroId(), true), holder.imgHerePic);
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(match.TAG, match);
+        bundle.putSerializable(detail.TAG, detail);
+        holder.llRecord.setTag(bundle);
+        holder.llRecord.setOnClickListener(listener);
     }
 
     @Override
@@ -81,7 +92,18 @@ public class RecordRecyAdapter extends RecyclerView.Adapter<RecordRecyAdapter.My
             tvRecordDetial = (TextView) itemView.findViewById(R.id.record_detail);
             tvRecordItem = (TextView) itemView.findViewById(R.id.record_item);
             llRecord = (LinearLayout) itemView.findViewById(R.id.ll_record);
-
         }
     }
+
+    View.OnClickListener listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Bundle bundle = (Bundle) v.getTag();
+            Intent intent = new Intent();
+            intent.setClass(context, Dota2MainMatchActivity.class);
+            intent.putExtras(bundle);
+            context.startActivity(intent);
+        }
+    };
+
 }

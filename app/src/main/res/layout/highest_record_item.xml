@@ -3,9 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="35dp"
     android:orientation="horizontal"
-    android:paddingLeft="16dp"
+    android:layout_marginTop="1dp"
     android:paddingRight="10dp"
-    android:background="@color/background_grew">
+    android:background="@color/background_grew"
+    android:id="@+id/ll_record">
 
     <ImageView
         android:id="@+id/here_pic"

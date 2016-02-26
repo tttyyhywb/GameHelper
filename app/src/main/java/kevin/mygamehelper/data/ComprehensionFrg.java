@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 import kevin.api.dota2.bean.Dota2GameOutline;
 import kevin.api.dota2.bean.Dota2MatchDetails;
 import kevin.api.dota2.bean.Dota2User;
-import kevin.mygamehelper.data.adapter.PreviewRecyAdapter;
+import kevin.mygamehelper.data.adapter.ComprehensionRecyAdapter;
 
 /**
  * Created by Kevin on 2016/1/19.
@@ -65,7 +65,7 @@ public class ComprehensionFrg extends Fragment {
         if (llRecy != null) {
             llRecy.setVisibility(View.VISIBLE);
             myRecyView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            myRecyView.setAdapter(new PreviewRecyAdapter(getActivity(), matches, account, detials,6));
+            myRecyView.setAdapter(new ComprehensionRecyAdapter(getActivity(), matches, account, detials,6));
         }
     }
 

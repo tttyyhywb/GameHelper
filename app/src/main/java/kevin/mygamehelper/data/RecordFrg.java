@@ -40,7 +40,7 @@ public class RecordFrg extends Fragment implements FieldGettor {
     Dota2User account;
     FieldGettor fieldGettor;
     int showCount;
-
+    int index;
     @Bind(R.id.record_recy)
     RecyclerView recordRecy;
 
@@ -58,7 +58,7 @@ public class RecordFrg extends Fragment implements FieldGettor {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        RecordRecyAdapter adapter = new RecordRecyAdapter(getActivity(), data);
+        RecordRecyAdapter adapter = new RecordRecyAdapter(getActivity(), data ,matches.get(index),detials[index]);
         recordRecy.setLayoutManager(new LinearLayoutManager(getActivity()));
         recordRecy.setAdapter(adapter);
     }
@@ -113,6 +113,7 @@ public class RecordFrg extends Fragment implements FieldGettor {
         for (int i = 0; i < array.size(); i++) {
             if (array.get(i).equals(max)) {
                 detial = detials[i];
+                index = i;
                 break;
             }
         }
