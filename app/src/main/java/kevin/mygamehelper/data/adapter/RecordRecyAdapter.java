@@ -3,10 +3,12 @@ package kevin.mygamehelper.data.adapter;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kevin.gamehelper.mygamehelper.R;
@@ -31,9 +33,11 @@ public class RecordRecyAdapter extends RecyclerView.Adapter<RecordRecyAdapter.My
 
     Context context;
     ArrayList<RecordItem> data;
+
     public RecordRecyAdapter(Context contexts, ArrayList<RecordItem> data) {
         this.context = contexts;
         this.data = data;
+        Log.e("recordrecyadater", "RecordRecyAdapter: " + this.data );
     }
 
     @Override
@@ -47,7 +51,7 @@ public class RecordRecyAdapter extends RecyclerView.Adapter<RecordRecyAdapter.My
     @Override
     public void onBindViewHolder(MyHolder holder, int position) {
         holder.tvRecordDetial.setText((int)data.get(position).getRecord()+"");
-        if(data.get(position).isIfWin()){
+        if(!data.get(position).isIfWin()){
             holder.tvIfWin.setTextColor(Color.rgb(154, 11, 35));
             holder.tvIfWin.setText("失败");
         }else{
@@ -68,6 +72,7 @@ public class RecordRecyAdapter extends RecyclerView.Adapter<RecordRecyAdapter.My
         TextView tvRecordDetial;
         TextView tvIfWin;
         TextView tvRecordItem;
+        LinearLayout llRecord;
 
         public MyHolder(View itemView) {
             super(itemView);
@@ -75,6 +80,8 @@ public class RecordRecyAdapter extends RecyclerView.Adapter<RecordRecyAdapter.My
             tvIfWin = (TextView) itemView.findViewById(R.id.if_win);
             tvRecordDetial = (TextView) itemView.findViewById(R.id.record_detail);
             tvRecordItem = (TextView) itemView.findViewById(R.id.record_item);
+            llRecord = (LinearLayout) itemView.findViewById(R.id.ll_record);
+
         }
     }
 }

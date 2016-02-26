@@ -136,4 +136,5 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
             context.startActivity(intent);
         }
     };
+
 }

@@ -26,8 +26,8 @@ public class Dota2Players extends Competator {
     float assists;
     String leaver_status;
     float gold;
-    int last_hits;
-    int denies;
+    float last_hits;
+    float denies;
     float gold_per_min;
     float xp_per_min;
     String gold_spent;
@@ -69,7 +69,7 @@ public class Dota2Players extends Competator {
         this.deaths = deaths;
     }
 
-    public int getDenies() {
+    public float getDenies() {
         return denies;
     }
 
@@ -181,7 +181,7 @@ public class Dota2Players extends Competator {
         this.kills = kills;
     }
 
-    public int getLast_hits() {
+    public float getLast_hits() {
         return last_hits;
     }
 
