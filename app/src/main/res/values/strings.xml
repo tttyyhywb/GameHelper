@@ -51,4 +51,16 @@
     <string name="radiant">天辉:</string>
     <string name="dire">夜魇:</string>
 
+    <!-- record -->
+    <string name="record_kills">最高击杀</string>
+    <string name="record_deaths">最高死亡</string>
+    <string name="record_assists">最高助攻</string>
+    <string name="record_last_hits">最高正补</string>
+    <string name="record_denies">最高反补</string>
+    <string name="record_gold_per_min">最高每分钟金钱</string>
+    <string name="record_ex_per_min">最高每分钟经验</string>
+    <string name="record_hero_damage">最高英雄伤害</string>
+    <string name="record_tower_damage">最高建筑伤害</string>
+    <string name="record_hero_healing">最高治疗</string>
+
 </resources>

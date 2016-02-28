@@ -30,7 +30,7 @@ import kevin.utils.ImgUtils;
  * DESCRIPTION:
  * email:493243390@qq.com
  */
-public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.MyHolder> {
+public class ComprehensionRecyAdapter extends RecyclerView.Adapter<ComprehensionRecyAdapter.MyHolder> {
 
     ArrayList<Dota2GameOutline> matches;
     Dota2MatchDetails[] details;
@@ -41,7 +41,7 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
     Dota2MatchDetails detail;
     private int showCount = 0;
 
-    public PreviewRecyAdapter(Context context, ArrayList<Dota2GameOutline> matches, Dota2User account, Dota2MatchDetails[] details) {
+    public ComprehensionRecyAdapter(Context context, ArrayList<Dota2GameOutline> matches, Dota2User account, Dota2MatchDetails[] details) {
         this.account = account;
         this.context = context;
         this.matches = matches;
@@ -50,7 +50,7 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
     }
 
     //showCount决定综合页面展示多少item
-    public PreviewRecyAdapter(Context context, ArrayList<Dota2GameOutline> matches, Dota2User account, Dota2MatchDetails[] details, int showCount) {
+    public ComprehensionRecyAdapter(Context context, ArrayList<Dota2GameOutline> matches, Dota2User account, Dota2MatchDetails[] details, int showCount) {
         this(context, matches, account, details);
         if (showCount != 0 && showCount <matches.size()) {
             this.showCount = showCount;
@@ -86,7 +86,7 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
             holder.tvResult.setText("胜利");
         }
         ImgUtils.getInstance().loadImage(D2Utils.getHeroPicHphover(player.getHero_id(), true), holder.picHero);
-        holder.tvKda.setText(player.getKills() + "/" + player.getDeaths() + "/" + player.getAssists());
+        holder.tvKda.setText((int)player.getKills() + "/" + (int)player.getDeaths() + "/" + (int)player.getAssists());
         holder.tvEndTime.setText(detail.getDuration() / 60 + "分钟");
 
         Bundle bundle = new Bundle();
@@ -136,4 +136,5 @@ public class PreviewRecyAdapter extends RecyclerView.Adapter<PreviewRecyAdapter.
             context.startActivity(intent);
         }
     };
+
 }

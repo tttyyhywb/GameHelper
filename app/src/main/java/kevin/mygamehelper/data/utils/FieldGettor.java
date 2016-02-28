@@ -10,4 +10,5 @@ import kevin.api.dota2.bean.Dota2MatchDetails;
 public interface FieldGettor {
 
     public <T,V> ArrayList<T> getFieldAsList(V[] detials, String fieldName, int count);
+
 }
