@@ -63,4 +63,5 @@
     <string name="record_tower_damage">最高建筑伤害</string>
     <string name="record_hero_healing">最高治疗</string>
 
+    <string name="recent_twenty_hint">统计数据只显示最近20场比赛</string>
 </resources>

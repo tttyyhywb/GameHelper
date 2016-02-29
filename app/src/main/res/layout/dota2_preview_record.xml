@@ -5,18 +5,22 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="5dp"
-        android:textSize="12sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/record"/>
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/record"
+        android:textSize="12sp" />
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/record_recy"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/record_recy">
+        android:layout_height="wrap_content">
 
     </android.support.v7.widget.RecyclerView>
+
+    <include
+        android:id="@+id/recent_hint"
+        layout="@layout/recent_twenty_button_hint"/>
 </LinearLayout>

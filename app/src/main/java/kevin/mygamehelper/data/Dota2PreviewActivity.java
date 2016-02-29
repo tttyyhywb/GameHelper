@@ -1,6 +1,7 @@
 package kevin.mygamehelper.data;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -8,6 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AnimationSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -61,6 +63,8 @@ public class Dota2PreviewActivity extends FragmentActivity implements View.OnCli
     private FragmentPagerAdapter mFrgPageAdapter;
     private List<Fragment> mFragments;
 
+    private AnimationDrawable animationDrawable;
+
     Dota2User account;
     ArrayList<Dota2GameOutline> matches;
     Dota2MatchDetails[] detials;
@@ -79,6 +83,11 @@ public class Dota2PreviewActivity extends FragmentActivity implements View.OnCli
 
     private void init() {
         ButterKnife.bind(this);
+
+        loading.setImageResource(R.drawable.loading_anim);
+        animationDrawable = (AnimationDrawable) loading.getDrawable();
+        animationDrawable.start();
+
         Intent intent = getIntent();
         account = (Dota2User) intent.getSerializableExtra(Dota2User.TAG);
         ImgUtils.getInstance().loadImage(account.getAvatarfull(), imgUserPortrait);
@@ -96,6 +105,7 @@ public class Dota2PreviewActivity extends FragmentActivity implements View.OnCli
 
     private void initView() {
 
+        animationDrawable.stop();
         if (this.isFinishing()) {
             Log.e("isfinishing", "initView: true ");
             return;

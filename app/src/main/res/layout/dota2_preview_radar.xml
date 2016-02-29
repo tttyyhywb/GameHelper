@@ -19,12 +19,13 @@
             android:textSize="11sp" />
 
         <Button
+            android:visibility="gone"
             android:id="@+id/twenty_times"
             android:layout_width="55dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
             android:text="@string/twenty_times"
-            android:textSize="11sp" />
+            android:textSize="10sp" />
 
         <kevin.mygamehelper.data.view.RadarView
             android:id="@+id/radar"
@@ -34,6 +35,15 @@
             android:layout_centerHorizontal="true"
             android:paddingTop="10dp"
             app:diameter="100dp"
-            app:textsize = "11sp"/>
+            app:textsize="11sp" />
     </RelativeLayout>
+
+    <View
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
+
+    <include
+        android:id="@+id/recent_hint"
+        layout="@layout/recent_twenty_button_hint"/>
 </LinearLayout>
