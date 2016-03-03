@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import kevin.api.dota2.bean.Dota2Equipment;
 import kevin.api.dota2.bean.Dota2Hero;
 import kevin.api.dota2.bean.Dota2User;
+import kevin.mygamehelper.news.utils.News;
 
 /**
  * Created by Kevin on 2015/11/11.
@@ -52,6 +53,7 @@ public class DBHelperDota2 extends OrmLiteSqliteOpenHelper {
             TableUtils.createTable(connectionSource, Dota2Hero.class);
             TableUtils.createTable(connectionSource, Dota2Equipment.class);
             TableUtils.createTable(connectionSource, Dota2User.class);
+            TableUtils.createTable(connectionSource, News.class);
         } catch (SQLException e) {
             e.printStackTrace();
         }

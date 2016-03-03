@@ -7,6 +7,8 @@ public class ApiResult<T extends BaseJson> {
 
     T result;
 
+    int status;
+
     public ApiResult(T result) {
       this.result=result;
     }
@@ -17,6 +19,14 @@ public class ApiResult<T extends BaseJson> {
 
     public void setResult(T result) {
         this.result = result;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     @Override
