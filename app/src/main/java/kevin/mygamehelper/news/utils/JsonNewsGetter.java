@@ -5,8 +5,10 @@ import android.app.Activity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import de.greenrobot.event.EventBus;
 import kevin.api.base.gameBase.ApiResult;
 import kevin.api.base.network.BaseRequest;
 import kevin.api.dota2.bean.Dota2Hero;
@@ -19,13 +21,18 @@ import kevin.api.dota2.bean.Dota2Url;
  */
 public class JsonNewsGetter implements NewsGetter{
 
-    News news = new News();
+    News news;
     ApiResult<News> resultNews= new ApiResult(news);
 
     @Override
     public List<News> getData(int startIndex, int endIndex) {
-
-        return null;
+        ArrayList<News> news = new ArrayList<>();
+        news.add(new News("content1","","title1"));
+        news.add(new News("content2","","title2"));
+        news.add(new News("content3","","title3"));
+        news.add(new News("content4","","title4"));
+        EventBus.getDefault().post(news);
+        return news;
     }
 
     private void analizeData(String response){
@@ -35,9 +42,10 @@ public class JsonNewsGetter implements NewsGetter{
 //        if(resultNews.getStatus() == 0 ){
 //
 //        }
-
+        EventBus.getDefault().post(resultNews.getResult());
     }
 
+    //请求Json格式数据url详见Dota2Url.NewsUrl
     private class NewsGetRequest extends BaseRequest{
 
         @Override
@@ -46,8 +54,10 @@ public class JsonNewsGetter implements NewsGetter{
         }
 
         @Override
-        protected void afterFail() { 
+        protected void afterFail() {
 
         }
     }
+
+
 }

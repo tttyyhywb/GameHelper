@@ -57,4 +57,11 @@ public class News extends BaseJson {
     public void setNews(ArrayList<News> news) {
         this.news = news;
     }
+
+    public News(String content, String imgUrl, String title) {
+        this.content = content;
+        this.imgUrl = imgUrl;
+        this.title = title;
+    }
+
 }
