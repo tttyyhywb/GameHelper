@@ -42,8 +42,8 @@ public class DiscoverRecyAdapter extends RecyclerView.Adapter<DiscoverRecyAdapte
     public void onBindViewHolder(MyHolder holder, int position) {
         News news = data.get(position);
 //        ImgUtils.getInstance().loadImage( news.getImgUrl() , holder.imgPicture);
-//        holder.content.setText( news.getContent());
-//        holder.title.setText(news.getTitle());
+        holder.content.setText( news.getContent());
+        holder.title.setText(news.getTitle());
     }
 
     @Override

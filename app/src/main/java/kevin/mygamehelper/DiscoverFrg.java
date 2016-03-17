@@ -42,7 +42,6 @@ public class DiscoverFrg extends Fragment {
         View view = inflater.inflate(R.layout.tab_discover, container, false);
         ButterKnife.bind(this, view);
         EventBus.getDefault().register(this);
-        Log.e("onCreateView", "news1" );
         return view;
     }
 
@@ -51,7 +50,6 @@ public class DiscoverFrg extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         newsGetter.getData(count,count+INTERVAL);
         count = count + INTERVAL + 1;
-        Log.e("onViewCreated", "news1" );
     }
 
     @Override
@@ -62,7 +60,6 @@ public class DiscoverFrg extends Fragment {
     }
 
     public void onEventMainThread(List<News> event){
-        Log.e("onEventMainThread", "news2" );
         discoverRecyAdapter = new DiscoverRecyAdapter(getActivity(), event);
         discoverRecy.setLayoutManager(new LinearLayoutManager(getActivity()));
         discoverRecy.setAdapter(discoverRecyAdapter);

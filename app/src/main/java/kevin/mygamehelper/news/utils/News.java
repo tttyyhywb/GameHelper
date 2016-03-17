@@ -64,4 +64,6 @@ public class News extends BaseJson {
         this.title = title;
     }
 
+    public News() {
+    }
 }

@@ -110,6 +110,8 @@ public class MainRecyAdapter extends RecyclerView.Adapter<MainRecyAdapter.MyHold
                 ImgUtils.getInstance().loadImage(D2Utils.getItemUrl(player.getItem_3(),true),holder.item3);
                 ImgUtils.getInstance().loadImage(D2Utils.getItemUrl(player.getItem_4(),true),holder.item4);
                 ImgUtils.getInstance().loadImage(D2Utils.getItemUrl(player.getItem_5(),true),holder.item5);
+
+
                 break;
             }
         }

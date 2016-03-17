@@ -15,6 +15,7 @@
         android:textStyle="bold" />
 
     <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="10dp"
         android:id="@+id/discover_recy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
