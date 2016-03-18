@@ -28,6 +28,7 @@
     <string name="anonymous_player">匿名玩家</string>
     <string name="record">记录</string>
     <string name="modify_password">修改密码</string>
+    <string name="modify_account">个人信息</string>
     <string name="login_out">退出</string>
 
     <!-- utils中几个月前 -->

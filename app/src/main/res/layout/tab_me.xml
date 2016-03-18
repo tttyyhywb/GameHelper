@@ -61,10 +61,21 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_account_modify_password"
+            android:id="@+id/tv_modify_account"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginTop="30dp"
+            android:background="@drawable/bg_grew_whilt_selector"
+            android:gravity="center_vertical"
+            android:paddingLeft="30dp"
+            android:text="@string/modify_account"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_account_modify_password"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/bg_grew_whilt_selector"
             android:gravity="center_vertical"
             android:paddingLeft="30dp"
