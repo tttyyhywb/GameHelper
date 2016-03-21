@@ -23,12 +23,13 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     @Bind(R.id.tv_skip_login)
     TextView tvSkipLogin;
 
-    @Bind(R.id.btn_login_in)
+    @Bind(R.id.btn_sign_in)
     Button btnLoginIn;
 
     @Bind(R.id.btn_sign_up)
     Button btnSignUp;
 
+    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +57,9 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             case R.id.btn_sign_up:{
                 break;
             }
-            case R.id.btn_login_in:{
+            case R.id.btn_sign_in:{
+                intent = new Intent(LoginActivity.this, SignInActivity.class);
+                startActivity(intent);
                 break;
             }
             case R.id.tv_skip_login:{

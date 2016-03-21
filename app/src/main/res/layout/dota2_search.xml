@@ -37,7 +37,7 @@
             android:textColorHint="@color/search_text_white"
             android:textSize="14sp"
             android:layout_marginTop="18dp"
-            android:background="@drawable/search_title_bg"
+            android:background="@drawable/bg_white_circul_corner"
             android:inputType="number"/>
 
         <ImageButton

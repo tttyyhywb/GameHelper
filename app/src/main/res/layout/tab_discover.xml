@@ -5,14 +5,8 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/title_background"
-        android:gravity="center"
-        android:text="@string/discover"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        style="@style/activity_title"
+        android:text="@string/discover" />
 
     <android.support.v7.widget.RecyclerView
         android:layout_marginTop="10dp"

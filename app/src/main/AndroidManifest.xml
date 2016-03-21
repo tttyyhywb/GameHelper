@@ -39,6 +39,11 @@
         <activity android:name="kevin.mygamehelper.data.Dota2MainMatchActivity">
 
         </activity>
+
+        <activity android:name="kevin.mygamehelper.SignInActivity"
+            android:launchMode="singleInstance">
+
+        </activity>
     </application>
 
 </manifest>

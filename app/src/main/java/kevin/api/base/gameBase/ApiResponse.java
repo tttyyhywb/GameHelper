@@ -1,5 +1,7 @@
 package kevin.api.base.gameBase;
 
+import kevin.api.base.BaseJson;
+
 /**
  * Created by Kevin on 2015/7/23.
  */

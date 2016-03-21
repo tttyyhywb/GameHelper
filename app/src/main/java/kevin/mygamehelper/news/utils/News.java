@@ -5,7 +5,7 @@ import com.j256.ormlite.table.DatabaseTable;
 
 import java.util.ArrayList;
 
-import kevin.api.base.gameBase.BaseJson;
+import kevin.api.base.BaseJson;
 
 /**
  * Created by Kevin on 2016/3/1.

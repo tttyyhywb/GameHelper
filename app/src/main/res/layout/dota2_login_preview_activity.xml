@@ -27,7 +27,7 @@
                 android:background="@drawable/bg_sign_up_selector"/>
 
             <Button
-                android:id="@+id/btn_login_in"
+                android:id="@+id/btn_sign_in"
                 android:layout_width="0dp"
                 android:layout_height="55dp"
                 android:layout_weight="1"

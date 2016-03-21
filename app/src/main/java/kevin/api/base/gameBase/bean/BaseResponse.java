@@ -1,6 +1,6 @@
 package kevin.api.base.gameBase.bean;
 
-import kevin.api.base.gameBase.BaseJson;
+import kevin.api.base.BaseJson;
 
 /**
  * Created by Kevin on 2015/8/10.
