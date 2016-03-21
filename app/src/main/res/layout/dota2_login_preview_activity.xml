@@ -22,7 +22,7 @@
                 android:layout_width="0dp"
                 android:layout_height="55dp"
                 android:layout_weight="1"
-                android:text="@string/sing_up"
+                android:text="@string/sign_up"
                 android:textColor="@color/login_btn_sign_up_text"
                 android:background="@drawable/bg_sign_up_selector"/>
 

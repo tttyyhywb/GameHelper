@@ -36,7 +36,7 @@
         android:layout_marginBottom="5dp"
         android:layout_marginTop="15dp"
         android:gravity="center_horizontal"
-        android:text="@string/input_hint" />
+        android:text="@string/sign_in_input_hint" />
 
     <EditText
         android:id="@+id/username"

@@ -1,6 +1,7 @@
 package kevin.mygamehelper;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -9,62 +10,52 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.j256.ormlite.dao.Dao;
 import com.kevin.gamehelper.mygamehelper.R;
-
-import java.sql.SQLException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import kevin.api.bean.Account;
-import kevin.database.DataBase.DBHelperDota2;
 
 /**
  * Created by Kevin on 2016/3/21.
  * DESCRIPTION:
  * email:493243390@qq.com
  */
-public class SignInActivity extends Activity {
+public class SignUpActivity extends Activity {
     @Bind(R.id.img_back)
     ImageButton imgBack;
     @Bind(R.id.username)
-    EditText username;
+    EditText etUername;
     @Bind(R.id.password)
-    EditText password;
-    @Bind(R.id.forget_hint)
-    TextView forgetHint;
+    EditText etPassword;
+    @Bind(R.id.confirm_password)
+    EditText etConfirmPassword;
     @Bind(R.id.sign_in)
     Button signIn;
-    DBHelperDota2 helper;
-    Dao<Account,String> accountDao;
+    Intent intent;
+    @Bind(R.id.tv_wrong_info)
+    TextView tvWrongInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.sign_in_activity);
+        setContentView(R.layout.sign_up_activity);
         ButterKnife.bind(this);
-        helper = DBHelperDota2.getInstance();
     }
 
-
-    @OnClick({R.id.img_back, R.id.sign_in, R.id.forget_hint})
+    @OnClick({R.id.img_back, R.id.sign_in})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.img_back:
+                intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                startActivity(intent);
                 break;
             case R.id.sign_in:
-                try {
-                    accountDao = helper.getDao(Account.class);
-
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-
-
-                break;
-            case R.id.forget_hint:
+                String username = etUername.getText().toString();
+                String passwprd = etPassword.getText().toString();
+                String comfirmPassword = etConfirmPassword.getText().toString();
+                
                 break;
         }
     }
