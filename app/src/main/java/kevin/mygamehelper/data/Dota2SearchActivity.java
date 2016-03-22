@@ -28,7 +28,7 @@ import kevin.mygamehelper.data.adapter.UserIdRecyAdapter;
 import kevin.utils.D2Utils;
 import kevin.api.dota2.bean.Dota2Url;
 import kevin.api.dota2.bean.Dota2User;
-import kevin.api.base.gameBase.ApiResponse;
+import kevin.api.base.network.ApiResponse;
 import kevin.utils.SPUtils;
 
 import com.j256.ormlite.dao.Dao;

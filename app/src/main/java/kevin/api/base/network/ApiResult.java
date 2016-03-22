@@ -1,15 +1,20 @@
-package kevin.api.base.gameBase;
+package kevin.api.base.network;
 
+import kevin.api.base.ApiBase;
 import kevin.api.base.BaseJson;
 
 /**
  * Created by Kevin on 2015/8/10.
  */
-public class ApiResult<T extends BaseJson> {
+public class ApiResult<T extends BaseJson>  extends ApiBase {
 
     T result;
 
     int status;
+
+    public ApiResult(){
+
+    }
 
     public ApiResult(T result) {
       this.result=result;
@@ -33,8 +38,9 @@ public class ApiResult<T extends BaseJson> {
 
     @Override
     public String toString() {
-        return "Result{" +
+        return "ApiResult{" +
                 "result=" + result +
+                ", status=" + status +
                 '}';
     }
 }

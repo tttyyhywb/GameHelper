@@ -14,7 +14,7 @@ import com.kevin.gamehelper.mygamehelper.R;
 
 import java.util.ArrayList;
 
-import kevin.api.base.gameBase.ApiResponse;
+import kevin.api.base.network.ApiResponse;
 import kevin.api.base.network.BaseRequest;
 import kevin.api.dota2.bean.Dota2GameOutline;
 import kevin.api.dota2.bean.Dota2MatchDetails;

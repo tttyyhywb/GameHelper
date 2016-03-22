@@ -36,8 +36,8 @@
         android:layout_marginBottom="5dp"
         android:layout_marginTop="15dp"
         android:gravity="center_horizontal"
-        android:text="@string/sign_up_input_hint"
-        android:inputType="number"/>
+        android:inputType="number"
+        android:text="@string/sign_up_input_hint" />
 
     <EditText
         android:id="@+id/username"
@@ -45,6 +45,7 @@
         android:layout_height="35dp"
         android:background="#FFFFFF"
         android:hint="@string/sign_up_username_hint"
+        android:inputType="number"
         android:paddingLeft="15sp"
         android:textColor="@color/search_text_white"
         android:textColorHint="@color/search_text_white"
@@ -60,6 +61,7 @@
         android:layout_height="35dp"
         android:background="#FFFFFF"
         android:hint="@string/password"
+        android:inputType="textPassword"
         android:paddingLeft="15sp"
         android:textColor="@color/search_text_white"
         android:textColorHint="@color/search_text_white"
@@ -75,13 +77,14 @@
         android:layout_height="35dp"
         android:background="#FFFFFF"
         android:hint="@string/comfirm_password"
+        android:inputType="textPassword"
         android:paddingLeft="15sp"
         android:textColor="@color/search_text_white"
         android:textColorHint="@color/search_text_white"
         android:textSize="14sp" />
 
     <Button
-        android:id="@+id/sign_in"
+        android:id="@+id/sign_up"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginLeft="16dp"

@@ -9,7 +9,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.AnimationSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,7 +23,7 @@ import java.util.Observable;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import kevin.api.base.gameBase.ApiResult;
+import kevin.api.base.network.ApiResult;
 import kevin.api.base.network.BaseRequest;
 import kevin.api.dota2.bean.Dota2GameOutline;
 import kevin.api.dota2.bean.Dota2MatchDetails;

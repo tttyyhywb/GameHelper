@@ -14,7 +14,7 @@ import com.j256.ormlite.dao.Dao;
 
 import kevin.api.dota2.bean.Dota2Equipment;
 import kevin.api.dota2.bean.Dota2Hero;
-import kevin.api.base.gameBase.ApiResult;
+import kevin.api.base.network.ApiResult;
 import kevin.database.DataBase.DBHelperDota2;
 
 import java.io.BufferedReader;

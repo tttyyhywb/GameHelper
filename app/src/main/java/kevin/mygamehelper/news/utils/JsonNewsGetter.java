@@ -1,7 +1,5 @@
 package kevin.mygamehelper.news.utils;
 
-import android.app.Activity;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -9,9 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.greenrobot.event.EventBus;
-import kevin.api.base.gameBase.ApiResult;
+import kevin.api.base.network.ApiResult;
 import kevin.api.base.network.BaseRequest;
-import kevin.api.dota2.bean.Dota2Hero;
 import kevin.api.dota2.bean.Dota2Url;
 
 /**

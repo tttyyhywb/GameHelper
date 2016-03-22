@@ -10,7 +10,7 @@ import kevin.api.dota2.bean.Dota2User;
 
 /**
  * Created by Kevin on 2016/3/18.
- * DESCRIPTION:
+ * DESCRIPTION:发送网络请求时包含在 ApiResult 类下
  * email:493243390@qq.com
  */
 @DatabaseTable(tableName = "account")
