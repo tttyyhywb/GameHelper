@@ -41,7 +41,7 @@ public class D2Utils {
 
     ApiResult<Dota2Equipment> resultItem = new ApiResult<Dota2Equipment>(dota2Equipment);
 
-    private static D2Utils instantce;
+    private static D2Utils instance;
 
     private static DBHelperDota2 dbHelper;
 
@@ -51,15 +51,15 @@ public class D2Utils {
 
     static Utils utils = Utils.getInstance();
 
-    public static D2Utils getInstantce(){
-        return instantce;
+    public static D2Utils getInstance(){
+        return instance;
     }
 
     public static void init(){
-        if(instantce == null){
+        if(instance == null){
             synchronized (D2Utils.class){
-                if(instantce == null){
-                    instantce = new D2Utils();
+                if(instance == null){
+                    instance = new D2Utils();
                 }
             }
         }

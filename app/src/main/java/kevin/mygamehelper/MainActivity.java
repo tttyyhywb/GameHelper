@@ -46,7 +46,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-        utils =  D2Utils.getInstantce();
+        utils =  D2Utils.getInstance();
         initView();
         resetView();
         setSelected(0);

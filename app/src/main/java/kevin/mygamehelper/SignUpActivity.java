@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.kevin.gamehelper.mygamehelper.R;
 
 import butterknife.Bind;
@@ -21,6 +22,7 @@ import kevin.api.bean.Account;
 import kevin.mygamehelper.common.view.WaitingDialog;
 import kevin.mygamehelper.utils.AccountGetter;
 import kevin.mygamehelper.utils.SqlGetter;
+import kevin.utils.AccountManager;
 
 /**
  * Created by Kevin on 2016/3/21.
@@ -29,7 +31,6 @@ import kevin.mygamehelper.utils.SqlGetter;
  */
 public class SignUpActivity extends Activity {
 
-    Intent intent;
     @Bind(R.id.tv_wrong_info)
     TextView tvWrongInfo;
     @Bind(R.id.username)
@@ -42,6 +43,7 @@ public class SignUpActivity extends Activity {
     Account account;
     Gson gson;
     AccountGetter getter;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +84,19 @@ public class SignUpActivity extends Activity {
         showWaitingDlg();
         ApiResult<Account> accountApi = new ApiResult<>(account);
         accountApi.setStatus(Status.SUCCESS);
-        Log.e("11",  getter.getAccount(gson.toJson(accountApi)));
+        String result =  getter.getAccount(gson.toJson(accountApi));
+        analyzeResult(result);
+    }
+
+    private void analyzeResult(String result) {
+        ApiResult<Account> apiResult = gson.fromJson(result, new TypeToken<ApiResult<Account>>(){}.getType());
+        switch ( apiResult.getStatus() ){
+            case Status.SUCCESS:{
+                AccountManager.getInstance().setAccount(apiResult.getResult());
+                intent = new Intent(SignUpActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        }
     }
 
     private void showWaitingDlg() {

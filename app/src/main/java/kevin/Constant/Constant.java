@@ -4,7 +4,7 @@ package kevin.Constant;
  * Created by kevin on 2015/12/22.
  * 公共静态字段
  */
-public class ConstantString {
+public class Constant {
 
     //用户名
     public static final String USERNAME = "username";
