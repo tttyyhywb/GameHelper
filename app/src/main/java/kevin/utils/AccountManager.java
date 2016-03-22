@@ -1,6 +1,7 @@
 package kevin.utils;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.j256.ormlite.dao.Dao;
 
@@ -17,6 +18,8 @@ import kevin.database.DataBase.DBHelperDota2;
  */
 public class AccountManager {
 
+    public static String TAG = AccountManager.class.getSimpleName();
+
     private static AccountManager instance;
 
     private static Account account;
@@ -30,6 +33,8 @@ public class AccountManager {
                     instance = new AccountManager();
                     try {
                         accountDao = DBHelperDota2.getInstance().getDao(Account.class);
+                        String accountUsername = SPUtils.getInstance().getString(TAG,"");
+                        account = accountDao.queryForId(accountUsername);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
@@ -57,10 +62,21 @@ public class AccountManager {
     public static void setAccount(Account account) {
         AccountManager.account = account;
         create();
+        SPUtils.getInstance().putString(TAG, account.getUsername());
+    }
+
+    public static void removeAccount(){
+        SPUtils.getInstance().putString(TAG,"");
+        AccountManager.account = null;
     }
 
     public static void bindPlayer(Dota2User player) {
         account.setAssociatedPlayer(player);
+        updata();
+    }
+
+    public static void unbindPlayer(){
+        account.setAssociatedPlayer(null);
         updata();
     }
 

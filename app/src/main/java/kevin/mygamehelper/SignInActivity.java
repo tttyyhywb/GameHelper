@@ -55,12 +55,6 @@ public class SignInActivity extends Activity {
             case R.id.img_back:
                 break;
             case R.id.sign_in:
-                try {
-                    accountDao = helper.getDao(Account.class);
-
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
 
 
                 break;
