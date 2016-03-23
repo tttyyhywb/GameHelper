@@ -209,9 +209,8 @@ public class Dota2PreviewActivity extends FragmentActivity implements View.OnCli
                 setSelected(2);
                 break;
             case R.id.bind_player:
-                Log.e("1111", "1111a1");
                 if (AccountManager.getAccount() != null) {
-                    AccountManager.bindPlayer(player);
+                    AccountManager.addBindPlayer(player);
                 } else {
                     Intent intent = new Intent(Dota2PreviewActivity.this, LoginActivity.class);
                     startActivity(intent);

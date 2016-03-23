@@ -39,11 +39,12 @@
         android:text="@string/sign_in_input_hint" />
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/et_username"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:background="#FFFFFF"
         android:hint="@string/username"
+        android:inputType="number"
         android:paddingLeft="15sp"
         android:textColor="@color/search_text_white"
         android:textColorHint="@color/search_text_white"
@@ -54,12 +55,13 @@
         android:layout_height="1dp" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:background="#FFFFFF"
         android:hint="@string/password"
         android:paddingLeft="15sp"
+        android:inputType="textPassword"
         android:textColor="@color/search_text_white"
         android:textColorHint="@color/search_text_white"
         android:textSize="14sp" />

@@ -78,7 +78,7 @@ public class BindedPlayerAdapter extends RecyclerView.Adapter<BindedPlayerAdapte
             imgUserPortrait = (ImageView) itemView.findViewById(R.id.img_search_user_portrait);
             tvUserId = (TextView) itemView.findViewById(R.id.tv_search_userid);
             tvUserName = (TextView) itemView.findViewById(R.id.tv_search_username);
-            linearLayout = (LinearLayout) itemView.findViewById(R.id.dota2_search_user_list_linearlayout);
+            linearLayout = (LinearLayout) itemView.findViewById(R.id.ll_binded_player_item);
 
         }
     }

@@ -55,7 +55,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_modify_account"
+            android:id="@+id/tv_modify_account_info"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginTop="30dp"

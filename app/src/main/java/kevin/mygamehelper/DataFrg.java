@@ -53,12 +53,10 @@ public class DataFrg extends Fragment {
         tvDataFragmentSearch = (TextView) view.findViewById(R.id.tv_data_frgment_serach);
         tvDataFragmentSearch.setOnClickListener(onClickListener);
 
-        if (AccountManager.getAccount() != null && AccountManager.getAccount().getAssociatedPlayer() != null) {
+        if (AccountManager.getAccount() != null && AccountManager.getBindPlayer() != null) {
             llDataPresearch.setVisibility(View.VISIBLE);
             rlDataPresearch.setVisibility(View.INVISIBLE);
-            List<Dota2User> user = new ArrayList<>();
-            user.add(AccountManager.getAccount().getAssociatedPlayer());
-            BindedPlayerAdapter adapter = new BindedPlayerAdapter(user , getActivity());
+            BindedPlayerAdapter adapter = new BindedPlayerAdapter(AccountManager.getBindPlayer() , getActivity());
             bindedPlayers.setLayoutManager(new LinearLayoutManager(getActivity()));
             bindedPlayers.setAdapter(adapter);
         } else {

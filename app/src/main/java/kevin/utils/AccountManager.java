@@ -1,10 +1,11 @@
 package kevin.utils;
 
+import android.util.Log;
+
 import com.j256.ormlite.dao.Dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import kevin.api.dota2.bean.Dota2User;
 import kevin.database.DataBase.DBHelperDota2;
@@ -26,9 +27,6 @@ public class AccountManager {
 
     private static Dao<Dota2User, String> playeresDao;
 
-    private static List<Dota2User> playeres;
-
-
     public static void init() {
         if (instance == null) {
             synchronized (D2Utils.class) {
@@ -39,10 +37,10 @@ public class AccountManager {
                         playeresDao = DBHelperDota2.getInstance().getDao(Dota2User.class);
                         String accountUsername = SPUtils.getInstance().getString(TAG, "");
                         account = accountDao.queryForId(accountUsername);
-                        if (account != null) {
-                            playeres = new ArrayList<>();
-                            playeres = playeresDao.queryBuilder().where().eq("steamid",account.getAssociatedPlayer()).query();
-                        }
+//                        Log.e(TAG, account.toString() );
+//                        for(Dota2User a : account.getPlayers()){
+//                            Log.e(TAG, a.toString() );
+//                        }
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
@@ -78,18 +76,25 @@ public class AccountManager {
         AccountManager.account = null;
     }
 
-    public static void bindPlayer(Dota2User player) {
-        account.setAssociatedPlayer(player);
-        updata();
+    public static void addBindPlayer(Dota2User player) {
+        player.setAccount(account);
+        updatePlayer(player);
     }
 
-    public static void unbindPlayer() {
-        account.setAssociatedPlayer(null);
-        updata();
+    public static ArrayList<Dota2User> getBindPlayer() {
+        ArrayList<Dota2User> players = new ArrayList<>();
+        for (Dota2User player : account.getPlayers()) {
+            players.add(player);
+        }
+        return players;
     }
 
-    public static List<Dota2User> getPlayer() {
-        return playeres;
+    private static void updatePlayer(Dota2User player) {
+        try {
+            playeresDao.update(player);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void updata() {

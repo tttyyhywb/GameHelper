@@ -3,6 +3,7 @@ package kevin.mygamehelper;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
@@ -29,6 +30,8 @@ import kevin.utils.AccountManager;
  * email:493243390@qq.com
  */
 public class SignUpActivity extends Activity {
+
+    public static String TAG = SignUpActivity.class.getSimpleName();
 
     @Bind(R.id.tv_wrong_info)
     TextView tvWrongInfo;
@@ -84,6 +87,7 @@ public class SignUpActivity extends Activity {
         ApiResult<Account> accountApi = new ApiResult<>(account);
         accountApi.setStatus(Status.SUCCESS);
         String result =  getter.getAccount(gson.toJson(accountApi));
+        Log.e(TAG, result);
         analyzeResult(result);
     }
 

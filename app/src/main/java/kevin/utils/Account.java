@@ -3,7 +3,10 @@ package kevin.utils;
 import android.graphics.Bitmap;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
+
+import java.util.Collection;
 
 import kevin.api.base.BaseJson;
 import kevin.api.dota2.bean.Dota2User;
@@ -28,15 +31,15 @@ public class Account extends BaseJson {
     @DatabaseField(columnName = "forget_answer")
     String forgetAnswer;
 
-    @DatabaseField(columnName = "account_steamId",canBeNull = true,foreign = true)
-    Dota2User associatedPlayer;
+    @ForeignCollectionField
+    Collection<Dota2User> players;
 
-    public Dota2User getAssociatedPlayer() {
-        return associatedPlayer;
+    public Collection<Dota2User> getPlayers() {
+        return players;
     }
 
-    public void setAssociatedPlayer(Dota2User associatedPlayer) {
-        this.associatedPlayer = associatedPlayer;
+    public void setPlayers(Collection<Dota2User> players) {
+        this.players = players;
     }
 
     public String getPassword() {
@@ -69,5 +72,16 @@ public class Account extends BaseJson {
 
     public void setForgetHint(String forgetHint) {
         this.forgetHint = forgetHint;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", forgetHint='" + forgetHint + '\'' +
+                ", forgetAnswer='" + forgetAnswer + '\'' +
+                ", players=" + players +
+                '}';
     }
 }

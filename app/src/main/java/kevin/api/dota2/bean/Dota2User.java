@@ -5,6 +5,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 import kevin.api.base.gameBase.bean.User;
+import kevin.utils.Account;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -48,6 +49,17 @@ public class Dota2User extends User implements Serializable {
 
     @DatabaseField( columnName = "personaname")
     String personaname;
+
+    @DatabaseField(columnName = "account",canBeNull = true,foreign = true)
+    Account account;
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 
     public ArrayList<Dota2User> getPlayers() {
         return players;
