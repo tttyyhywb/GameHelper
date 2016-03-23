@@ -1,4 +1,4 @@
-package kevin.api.bean;
+package kevin.utils;
 
 import android.graphics.Bitmap;
 

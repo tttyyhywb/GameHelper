@@ -3,8 +3,9 @@ package kevin.utils;
 import com.j256.ormlite.dao.Dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-import kevin.api.bean.Account;
 import kevin.api.dota2.bean.Dota2User;
 import kevin.database.DataBase.DBHelperDota2;
 
@@ -23,6 +24,11 @@ public class AccountManager {
 
     private static Dao<Account, String> accountDao;
 
+    private static Dao<Dota2User, String> playeresDao;
+
+    private static List<Dota2User> playeres;
+
+
     public static void init() {
         if (instance == null) {
             synchronized (D2Utils.class) {
@@ -30,8 +36,13 @@ public class AccountManager {
                     instance = new AccountManager();
                     try {
                         accountDao = DBHelperDota2.getInstance().getDao(Account.class);
-                        String accountUsername = SPUtils.getInstance().getString(TAG,"");
+                        playeresDao = DBHelperDota2.getInstance().getDao(Dota2User.class);
+                        String accountUsername = SPUtils.getInstance().getString(TAG, "");
                         account = accountDao.queryForId(accountUsername);
+                        if (account != null) {
+                            playeres = new ArrayList<>();
+                            playeres = playeresDao.queryBuilder().where().eq("steamid",account.getAssociatedPlayer()).query();
+                        }
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
@@ -62,8 +73,8 @@ public class AccountManager {
         SPUtils.getInstance().putString(TAG, account.getUsername());
     }
 
-    public static void removeAccount(){
-        SPUtils.getInstance().putString(TAG,"");
+    public static void removeAccount() {
+        SPUtils.getInstance().putString(TAG, "");
         AccountManager.account = null;
     }
 
@@ -72,13 +83,13 @@ public class AccountManager {
         updata();
     }
 
-    public static void unbindPlayer(){
+    public static void unbindPlayer() {
         account.setAssociatedPlayer(null);
         updata();
     }
 
-    public static Dota2User getPlayer() {
-        return account.getAssociatedPlayer();
+    public static List<Dota2User> getPlayer() {
+        return playeres;
     }
 
     private static void updata() {

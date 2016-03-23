@@ -13,7 +13,6 @@ import com.kevin.gamehelper.mygamehelper.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import kevin.api.bean.Account;
 import kevin.utils.AccountManager;
 
 /**

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +15,14 @@ import android.widget.TextView;
 
 import com.kevin.gamehelper.mygamehelper.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import kevin.api.dota2.bean.Dota2User;
 import kevin.mygamehelper.data.Dota2SearchActivity;
+import kevin.mygamehelper.data.adapter.BindedPlayerAdapter;
 import kevin.utils.AccountManager;
 
 /**
@@ -46,10 +52,16 @@ public class DataFrg extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         tvDataFragmentSearch = (TextView) view.findViewById(R.id.tv_data_frgment_serach);
         tvDataFragmentSearch.setOnClickListener(onClickListener);
-        if(AccountManager.getAccount()!=null && AccountManager.getAccount().getAssociatedPlayer()!=null){
+
+        if (AccountManager.getAccount() != null && AccountManager.getAccount().getAssociatedPlayer() != null) {
             llDataPresearch.setVisibility(View.VISIBLE);
             rlDataPresearch.setVisibility(View.INVISIBLE);
-        }else{
+            List<Dota2User> user = new ArrayList<>();
+            user.add(AccountManager.getAccount().getAssociatedPlayer());
+            BindedPlayerAdapter adapter = new BindedPlayerAdapter(user , getActivity());
+            bindedPlayers.setLayoutManager(new LinearLayoutManager(getActivity()));
+            bindedPlayers.setAdapter(adapter);
+        } else {
             llDataPresearch.setVisibility(View.INVISIBLE);
             rlDataPresearch.setVisibility(View.VISIBLE);
         }

@@ -124,17 +124,36 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/preview_content"
+        <FrameLayout
+            android:id="@+id/content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"></android.support.v4.view.ViewPager>
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/preview_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></android.support.v4.view.ViewPager>
+
+            <TextView
+                android:id="@+id/bind_player"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="bottom"
+                android:background="#88FFFFFF"
+                android:gravity="center"
+                android:text="@string/add_concerned"
+                android:textColor="@color/abc_search_url_text_normal"
+                android:textSize="20sp" />
+        </FrameLayout>
 
         <ImageView
             android:id="@+id/loading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center" />
+
+
     </FrameLayout>
 
 </LinearLayout>

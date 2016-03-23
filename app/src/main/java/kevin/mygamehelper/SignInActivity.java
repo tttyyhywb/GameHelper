@@ -12,12 +12,10 @@ import android.widget.TextView;
 import com.j256.ormlite.dao.Dao;
 import com.kevin.gamehelper.mygamehelper.R;
 
-import java.sql.SQLException;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import kevin.api.bean.Account;
+import kevin.utils.Account;
 import kevin.database.DataBase.DBHelperDota2;
 
 /**
@@ -55,8 +53,6 @@ public class SignInActivity extends Activity {
             case R.id.img_back:
                 break;
             case R.id.sign_in:
-
-
                 break;
             case R.id.forget_hint:
                 break;

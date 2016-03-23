@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -30,6 +31,8 @@ import kevin.api.dota2.bean.Dota2MatchDetails;
 import kevin.api.dota2.bean.Dota2MatchHistory;
 import kevin.api.dota2.bean.Dota2Url;
 import kevin.api.dota2.bean.Dota2User;
+import kevin.mygamehelper.LoginActivity;
+import kevin.utils.AccountManager;
 import kevin.utils.D2Utils;
 import kevin.utils.ImgUtils;
 import kevin.utils.Watcher;
@@ -56,15 +59,22 @@ public class Dota2PreviewActivity extends FragmentActivity implements View.OnCli
 
     @Bind(R.id.ll_comprehension)
     LinearLayout llComprehension;
+
     @Bind(R.id.loading)
     ImageView loading;
+
+    @Bind(R.id.content)
+    FrameLayout content;
+
+    @Bind(R.id.bind_player)
+    TextView bindPlayer;
 
     private FragmentPagerAdapter mFrgPageAdapter;
     private List<Fragment> mFragments;
 
     private AnimationDrawable animationDrawable;
 
-    Dota2User account;
+    Dota2User player;
     ArrayList<Dota2GameOutline> matches;
     Dota2MatchDetails[] detials;
     Gson gson = new Gson();
@@ -88,11 +98,11 @@ public class Dota2PreviewActivity extends FragmentActivity implements View.OnCli
         animationDrawable.start();
 
         Intent intent = getIntent();
-        account = (Dota2User) intent.getSerializableExtra(Dota2User.TAG);
-        ImgUtils.getInstance().loadImage(account.getAvatarfull(), imgUserPortrait);
-        tvUsername.setText(account.getPersonaname());
+        player = (Dota2User) intent.getSerializableExtra(Dota2User.TAG);
+        ImgUtils.getInstance().loadImage(player.getAvatarfull(), imgUserPortrait);
+        tvUsername.setText(player.getPersonaname());
         detials = new Dota2MatchDetails[100];
-        matchesHistoryListRequest.getData(Dota2Url.getMatchHistory(D2Utils.getAccountId(account.getSteamid()), MATCH_COUNT));
+        matchesHistoryListRequest.getData(Dota2Url.getMatchHistory(D2Utils.getAccountId(player.getSteamid()), MATCH_COUNT));
     }
 
 
@@ -110,9 +120,9 @@ public class Dota2PreviewActivity extends FragmentActivity implements View.OnCli
             return;
         }
 
-        Fragment comprehensionFrg = new ComprehensionFrg(account, detials, matches);
-        Fragment radarFrg = new RadarFrg(detials, matches, account);
-        Fragment recordFrg = new RecordFrg(detials, matches, account);
+        Fragment comprehensionFrg = new ComprehensionFrg(player, detials, matches);
+        Fragment radarFrg = new RadarFrg(detials, matches, player);
+        Fragment recordFrg = new RecordFrg(detials, matches, player);
 
         mFragments = new ArrayList<>();
 
@@ -157,9 +167,10 @@ public class Dota2PreviewActivity extends FragmentActivity implements View.OnCli
         llRecord.setOnClickListener(this);
         llRadar.setOnClickListener(this);
         llComprehension.setOnClickListener(this);
+        bindPlayer.setOnClickListener(this);
 
         loading.setVisibility(View.GONE);
-        mContent.setVisibility(View.VISIBLE);
+        content.setVisibility(View.VISIBLE);
     }
 
     private void resetView() {
@@ -196,6 +207,15 @@ public class Dota2PreviewActivity extends FragmentActivity implements View.OnCli
                 break;
             case R.id.ll_record:
                 setSelected(2);
+                break;
+            case R.id.bind_player:
+                Log.e("1111", "1111a1");
+                if (AccountManager.getAccount() != null) {
+                    AccountManager.bindPlayer(player);
+                } else {
+                    Intent intent = new Intent(Dota2PreviewActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
                 break;
         }
     }

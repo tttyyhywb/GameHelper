@@ -33,6 +33,7 @@
     <string name="password">密码</string>
     <string name="comfirm_password">确认密码</string>
     <string name="concerened">已关注</string>
+    <string name="add_concerned">添加关注</string>
     <!-- utils中几个月前 -->
     <string name="minute">分钟</string>
     <string name="minute_ago">分钟前</string>

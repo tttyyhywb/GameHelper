@@ -3,7 +3,6 @@ package kevin.mygamehelper;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
@@ -18,7 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import kevin.api.Status;
 import kevin.api.base.network.ApiResult;
-import kevin.api.bean.Account;
+import kevin.utils.Account;
 import kevin.mygamehelper.common.view.WaitingDialog;
 import kevin.mygamehelper.utils.AccountGetter;
 import kevin.mygamehelper.utils.SqlGetter;
@@ -95,6 +94,7 @@ public class SignUpActivity extends Activity {
                 AccountManager.getInstance().setAccount(apiResult.getResult());
                 intent = new Intent(SignUpActivity.this, MainActivity.class);
                 startActivity(intent);
+                SignUpActivity.this.finish();
             }
         }
     }

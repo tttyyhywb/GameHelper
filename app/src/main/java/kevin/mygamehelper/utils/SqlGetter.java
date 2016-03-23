@@ -1,7 +1,5 @@
 package kevin.mygamehelper.utils;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.j256.ormlite.dao.Dao;
@@ -9,9 +7,8 @@ import com.j256.ormlite.dao.Dao;
 import java.sql.SQLException;
 
 import kevin.api.Status;
-import kevin.api.base.ApiBase;
 import kevin.api.base.network.ApiResult;
-import kevin.api.bean.Account;
+import kevin.utils.Account;
 import kevin.database.DataBase.DBHelperDota2;
 
 /**
