@@ -1,8 +1,5 @@
 package kevin.utils;
 
-import android.content.Context;
-import android.util.Log;
-
 import com.j256.ormlite.dao.Dao;
 
 import java.sql.SQLException;

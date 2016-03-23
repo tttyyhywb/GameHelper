@@ -8,32 +8,68 @@
         style="@style/activity_title"
         android:text="@string/data" />
 
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:gravity="center"
-            android:id="@+id/tv_data_frgment_serach"
-            android:layout_width="230dp"
-            android:layout_height="40dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/data_fragment_search_selector"
-            android:text="@string/data_fragment_content_text"
-            android:textColor="@color/white_text_with_alpha"
-            android:textSize="@dimen/data_fragment_text_size"/>
+        <LinearLayout
+            android:id="@+id/ll_data_presearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_marginBottom="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/tv_data_frgment_serach"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:text="@string/nosuer"
-            android:textColor="@color/seventy_precent_alpha"
-            android:textSize="@dimen/data_fragment_text_size" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/concerened"
+                android:textSize="15sp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"/>
 
-    </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/background_grew"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/binded_players"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_data_presearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_data_frgment_serach"
+                android:layout_width="230dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/data_fragment_search_selector"
+                android:gravity="center"
+                android:text="@string/data_fragment_content_text"
+                android:textColor="@color/white_text_with_alpha"
+                android:textSize="@dimen/data_fragment_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/tv_data_frgment_serach"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:text="@string/nosuer"
+                android:textColor="@color/seventy_precent_alpha"
+                android:textSize="@dimen/data_fragment_text_size" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
 </LinearLayout>

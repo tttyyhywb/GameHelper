@@ -27,11 +27,11 @@ import kevin.utils.ImgUtils;
 import kevin.utils.SPUtils;
 
 /**
- * Created by Kevin on 2015/12/28.
+ * Created by Kevin on 2016/3/23.
  * DESCRIPTION:
  * email:493243390@qq.com
  */
-public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.MyHolder> {
+public class BindedPlayerAdapter extends RecyclerView.Adapter<BindedPlayerAdapter.MyHolder> {
 
     List<Dota2User> dataList = new ArrayList<Dota2User>();
 
@@ -39,7 +39,7 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
 
     SPUtils spUtils = SPUtils.getInstance();
 
-    public UserIdRecyAdapter(List<Dota2User> data, Context context) {
+    public BindedPlayerAdapter(List<Dota2User> data, Context context) {
         this.dataList = data;
         this.context = context;
     }
@@ -47,7 +47,7 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
     @Override
     public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         MyHolder holder = new MyHolder(LayoutInflater.from(
-                context).inflate(R.layout.dota2_search_user_list_item, parent,
+                context).inflate(R.layout.binded_player_item, parent,
                 false));
         return holder;
     }
@@ -113,5 +113,5 @@ public class UserIdRecyAdapter extends RecyclerView.Adapter<UserIdRecyAdapter.My
             }
             context.startActivity(intent);
         }
-    };
+    }
 }
