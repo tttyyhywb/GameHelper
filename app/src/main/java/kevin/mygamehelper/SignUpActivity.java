@@ -65,20 +65,24 @@ public class SignUpActivity extends Activity {
                 startActivity(intent);
                 break;
             case R.id.sign_up:
-                tvWrongInfo.setVisibility(View.INVISIBLE);
-                String username = etUsername.getText().toString();
-                String password = etPassword.getText().toString();
-                String comfirmPassword = etConfirmPassword.getText().toString();
-                if (!password.equals(comfirmPassword)) {
-                    tvWrongInfo.setVisibility(View.VISIBLE);
-                } else {
-                    account = new Account();
-                    account.setUsername(username);
-                    account.setPassword(password);
-                    gson.toJson(account);
-                    signUpAccount();
-                }
+                signUp();
                 break;
+        }
+    }
+
+    private void signUp() {
+        tvWrongInfo.setVisibility(View.INVISIBLE);
+        String username = etUsername.getText().toString();
+        String password = etPassword.getText().toString();
+        String comfirmPassword = etConfirmPassword.getText().toString();
+        if (password!=null && !password.equals(comfirmPassword)) {
+            tvWrongInfo.setVisibility(View.VISIBLE);
+        } else {
+            account = new Account();
+            account.setUsername(username);
+            account.setPassword(password);
+            gson.toJson(account);
+            signUpAccount();
         }
     }
 

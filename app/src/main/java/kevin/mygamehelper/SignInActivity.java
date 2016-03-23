@@ -22,6 +22,7 @@ import butterknife.OnClick;
 import kevin.database.DataBase.DBHelperDota2;
 import kevin.utils.Account;
 import kevin.utils.AccountManager;
+import kevin.utils.Utils;
 
 /**
  * Created by Kevin on 2016/3/21.
@@ -69,7 +70,7 @@ public class SignInActivity extends Activity {
             accountDao = DBHelperDota2.getInstance().getDao(Account.class);
             Account account = accountDao.queryForId(username);
             if (account == null) {
-                Toast.makeText(this, "账户不存在!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,  Utils.getResource().getString(R.string.account_not_exist), Toast.LENGTH_SHORT).show();
             } else {
                 if (account.getPassword().equals(password)) {
                     intent = new Intent(SignInActivity.this, MainActivity.class);
@@ -77,7 +78,7 @@ public class SignInActivity extends Activity {
                     AccountManager.setAccount(account);
                     SignInActivity.this.finish();
                 } else {
-                    Toast.makeText(this, "密码错误!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, Utils.getResource().getString(R.string.wrong_password), Toast.LENGTH_SHORT).show();
                 }
             }
         } catch (SQLException e) {

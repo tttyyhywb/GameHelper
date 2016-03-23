@@ -31,9 +31,15 @@
     <string name="modify_account">个人信息</string>
     <string name="login_out">退出</string>
     <string name="password">密码</string>
+    <string name="new_password">新密码</string>
     <string name="comfirm_password">确认密码</string>
     <string name="concerened">已关注</string>
     <string name="add_concerned">添加关注</string>
+    <string name="comfirm">确认</string>
+    <string name="wrong_password">密码错误!</string>
+    <string name="password_not_equal">两次密码输入不一致!</string>
+    <string name="account_not_exist">用户不存在!</string>
+
     <!-- utils中几个月前 -->
     <string name="minute">分钟</string>
     <string name="minute_ago">分钟前</string>
@@ -50,6 +56,8 @@
     <string name="forget_hint">忘记密码</string>
     <string name="input_wrong_password_not_equal">输入的密码不一致</string>
     <string name="sign_up_username_hint">请输入手机号</string>
+    <string name="input_according_hint">请根据提示输入</string>
+
     <!-- data fragment -->
     <string name="data_fragment_content_text">搜索并绑定账号</string>
 

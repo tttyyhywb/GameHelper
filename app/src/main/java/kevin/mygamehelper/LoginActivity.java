@@ -92,7 +92,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 break;
             }
             case R.id.tv_skip_login: {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 LoginActivity.this.finish();
                 break;
