@@ -54,6 +54,10 @@
         <activity android:name="kevin.mygamehelper.PasswordModifyActivity">
 
         </activity>
+
+        <activity android:name="kevin.mygamehelper.FetchPassword">
+
+        </activity>
     </application>
 
 </manifest>

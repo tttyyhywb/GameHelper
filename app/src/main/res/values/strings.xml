@@ -46,6 +46,8 @@
     <string name="information_not_right">输入信息不全</string>
     <string name="password_too_short">请输入至少6位密码</string>
     <string name="input_these_text">请输入以下信息</string>
+    <string name="wrong_username">用户名不存在</string>
+    <string name="wrong_hint_or_answer">密码问题或回答错误</string>
 
     <!-- utils中几个月前 -->
     <string name="minute">分钟</string>

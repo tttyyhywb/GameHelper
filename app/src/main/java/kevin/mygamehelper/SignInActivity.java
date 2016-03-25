@@ -59,6 +59,8 @@ public class SignInActivity extends Activity {
                 signIn();
                 break;
             case R.id.forget_hint:
+                intent = new Intent(SignInActivity.this, FetchPassword.class);
+                startActivity(intent);
                 break;
         }
     }
