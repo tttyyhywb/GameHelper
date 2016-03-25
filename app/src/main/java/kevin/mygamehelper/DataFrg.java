@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,10 +54,10 @@ public class DataFrg extends Fragment {
         tvDataFragmentSearch = (TextView) view.findViewById(R.id.tv_data_frgment_serach);
         tvDataFragmentSearch.setOnClickListener(onClickListener);
 
-        if (AccountManager.getAccount() != null && AccountManager.getBindPlayer() != null) {
+        if (AccountManager.getAccount() != null && AccountManager.getBindPlayer() != null && AccountManager.getBindPlayer().size() > 0) {
             llDataPresearch.setVisibility(View.VISIBLE);
             rlDataPresearch.setVisibility(View.INVISIBLE);
-            BindedPlayerAdapter adapter = new BindedPlayerAdapter(AccountManager.getBindPlayer() , getActivity());
+            BindedPlayerAdapter adapter = new BindedPlayerAdapter(AccountManager.getBindPlayer(), getActivity());
             bindedPlayers.setLayoutManager(new LinearLayoutManager(getActivity()));
             bindedPlayers.setAdapter(adapter);
         } else {

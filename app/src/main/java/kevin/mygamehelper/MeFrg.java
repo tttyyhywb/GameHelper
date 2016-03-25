@@ -20,6 +20,8 @@ import kevin.utils.AccountManager;
  */
 public class MeFrg extends Fragment {
 
+    Intent intent;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,10 +42,12 @@ public class MeFrg extends Fragment {
             case R.id.tv_modify_account_info:
                 break;
             case R.id.tv_account_modify_password:
+                intent = new Intent(getActivity(),PasswordModifyActivity.class);
+                startActivity(intent);
                 break;
             case R.id.tv_login_out:
                 AccountManager.removeAccount();
-                Intent intent = new Intent(getActivity(),LoginActivity.class);
+                intent = new Intent(getActivity(),LoginActivity.class);
                 startActivity(intent);
                 getActivity().finish();
                 break;

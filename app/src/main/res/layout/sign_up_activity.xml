@@ -36,7 +36,6 @@
         android:layout_marginBottom="5dp"
         android:layout_marginTop="15dp"
         android:gravity="center_horizontal"
-        android:inputType="number"
         android:text="@string/sign_up_input_hint" />
 
     <EditText
@@ -77,6 +76,42 @@
         android:layout_height="35dp"
         android:background="#FFFFFF"
         android:hint="@string/comfirm_password"
+        android:inputType="textPassword"
+        android:paddingLeft="15sp"
+        android:textColor="@color/search_text_white"
+        android:textColorHint="@color/search_text_white"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="25dp"
+        android:gravity="center_horizontal"
+        android:text="@string/sign_up_forget_input_hint" />
+
+    <EditText
+        android:id="@+id/et_forget_hint"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="#FFFFFF"
+        android:hint="@string/forget_password"
+        android:inputType="textPassword"
+        android:paddingLeft="15sp"
+        android:textColor="@color/search_text_white"
+        android:textColorHint="@color/search_text_white"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <EditText
+        android:id="@+id/et_forget_answer"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="#FFFFFF"
+        android:hint="@string/forget_password_answer"
         android:inputType="textPassword"
         android:paddingLeft="15sp"
         android:textColor="@color/search_text_white"

@@ -83,6 +83,9 @@ public class AccountManager {
 
     public static ArrayList<Dota2User> getBindPlayer() {
         ArrayList<Dota2User> players = new ArrayList<>();
+        if(account.getPlayers() == null){
+            return null;
+        }
         for (Dota2User player : account.getPlayers()) {
             players.add(player);
         }

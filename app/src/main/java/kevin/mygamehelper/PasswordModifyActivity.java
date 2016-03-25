@@ -66,6 +66,7 @@ public class PasswordModifyActivity extends Activity {
                     }else{
                         if(newPassword.equals(comfirmPassword)){
                             AccountManager.modifyPassword(comfirmPassword);
+                            Toast.makeText(this,Utils.getResource().getString(R.string.modify_success),Toast.LENGTH_SHORT).show();
                         }else{
                             Toast.makeText(this,Utils.getResource().getString(R.string.password_not_equal),Toast.LENGTH_SHORT).show();
                         }

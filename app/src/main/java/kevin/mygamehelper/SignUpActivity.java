@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -18,10 +19,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import kevin.api.Status;
 import kevin.api.base.network.ApiResult;
-import kevin.utils.Account;
 import kevin.mygamehelper.common.view.WaitingDialog;
 import kevin.mygamehelper.utils.AccountGetter;
 import kevin.mygamehelper.utils.SqlGetter;
+import kevin.utils.Account;
 import kevin.utils.AccountManager;
 
 /**
@@ -41,6 +42,10 @@ public class SignUpActivity extends Activity {
     EditText etPassword;
     @Bind(R.id.confirm_password)
     EditText etConfirmPassword;
+    @Bind(R.id.et_forget_hint)
+    EditText etForgetHint;
+    @Bind(R.id.et_forget_answer)
+    EditText etForgetAnswer;
 
     Account account;
     Gson gson;
@@ -75,14 +80,27 @@ public class SignUpActivity extends Activity {
         String username = etUsername.getText().toString();
         String password = etPassword.getText().toString();
         String comfirmPassword = etConfirmPassword.getText().toString();
-        if (password!=null && !password.equals(comfirmPassword)) {
-            tvWrongInfo.setVisibility(View.VISIBLE);
+        String forgetQuestion = etForgetHint.getText().toString();
+        String forgetAnswer = etForgetAnswer.getText().toString();
+        if (!username.isEmpty() && !password.isEmpty() && !forgetQuestion.isEmpty() && !forgetAnswer.isEmpty() && !comfirmPassword.isEmpty()) {
+            if (password.equals(comfirmPassword)) {
+                if (password.length()>=6) {
+                    account = new Account();
+                    account.setUsername(username);
+                    account.setPassword(password);
+                    account.setForgetHint(forgetQuestion);
+                    account.setForgetAnswer(forgetAnswer);
+                    gson.toJson(account);
+                    signUpAccount();
+                }else{
+                    Toast.makeText(this,R.string.password_too_short,Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                tvWrongInfo.setVisibility(View.VISIBLE);
+            }
         } else {
-            account = new Account();
-            account.setUsername(username);
-            account.setPassword(password);
-            gson.toJson(account);
-            signUpAccount();
+            //信息不全
+            Toast.makeText(this, R.string.information_not_right, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -90,15 +108,16 @@ public class SignUpActivity extends Activity {
         showWaitingDlg();
         ApiResult<Account> accountApi = new ApiResult<>(account);
         accountApi.setStatus(Status.SUCCESS);
-        String result =  getter.getAccount(gson.toJson(accountApi));
+        String result = getter.getAccount(gson.toJson(accountApi));
         Log.e(TAG, result);
         analyzeResult(result);
     }
 
     private void analyzeResult(String result) {
-        ApiResult<Account> apiResult = gson.fromJson(result, new TypeToken<ApiResult<Account>>(){}.getType());
-        switch ( apiResult.getStatus() ){
-            case Status.SUCCESS:{
+        ApiResult<Account> apiResult = gson.fromJson(result, new TypeToken<ApiResult<Account>>() {
+        }.getType());
+        switch (apiResult.getStatus()) {
+            case Status.SUCCESS: {
                 AccountManager.getInstance().setAccount(apiResult.getResult());
                 intent = new Intent(SignUpActivity.this, MainActivity.class);
                 startActivity(intent);
