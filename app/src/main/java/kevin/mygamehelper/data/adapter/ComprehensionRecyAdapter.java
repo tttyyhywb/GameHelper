@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.kevin.gamehelper.mygamehelper.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import kevin.api.dota2.bean.Dota2GameOutline;
 import kevin.api.dota2.bean.Dota2MatchDetails;
@@ -87,7 +88,19 @@ public class ComprehensionRecyAdapter extends RecyclerView.Adapter<Comprehension
         }
         ImgUtils.getInstance().loadImage(D2Utils.getHeroPicHphover(player.getHero_id(), true), holder.picHero);
         holder.tvKda.setText((int)player.getKills() + "/" + (int)player.getDeaths() + "/" + (int)player.getAssists());
-        holder.tvEndTime.setText(detail.getDuration() / 60 + "分钟");
+        holder.tvDuration.setText(detail.getDuration() / 60 + "分钟");
+
+        Long time = new Long(detail.getStart_time()+"000");
+        Calendar date = Calendar.getInstance();
+        Calendar now = Calendar.getInstance();
+        date.setTimeInMillis(time);
+
+        if (date.get(Calendar.YEAR) == now.get(Calendar.YEAR)) {
+            holder.tvEndTime.setText((date.get(Calendar.MONTH)+1) + "." + date.get(Calendar.DATE));
+        } else {
+            holder.tvEndTime.setText(date.get(Calendar.YEAR) + "." + (date.get(Calendar.MONTH)+1) + "." + date.get(Calendar.DATE));
+        }
+
 
         Bundle bundle = new Bundle();
         bundle.putSerializable(match.TAG, match);
@@ -111,16 +124,17 @@ public class ComprehensionRecyAdapter extends RecyclerView.Adapter<Comprehension
         TextView tvResult;
         TextView tvLobbyType;
         TextView tvKda;
-        TextView tvEndTime;
+        TextView tvDuration;
         LinearLayout llPreview;
-
+        TextView tvEndTime;
         public MyHolder(View itemView) {
             super(itemView);
             picHero = (ImageView) itemView.findViewById(R.id.img_hero_preview);
-            tvEndTime = (TextView) itemView.findViewById(R.id.tv_end_time);
+            tvDuration = (TextView) itemView.findViewById(R.id.tv_duration);
             tvResult = (TextView) itemView.findViewById(R.id.tv_result);
             tvLobbyType = (TextView) itemView.findViewById(R.id.tv_lobby_type);
             tvKda = (TextView) itemView.findViewById(R.id.tv_kda_preview);
+            tvEndTime = (TextView) itemView.findViewById(R.id.tv_end_time);
             llPreview = (LinearLayout) itemView.findViewById(R.id.ll_preview);
         }
     }

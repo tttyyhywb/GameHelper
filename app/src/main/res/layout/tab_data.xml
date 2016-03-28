@@ -18,20 +18,39 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/concerened"
-                android:textSize="14sp"
+                android:layout_marginBottom="4dp"
                 android:layout_marginLeft="16dp"
-                android:textColor="@color/black_text"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="4dp"/>
+                android:layout_marginRight="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/concerened"
+                    android:textColor="@color/black_text"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_search_others"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/search_others"
+                    android:textColor="@color/black_text"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/background_grew"/>
+                android:background="@color/background_grew" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/binded_players"

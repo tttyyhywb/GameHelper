@@ -49,6 +49,7 @@
     <string name="wrong_username">用户名不存在</string>
     <string name="wrong_hint_or_answer">密码问题或回答错误</string>
     <string name="binded">已关注</string>
+    <string name="search_others">搜索其他账号</string>
 
     <!-- utils中几个月前 -->
     <string name="minute">分钟</string>

@@ -16,7 +16,7 @@ public class Dota2MatchDetails extends GameEnvirnment {
 
     ArrayList<Dota2Players> players;
     boolean radiant_win;
-    int duration;
+    long duration;
     String match_seq_num;
     String start_time;
     String match_id;
@@ -60,11 +60,11 @@ public class Dota2MatchDetails extends GameEnvirnment {
         this.radiant_win = radiant_win;
     }
 
-    public int getDuration() {
+    public long getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(long duration) {
         this.duration = duration;
     }
 

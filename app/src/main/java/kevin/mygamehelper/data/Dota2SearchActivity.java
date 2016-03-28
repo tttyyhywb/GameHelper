@@ -19,24 +19,24 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import kevin.api.base.network.BaseRequest;
-import kevin.database.DataBase.DBHelperDota2;
-import kevin.mygamehelper.data.adapter.UserIdRecyAdapter;
-import kevin.utils.D2Utils;
-import kevin.api.dota2.bean.Dota2Url;
-import kevin.api.dota2.bean.Dota2User;
-import kevin.api.base.network.ApiResponse;
-import kevin.utils.SPUtils;
-
 import com.j256.ormlite.dao.Dao;
 import com.kevin.gamehelper.mygamehelper.R;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Set;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import kevin.api.base.network.ApiResponse;
+import kevin.api.base.network.BaseRequest;
+import kevin.api.dota2.bean.Dota2Url;
+import kevin.api.dota2.bean.Dota2User;
+import kevin.database.DataBase.DBHelperDota2;
+import kevin.mygamehelper.data.adapter.UserIdRecyAdapter;
+import kevin.utils.D2Utils;
+import kevin.utils.SPUtils;
 
 /**
  * Created by kevin on 2015/8/30.
@@ -89,6 +89,7 @@ public class Dota2SearchActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dota2_search);
+        ButterKnife.bind(this);
         init();
     }
 
@@ -96,7 +97,6 @@ public class Dota2SearchActivity extends Activity {
         ButterKnife.bind(this);
         etSearch.addTextChangedListener(watcher);
         Set<String> steamIds = SPUtils.getInstance().getStringSet(Dota2User.TAG, null);
-        clearHistory.setOnClickListener(listener);
         if (steamIds != null) {
             try {
                 Dao<Dota2User, String> dao = DBHelperDota2.getInstance().getDao(Dota2User.class);
@@ -106,7 +106,7 @@ public class Dota2SearchActivity extends Activity {
                 }
                 llRecentSearch.setVisibility(View.VISIBLE);
                 llMatchUserTitle.setVisibility(View.GONE);
-                setAdapter(searchRecy,new UserIdRecyAdapter(users, Dota2SearchActivity.this));
+                setAdapter(searchRecy, new UserIdRecyAdapter(users, Dota2SearchActivity.this));
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -152,7 +152,7 @@ public class Dota2SearchActivity extends Activity {
                 users = response.getResponse().getPlayers();
                 llRecentSearch.setVisibility(View.GONE);
                 llMatchUserTitle.setVisibility(View.VISIBLE);
-                setAdapter(searchRecy,new UserIdRecyAdapter(users, Dota2SearchActivity.this));
+                setAdapter(searchRecy, new UserIdRecyAdapter(users, Dota2SearchActivity.this));
             }
         }
 
@@ -162,23 +162,23 @@ public class Dota2SearchActivity extends Activity {
         }
     };
 
-    View.OnClickListener listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()){
-                case R.id.recent_clear_history:{
-                    SPUtils.getInstance().remove(Dota2User.TAG);
-                    users = new ArrayList<>();
-                    setAdapter(searchRecy,new UserIdRecyAdapter(users, Dota2SearchActivity.this));
-                    llRecentSearch.setVisibility(View.GONE);
-                }
-            }
-        }
-    };
-
-    private void setAdapter(RecyclerView view, RecyclerView.Adapter adapter){
+    private void setAdapter(RecyclerView view, RecyclerView.Adapter adapter) {
         view.setLayoutManager(new LinearLayoutManager(Dota2SearchActivity.this));
         view.setAdapter(adapter);
     }
 
+    @OnClick({R.id.img_search_back, R.id.recent_clear_history})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.img_search_back:
+                Dota2SearchActivity.this.finish();
+                break;
+            case R.id.recent_clear_history:
+                SPUtils.getInstance().remove(Dota2User.TAG);
+                users = new ArrayList<>();
+                setAdapter(searchRecy, new UserIdRecyAdapter(users, Dota2SearchActivity.this));
+                llRecentSearch.setVisibility(View.GONE);
+                break;
+        }
+    }
 }

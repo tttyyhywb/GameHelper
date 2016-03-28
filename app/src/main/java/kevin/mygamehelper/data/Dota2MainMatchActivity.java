@@ -13,6 +13,7 @@ import com.j256.ormlite.dao.Dao;
 import com.kevin.gamehelper.mygamehelper.R;
 
 import java.sql.SQLException;
+import java.util.Calendar;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -31,7 +32,7 @@ public class Dota2MainMatchActivity extends Activity {
 
     Dota2GameOutline match;
     Dota2MatchDetails detail;
-    Dao<Dota2LobbyType ,Integer> lobbyDao;
+    Dao<Dota2LobbyType, Integer> lobbyDao;
 
     @Bind(R.id.main_match_recycler)
     RecyclerView recyclerView;
@@ -39,8 +40,8 @@ public class Dota2MainMatchActivity extends Activity {
     @Bind(R.id.tv_competation_type)
     TextView tvCompetationType;
 
-    @Bind(R.id.tv_level)
-    TextView tvLevel;
+    @Bind(R.id.tv_duration)
+    TextView tvEndTime;
 
     @Bind(R.id.tv_match_seq)
     TextView tvMatchSeq;
@@ -72,8 +73,19 @@ public class Dota2MainMatchActivity extends Activity {
         tvDurationTime.setText(detail.getDuration() / 60 + Utils.getResource().getString(R.string.minute_ago));
         tvMatchSeq.setText(detail.getMatch_seq_num() + "");
 
+        Long time = new Long(detail.getStart_time()+"000");
+        Calendar date = Calendar.getInstance();
+        Calendar now = Calendar.getInstance();
+        date.setTimeInMillis(time);
+
+        if (date.get(Calendar.YEAR) == now.get(Calendar.YEAR)) {
+            tvEndTime.setText((date.get(Calendar.MONTH)+1) + "." + date.get(Calendar.DATE));
+        } else {
+            tvEndTime.setText(date.get(Calendar.YEAR) + "." + (date.get(Calendar.MONTH)+1) + "." + date.get(Calendar.DATE));
+        }
+
         try {
-            lobbyDao= DBHelperDota2.getInstance().getDao(Dota2LobbyType.class);
+            lobbyDao = DBHelperDota2.getInstance().getDao(Dota2LobbyType.class);
             Dota2LobbyType type = lobbyDao.queryForId(detail.getLobby_type());
             tvCompetationType.setText(type.getName());
 
