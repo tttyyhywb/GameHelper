@@ -15,6 +15,7 @@ import com.j256.ormlite.dao.Dao;
 import kevin.api.dota2.bean.Dota2Equipment;
 import kevin.api.dota2.bean.Dota2Hero;
 import kevin.api.base.network.ApiResult;
+import kevin.api.dota2.bean.Dota2LobbyType;
 import kevin.database.DataBase.DBHelperDota2;
 
 import java.io.BufferedReader;
@@ -37,6 +38,8 @@ public class D2Utils {
 
     ApiResult<Dota2Hero> resultHero = new ApiResult<Dota2Hero>(dota2Hero);
 
+    Dota2LobbyType lobby;
+
     Dota2Equipment dota2Equipment = new Dota2Equipment();
 
     ApiResult<Dota2Equipment> resultItem = new ApiResult<Dota2Equipment>(dota2Equipment);
@@ -48,6 +51,8 @@ public class D2Utils {
     private static Dao<Dota2Equipment,Integer> itemDao ;
 
     private static Dao<Dota2Hero,Integer> heroDao ;
+
+    private static Dao<Dota2LobbyType,Integer> lobbyDao;
 
     static Utils utils = Utils.getInstance();
 
@@ -74,13 +79,14 @@ public class D2Utils {
         try {
             itemDao = dbHelper.getDao(Dota2Equipment.class);
             heroDao = dbHelper.getDao(Dota2Hero.class);
+            lobbyDao = dbHelper.getDao(Dota2LobbyType.class);
 
             is = assetManager.open("Response/GetHeroes");
             resultHero = gson.fromJson(inputSteam2String(is).toString(), new TypeToken<ApiResult<Dota2Hero>>() {
             }.getType());
 
             for (Dota2Hero h : resultHero.getResult().get()) {
-                dbHelper.getDao(Dota2Hero.class).create(h);
+                heroDao.create(h);
             }
 
             is = assetManager.open("Response/GetItems");
@@ -88,9 +94,16 @@ public class D2Utils {
             }.getType());
 
             for (Dota2Equipment item : resultItem.getResult().get()) {
-                dbHelper.getDao(Dota2Equipment.class).create(item);
+                itemDao.create(item);
             }
 
+            is = assetManager.open("Response/Dota2Lobby");
+            lobby = gson.fromJson(inputSteam2String(is).toString(), new TypeToken<Dota2LobbyType>() {
+            }.getType());
+
+            for (Dota2LobbyType l : lobby.getLobbies()) {
+               lobbyDao.create(l);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SQLException e) {

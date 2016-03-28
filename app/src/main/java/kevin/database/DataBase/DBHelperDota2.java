@@ -9,6 +9,7 @@ import com.j256.ormlite.table.TableUtils;
 
 import java.sql.SQLException;
 
+import kevin.api.dota2.bean.Dota2LobbyType;
 import kevin.utils.Account;
 import kevin.api.dota2.bean.Dota2Equipment;
 import kevin.api.dota2.bean.Dota2Hero;
@@ -56,6 +57,7 @@ public class DBHelperDota2 extends OrmLiteSqliteOpenHelper {
             TableUtils.createTable(connectionSource, Dota2User.class);
             TableUtils.createTable(connectionSource, News.class);
             TableUtils.createTable(connectionSource, Account.class);
+            TableUtils.createTable(connectionSource, Dota2LobbyType.class);
         } catch (SQLException e) {
             e.printStackTrace();
         }

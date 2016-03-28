@@ -13,6 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -32,6 +33,7 @@ import kevin.api.dota2.bean.Dota2MatchHistory;
 import kevin.api.dota2.bean.Dota2Url;
 import kevin.api.dota2.bean.Dota2User;
 import kevin.mygamehelper.LoginActivity;
+import kevin.mygamehelper.SignUpActivity;
 import kevin.utils.AccountManager;
 import kevin.utils.D2Utils;
 import kevin.utils.ImgUtils;
@@ -211,8 +213,9 @@ public class Dota2PreviewActivity extends FragmentActivity implements View.OnCli
             case R.id.bind_player:
                 if (AccountManager.getAccount() != null) {
                     AccountManager.addBindPlayer(player);
+                    Toast.makeText(this,R.string.binded,Toast.LENGTH_SHORT).show();
                 } else {
-                    Intent intent = new Intent(Dota2PreviewActivity.this, LoginActivity.class);
+                    Intent intent = new Intent(Dota2PreviewActivity.this, SignUpActivity.class);
                     startActivity(intent);
                 }
                 break;

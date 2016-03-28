@@ -2,43 +2,43 @@
     "lobbies" : [
         {
             "id" : -1,
-            "name" : "Invalid"
+            "name" : "无效的比赛"
         },
         {
             "id" : 0,
-            "name" : "Public matchmaking"
+            "name" : "公开匹配"
         },
         {
             "id" : 1,
-            "name" : "Practice"
+            "name" : "练习模式"
         },
         {
             "id" : 2,
-            "name" : "Tournament"
+            "name" : "联赛"
         },
         {
             "id" : 3,
-            "name" : "Tutorial"
+            "name" : "学习模式"
         },
         {
             "id" : 4,
-            "name" : "Co-op with bots"
+            "name" : "机器人练习赛"
         },
         {
             "id" : 5,
-            "name" : "Team match"
+            "name" : "组队模式"
         },
         {
             "id" : 6,
-            "name" : "Solo Queue"
+            "name" : "中路模式"
         },
         {
             "id" : 7,
-            "name" : "Ranked"
+            "name" : "天梯匹配"
         },
         {
             "id" : 8,
-            "name" : "Solo Mid 1vs1"
+            "name" : "中单模式"
         }
     ]
 }

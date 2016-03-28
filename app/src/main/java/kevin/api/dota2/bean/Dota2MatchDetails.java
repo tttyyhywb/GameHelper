@@ -26,7 +26,7 @@ public class Dota2MatchDetails extends GameEnvirnment {
     String barracks_status_dire;
     String cluster;
     String first_blood_time;
-    String lobby_type;
+    int lobby_type;
     String human_players;
     String leagueid;
     String positive_votes;
@@ -140,11 +140,11 @@ public class Dota2MatchDetails extends GameEnvirnment {
         this.first_blood_time = first_blood_time;
     }
 
-    public String getLobby_type() {
+    public int getLobby_type() {
         return lobby_type;
     }
 
-    public void setLobby_type(String lobby_type) {
+    public void setLobby_type(int lobby_type) {
         this.lobby_type = lobby_type;
     }
 

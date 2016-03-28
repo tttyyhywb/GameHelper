@@ -96,7 +96,6 @@
         android:layout_height="35dp"
         android:background="#FFFFFF"
         android:hint="@string/forget_password"
-        android:inputType="textPassword"
         android:paddingLeft="15sp"
         android:textColor="@color/search_text_white"
         android:textColorHint="@color/search_text_white"
