@@ -65,7 +65,7 @@ public class ComprehensionFrg extends Fragment {
         if (llRecy != null) {
             llRecy.setVisibility(View.VISIBLE);
             myRecyView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            myRecyView.setAdapter(new ComprehensionRecyAdapter(getActivity(), matches, account, detials,6));
+            myRecyView.setAdapter(new ComprehensionRecyAdapter(getActivity(), matches, account, detials,20));
         }
     }
 

@@ -131,6 +131,14 @@ public class RecordItem {
         this.record = record;
     }
 
+    public Dota2MatchDetails getDetial() {
+        return detial;
+    }
+
+    public void setDetial(Dota2MatchDetails detial) {
+        this.detial = detial;
+    }
+
     @Override
     public String toString() {
         return "RecordItem{" +

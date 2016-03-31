@@ -68,7 +68,7 @@ public class RecordRecyAdapter extends RecyclerView.Adapter<RecordRecyAdapter.My
 
         Bundle bundle = new Bundle();
         bundle.putSerializable(match.TAG, match);
-        bundle.putSerializable(detail.TAG, detail);
+        bundle.putSerializable(detail.TAG, data.get(position).getDetial());
         holder.llRecord.setTag(bundle);
         holder.llRecord.setOnClickListener(listener);
     }
