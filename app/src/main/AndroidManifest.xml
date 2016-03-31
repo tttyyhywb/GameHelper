@@ -58,6 +58,10 @@
         <activity android:name="kevin.mygamehelper.FetchPassword">
 
         </activity>
+
+        <activity android:name="kevin.mygamehelper.data.NotFoundActivity">
+
+        </activity>
     </application>
 
 </manifest>

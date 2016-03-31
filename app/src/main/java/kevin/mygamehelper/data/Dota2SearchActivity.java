@@ -1,6 +1,7 @@
 package kevin.mygamehelper.data;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -153,6 +154,8 @@ public class Dota2SearchActivity extends Activity {
                 llRecentSearch.setVisibility(View.GONE);
                 llMatchUserTitle.setVisibility(View.VISIBLE);
                 setAdapter(searchRecy, new UserIdRecyAdapter(users, Dota2SearchActivity.this));
+            }else {
+                llMatchUserTitle.setVisibility(View.VISIBLE);
             }
         }
 
@@ -167,7 +170,7 @@ public class Dota2SearchActivity extends Activity {
         view.setAdapter(adapter);
     }
 
-    @OnClick({R.id.img_search_back, R.id.recent_clear_history})
+    @OnClick({R.id.img_search_back, R.id.recent_clear_history, R.id.cant_find})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.img_search_back:
@@ -179,6 +182,11 @@ public class Dota2SearchActivity extends Activity {
                 setAdapter(searchRecy, new UserIdRecyAdapter(users, Dota2SearchActivity.this));
                 llRecentSearch.setVisibility(View.GONE);
                 break;
+            case R.id.cant_find:{
+                Intent intent = new Intent(Dota2SearchActivity.this, NotFoundActivity.class);
+                startActivity(intent);
+                break;
+            }
         }
     }
 }
