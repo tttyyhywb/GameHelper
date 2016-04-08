@@ -95,7 +95,6 @@ public class Dota2SearchActivity extends Activity {
     }
 
     private void init() {
-        ButterKnife.bind(this);
         etSearch.addTextChangedListener(watcher);
         Set<String> steamIds = SPUtils.getInstance().getStringSet(Dota2User.TAG, null);
         if (steamIds != null) {

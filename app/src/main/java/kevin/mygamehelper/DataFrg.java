@@ -56,12 +56,12 @@ public class DataFrg extends Fragment {
 
         if (AccountManager.getAccount() != null && AccountManager.getBindPlayer() != null && AccountManager.getBindPlayer().size() > 0) {
             llDataPresearch.setVisibility(View.VISIBLE);
-            rlDataPresearch.setVisibility(View.INVISIBLE);
+            rlDataPresearch.setVisibility(View.GONE);
             BindedPlayerAdapter adapter = new BindedPlayerAdapter(AccountManager.getBindPlayer(), getActivity());
             bindedPlayers.setLayoutManager(new LinearLayoutManager(getActivity()));
             bindedPlayers.setAdapter(adapter);
         } else {
-            llDataPresearch.setVisibility(View.INVISIBLE);
+            llDataPresearch.setVisibility(View.GONE);
             rlDataPresearch.setVisibility(View.VISIBLE);
         }
     }
