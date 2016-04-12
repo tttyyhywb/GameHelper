@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,7 @@ import de.greenrobot.event.EventBus;
 import kevin.mygamehelper.news.adapter.DiscoverRecyAdapter;
 import kevin.mygamehelper.news.utils.JsonNewsGetter;
 import kevin.mygamehelper.news.utils.News;
-import kevin.mygamehelper.news.utils.NewsGetter;
+import kevin.mygamehelper.news.utils.INewsGetter;
 
 /**
  *  Created by Kevin on  2015/8/4.
@@ -32,7 +31,7 @@ public class DiscoverFrg extends Fragment {
 
     DiscoverRecyAdapter discoverRecyAdapter;
 
-    NewsGetter newsGetter = new JsonNewsGetter();
+    INewsGetter INewsGetter = new JsonNewsGetter();
     int count = 0;
     static int INTERVAL = 10;
 
@@ -48,7 +47,7 @@ public class DiscoverFrg extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        newsGetter.getData(count,count+INTERVAL);
+        INewsGetter.getData(count,count+INTERVAL);
         count = count + INTERVAL + 1;
     }
 

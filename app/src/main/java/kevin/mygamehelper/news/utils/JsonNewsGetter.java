@@ -16,7 +16,7 @@ import kevin.api.dota2.bean.Dota2Url;
  * DESCRIPTION:
  * email:493243390@qq.com
  */
-public class JsonNewsGetter implements NewsGetter{
+public class JsonNewsGetter implements INewsGetter {
 
     News news;
     ApiResult<News> resultNews= new ApiResult(news);

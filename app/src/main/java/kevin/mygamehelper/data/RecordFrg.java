@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +22,7 @@ import kevin.api.dota2.bean.Dota2MatchDetails;
 import kevin.api.dota2.bean.Dota2Players;
 import kevin.api.dota2.bean.Dota2User;
 import kevin.mygamehelper.data.adapter.RecordRecyAdapter;
-import kevin.mygamehelper.data.utils.FieldGettor;
+import kevin.mygamehelper.data.utils.IFieldGettor;
 import kevin.mygamehelper.data.utils.RecordItem;
 import kevin.mygamehelper.data.utils.SimpleFieldGettor;
 
@@ -33,12 +32,12 @@ import kevin.mygamehelper.data.utils.SimpleFieldGettor;
  * email:493243390@qq.com
  */
 @SuppressLint("ValidFragment")
-public class RecordFrg extends Fragment implements FieldGettor {
+public class RecordFrg extends Fragment implements IFieldGettor {
 
     Dota2MatchDetails[] detials;
     ArrayList<Dota2GameOutline> matches;
     Dota2User account;
-    FieldGettor fieldGettor;
+    IFieldGettor fieldGettor;
     int showCount;
     int index;
     @Bind(R.id.record_recy)
@@ -103,7 +102,7 @@ public class RecordFrg extends Fragment implements FieldGettor {
         prepareData(array, "hero_healing");
     }
 
-    public void setFieldGettor(FieldGettor gettor) {
+    public void setFieldGettor(IFieldGettor gettor) {
         this.fieldGettor = gettor;
     }
 

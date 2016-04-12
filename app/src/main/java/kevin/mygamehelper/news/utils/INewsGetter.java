@@ -7,7 +7,7 @@ import java.util.List;
  * DESCRIPTION:用于得到新闻的数据list
  * email:493243390@qq.com
  */
-public interface NewsGetter {
+public interface INewsGetter {
 
     public List<News> getData(int startIndex, int endIndex);
 

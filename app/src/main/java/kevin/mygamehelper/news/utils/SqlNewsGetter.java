@@ -10,7 +10,7 @@ import kevin.database.DataBase.DBHelperDota2;
  * DESCRIPTION:
  * email:493243390@qq.com
  */
-public class SqlNewsGetter implements NewsGetter {
+public class SqlNewsGetter implements INewsGetter {
     @Override
     public List<News> getData(int startIndex, int endIndex) {
         try {

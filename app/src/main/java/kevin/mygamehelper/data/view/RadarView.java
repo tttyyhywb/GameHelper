@@ -14,9 +14,6 @@ import android.view.View;
 
 import com.kevin.gamehelper.mygamehelper.R;
 
-import java.lang.reflect.Array;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import kevin.api.dota2.bean.Dota2GameOutline;
@@ -24,7 +21,7 @@ import kevin.api.dota2.bean.Dota2MatchDetails;
 import kevin.api.dota2.bean.Dota2Players;
 import kevin.api.dota2.bean.Dota2User;
 import kevin.mygamehelper.data.utils.Calculator;
-import kevin.mygamehelper.data.utils.FieldGettor;
+import kevin.mygamehelper.data.utils.IFieldGettor;
 import kevin.mygamehelper.data.utils.Hexagon;
 import kevin.mygamehelper.data.utils.RadarEvaluator;
 import kevin.mygamehelper.data.utils.SimpleFieldGettor;
@@ -34,7 +31,7 @@ import kevin.mygamehelper.data.utils.SimpleFieldGettor;
  * DESCRIPTION:
  * email:493243390@qq.com
  */
-public class RadarView extends View implements FieldGettor {
+public class RadarView extends View implements IFieldGettor {
 
     Dota2MatchDetails[] detials;
 
@@ -87,7 +84,7 @@ public class RadarView extends View implements FieldGettor {
 
     private boolean drawing = DRAW_BACKGROUND;
 
-    FieldGettor fieldGettor;
+    IFieldGettor fieldGettor;
 
     int showCount;
 
@@ -335,7 +332,7 @@ public class RadarView extends View implements FieldGettor {
         this.detials = detials;
     }
 
-    public void setFieldGettor(FieldGettor gettor) {
+    public void setFieldGettor(IFieldGettor gettor) {
         this.fieldGettor = gettor;
     }
 

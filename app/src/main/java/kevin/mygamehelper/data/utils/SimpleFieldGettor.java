@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by Administrator on 2016/2/21.
  */
-public class SimpleFieldGettor implements FieldGettor {
+public class SimpleFieldGettor implements IFieldGettor {
     @Override
     public <T, V> ArrayList<T> getFieldAsList(V[] detials, String fieldName, int count) {
         if (detials[count - 1] == null) {
