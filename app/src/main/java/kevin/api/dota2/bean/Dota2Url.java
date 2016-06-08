@@ -13,9 +13,8 @@ public class Dota2Url {
     public static String MATCHDETIALS = "IDOTA2Match_570/GetMatchDetails/v001/";
     public static String HERO = "IEconDOTA2_570/GetHeroes/v0001/";
     public static String PLAYERSUMMARIES = "ISteamUser/GetPlayerSummaries/v0002/";
-    public static String NewsUrl = "";
     private static String KEY = "?key=07000CBBE0A53DB404881143C118DDF7";
-
+    public static String NewsUrl = "";
 
     /**
      * @param userId 用户的32bit Id

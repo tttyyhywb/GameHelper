@@ -1,6 +1,7 @@
 package kevin.mygamehelper.data;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,12 +20,16 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.kevin.gamehelper.mygamehelper.R;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import kevin.Constant.Configure;
+import kevin.api.base.Status;
 import kevin.api.base.network.ApiResult;
 import kevin.api.base.network.BaseRequest;
 import kevin.api.dota2.bean.Dota2GameOutline;
@@ -37,6 +42,7 @@ import kevin.mygamehelper.SignUpActivity;
 import kevin.utils.AccountManager;
 import kevin.utils.D2Utils;
 import kevin.utils.ImgUtils;
+import kevin.utils.Utils;
 import kevin.utils.Watcher;
 
 /**
@@ -76,12 +82,14 @@ public class Dota2PreviewActivity extends FragmentActivity implements View.OnCli
 
     private AnimationDrawable animationDrawable;
 
+    public static String TAG = Dota2PreviewActivity.class.getSimpleName();
+
     Dota2User player;
     ArrayList<Dota2GameOutline> matches;
     Dota2MatchDetails[] detials;
     Gson gson = new Gson();
 
-    public int MATCH_COUNT = 20;
+    public int MATCH_COUNT = Configure.MATCH_COUNT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,10 +109,13 @@ public class Dota2PreviewActivity extends FragmentActivity implements View.OnCli
 
         Intent intent = getIntent();
         player = (Dota2User) intent.getSerializableExtra(Dota2User.TAG);
+
         ImgUtils.getInstance().loadImage(player.getAvatarfull(), imgUserPortrait);
         tvUsername.setText(player.getPersonaname());
         detials = new Dota2MatchDetails[100];
-        matchesHistoryListRequest.getData(Dota2Url.getMatchHistory(D2Utils.getAccountId(player.getSteamid()), MATCH_COUNT));
+        Log.e(TAG, "init: "+Dota2Url.getMatchHistory(D2Utils.getAccountId(player.getSteamid())) );
+        //matchesHistoryListRequest.getData(Dota2Url.getMatchHistory(D2Utils.getAccountId(player.getSteamid()), MATCH_COUNT));
+        getStaticData();
     }
 
 
@@ -231,8 +242,17 @@ public class Dota2PreviewActivity extends FragmentActivity implements View.OnCli
             ApiResult<Dota2MatchHistory> result;
             result = gson.fromJson(responseResult, new TypeToken<ApiResult<Dota2MatchHistory>>() {
             }.getType());
+            Log.e(TAG, result.toString() );
+            if(result.getResult().getStatus() != Status.SUCCESS){
+                Log.e("afterSuccess: ",result.toString() );
+                Toast.makeText(Dota2PreviewActivity.this,R.string.this_player_doesnt_play_dota2,Toast.LENGTH_LONG).show();
+                Dota2PreviewActivity.this.finish();
+                return;
+            }
 
             matches = result.getResult().getMatches();
+
+            MATCH_COUNT = MATCH_COUNT > matches.size() ?  matches.size() : MATCH_COUNT;
 
             for (int i = 0; i < MATCH_COUNT; i++) {
                 DetailsRequest detailsRequest = new DetailsRequest(i);
@@ -242,6 +262,7 @@ public class Dota2PreviewActivity extends FragmentActivity implements View.OnCli
 
         @Override
         protected void afterFail() {
+            Log.e(TAG,"!!!");
         }
     };
 
@@ -258,6 +279,7 @@ public class Dota2PreviewActivity extends FragmentActivity implements View.OnCli
             ApiResult<Dota2MatchDetails> result;
             result = gson.fromJson(responseResult, new TypeToken<ApiResult<Dota2MatchDetails>>() {
             }.getType());
+            Log.e(TAG, result.toString() );
             Dota2MatchDetails oneDetails;
             oneDetails = result.getResult();
             oneDetails.addObserver(watcher);
@@ -270,9 +292,7 @@ public class Dota2PreviewActivity extends FragmentActivity implements View.OnCli
         protected void afterFail() {
 
         }
-    }
-
-    ;
+    };
 
     Watcher watcher = new Watcher() {
         int count = 0;
@@ -280,9 +300,43 @@ public class Dota2PreviewActivity extends FragmentActivity implements View.OnCli
         @Override
         public void update(Observable observable, Object data) {
             count++;
-            if (count == 20) {
+            if (count == MATCH_COUNT) {
+                Log.e(TAG, TAG + count);
                 initView();
             }
         }
     };
+
+    private void getStaticData(){
+        InputStream is = null;
+        AssetManager assetManager = Utils.getInstance().getAssetManager();
+        String constantString;
+        try {
+            is = assetManager.open("constant/matchhistory.txt");
+            ApiResult<Dota2MatchHistory> result;
+            result = gson.fromJson(D2Utils.getInstance().inputSteam2String(is), new TypeToken<ApiResult<Dota2MatchHistory>>() {
+            }.getType());
+            matches = result.getResult().getMatches();
+            MATCH_COUNT = MATCH_COUNT > matches.size() ?  matches.size() : MATCH_COUNT;
+            for (int i = 0; i < MATCH_COUNT; i++) {
+
+                constantString = "constant/"+matches.get(i).getMatch_id()+".txt";
+                is = assetManager.open(constantString);
+                ApiResult<Dota2MatchDetails> resultDetials;
+                resultDetials = gson.fromJson(D2Utils.getInstance().inputSteam2String(is), new TypeToken<ApiResult<Dota2MatchDetails>>() {
+                }.getType());
+                Log.e(TAG, resultDetials.toString() );
+                Dota2MatchDetails oneDetails;
+                oneDetails = resultDetials.getResult();
+//                oneDetails.addObserver(watcher);
+                detials[i] = oneDetails;
+//                oneDetails.changed();
+//                oneDetails.notifyObservers();
+            }
+            initView();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

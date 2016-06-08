@@ -24,10 +24,11 @@ public class JsonNewsGetter implements INewsGetter {
     @Override
     public List<News> getData(int startIndex, int endIndex) {
         ArrayList<News> news = new ArrayList<>();
-        news.add(new News("content1","","title1"));
-        news.add(new News("content2","","title2"));
-        news.add(new News("content3","","title3"));
-        news.add(new News("content4","","title4"));
+        news.add(new News("content1","assets://news/news_id_0001.png","震中杯现场：清新萌妹，性感coser"));
+        news.add(new News("content2","assets://news/news_id_0002.png","关于NewBee 的BP思路的一点分析"));
+        news.add(new News("content3","assets://news/news_id_0003.png","Max+战报，A队淘汰密码，凌晨迎战NewBee"));
+        news.add(new News("content4","assets://news/news_id_0004.png","Esl one法兰克福中国区预算赛，二十进一的争夺战"));
+        news.add(new News("content5","assets://news/news_id_0005.png","巨神归来！ --从震中杯看上古巨神"));
         EventBus.getDefault().post(news);
         return news;
     }

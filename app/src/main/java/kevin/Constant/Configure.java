@@ -6,4 +6,5 @@ package kevin.Constant;
  * email:493243390@qq.com
  */
 public class Configure {
+    public static int MATCH_COUNT = 20;
 }

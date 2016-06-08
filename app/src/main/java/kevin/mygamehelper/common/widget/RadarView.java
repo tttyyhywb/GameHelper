@@ -1,4 +1,4 @@
-package kevin.mygamehelper.data.view;
+package kevin.mygamehelper.common.widget;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -255,7 +255,7 @@ public class RadarView extends View implements IFieldGettor {
 
     public void prepareEndHex(ArrayList<Dota2GameOutline> matches, Dota2MatchDetails[] detials, int count, Dota2User account) {
 
-        showCount = count;
+        showCount = count > matches.size() ? matches.size():count;
 
         Dota2Players[] accountDetials = new Dota2Players[showCount];
 
@@ -263,18 +263,18 @@ public class RadarView extends View implements IFieldGettor {
             accountDetials[i] = (detials[i].getPlayer(account));
         }
 
-        ArrayList<Float> array = getFieldAsList(accountDetials, "deaths", count);
+        ArrayList<Float> array = getFieldAsList(accountDetials, "deaths", showCount);
         this.live = 100 - Calculator.Ex100(array, 3);
-        array = getFieldAsList(accountDetials, "hero_damage", count);
+        array = getFieldAsList(accountDetials, "hero_damage", showCount);
         this.damage = Calculator.Ex100(array, 5000);
-        array = getFieldAsList(accountDetials, "xp_per_min", count);
+        array = getFieldAsList(accountDetials, "xp_per_min", showCount);
         this.grow = Calculator.Ex100(array, 500);
-        array = getFieldAsList(accountDetials, "tower_damage", count);
+        array = getFieldAsList(accountDetials, "tower_damage", showCount);
         this.push = Calculator.Ex100(array, 2500);
-        ArrayList<Float> arrayK = getFieldAsList(accountDetials, "kills", count);
-        ArrayList<Float> arrayD = getFieldAsList(accountDetials, "deaths", count);
-        ArrayList<Float> arrayA = getFieldAsList(accountDetials, "assists", count);
-        for(int i=0;i<count;i++){
+        ArrayList<Float> arrayK = getFieldAsList(accountDetials, "kills", showCount);
+        ArrayList<Float> arrayD = getFieldAsList(accountDetials, "deaths", showCount);
+        ArrayList<Float> arrayA = getFieldAsList(accountDetials, "assists", showCount);
+        for(int i=0;i<showCount;i++){
             array.add((arrayK.get(i)+arrayD.get(i))/arrayA.get(i));
         }
         this.kda = Calculator.Ex100(array, 5);

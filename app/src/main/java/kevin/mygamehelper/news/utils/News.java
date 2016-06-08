@@ -15,6 +15,8 @@ import kevin.api.base.BaseJson;
 @DatabaseTable(tableName = "news")
 public class News extends BaseJson {
 
+    public static final String TAG = News.class.getSimpleName();
+
     ArrayList<News> news ;
 
     @DatabaseField(id = true)
@@ -65,5 +67,15 @@ public class News extends BaseJson {
     }
 
     public News() {
+    }
+
+    @Override
+    public String toString() {
+        return "News{" +
+                "news=" + news +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                '}';
     }
 }

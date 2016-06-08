@@ -1,4 +1,4 @@
-package kevin.mygamehelper.common.view;
+package kevin.mygamehelper.common.widget;
 
 import android.app.ProgressDialog;
 import android.content.Context;

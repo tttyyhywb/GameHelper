@@ -9,11 +9,11 @@ import java.util.ArrayList;
  */
 public class Dota2MatchHistory extends GameEnvirnment {
     public final static String DOTA2MATCHHISTORY = "dota2matchhistory";
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
@@ -49,7 +49,7 @@ public class Dota2MatchHistory extends GameEnvirnment {
         this.matches = matches;
     }
 
-    String status ;
+    int status ;
     String num_results;
     String total_results ;
     String results_remaining;

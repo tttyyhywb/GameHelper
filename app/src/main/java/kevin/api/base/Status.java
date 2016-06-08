@@ -1,4 +1,4 @@
-package kevin.api;
+package kevin.api.base;
 
 /**
  * Created by Kevin on 2016/3/21.

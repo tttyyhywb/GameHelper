@@ -30,6 +30,7 @@ import java.util.Set;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import kevin.Constant.Configure;
 import kevin.api.base.network.ApiResponse;
 import kevin.api.base.network.BaseRequest;
 import kevin.api.dota2.bean.Dota2Url;

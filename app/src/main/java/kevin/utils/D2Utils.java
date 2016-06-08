@@ -32,6 +32,8 @@ public class D2Utils {
 
     public static final String PREFIX_ASSETS = "assets://";
 
+    public static final String DEFAULT_ITEM_PIC = "items/" + "emptyitembg" + "_lg.png";
+
     AssetManager assetManager;
 
     Dota2Hero dota2Hero = new Dota2Hero();
@@ -48,22 +50,22 @@ public class D2Utils {
 
     private static DBHelperDota2 dbHelper;
 
-    private static Dao<Dota2Equipment,Integer> itemDao ;
+    private static Dao<Dota2Equipment, Integer> itemDao;
 
-    private static Dao<Dota2Hero,Integer> heroDao ;
+    private static Dao<Dota2Hero, Integer> heroDao;
 
-    private static Dao<Dota2LobbyType,Integer> lobbyDao;
+    private static Dao<Dota2LobbyType, Integer> lobbyDao;
 
     static Utils utils = Utils.getInstance();
 
-    public static D2Utils getInstance(){
+    public static D2Utils getInstance() {
         return instance;
     }
 
-    public static void init(){
-        if(instance == null){
-            synchronized (D2Utils.class){
-                if(instance == null){
+    public static void init() {
+        if (instance == null) {
+            synchronized (D2Utils.class) {
+                if (instance == null) {
                     instance = new D2Utils();
                 }
             }
@@ -102,7 +104,7 @@ public class D2Utils {
             }.getType());
 
             for (Dota2LobbyType l : lobby.getLobbies()) {
-               lobbyDao.create(l);
+                lobbyDao.create(l);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -181,9 +183,13 @@ public class D2Utils {
 
     public static String getItemUrl(int itemId) {
         try {
-            return "items/" + itemDao.queryForId(itemId).getName() + "_lg.png";
+            if (itemDao.queryForId(itemId) != null) {
+                return "items/" + itemDao.queryForId(itemId).getName() + "_lg.png";
+            } else {
+                return DEFAULT_ITEM_PIC;
+            }
         } catch (SQLException e) {
-            Log.e("getItemUrl","no such item");
+            Log.e("getItemUrl", "no such item");
             return null;
         }
     }
@@ -191,9 +197,9 @@ public class D2Utils {
     public static String getHeroPicHphover(int heroId) {
         try {
             //Log.e("hero",heroId + heroDao.queryForId(heroId).getName() );
-            return "heroes/" +  heroDao.queryForId(heroId).getName() + "_hphover.png";
+            return "heroes/" + heroDao.queryForId(heroId).getName() + "_hphover.png";
         } catch (SQLException e) {
-            Log.e("getHeroPicHphover","no such hero picture");
+            Log.e("getHeroPicHphover", "no such hero picture");
             return null;
         }
     }
@@ -208,9 +214,9 @@ public class D2Utils {
 
     public static String getHeroPicVert(int heroId) {
         try {
-            return "heroes/" +  heroDao.queryForId(heroId).getName() + "_vert.jpg";
+            return "heroes/" + heroDao.queryForId(heroId).getName() + "_vert.jpg";
         } catch (SQLException e) {
-            Log.e("getHeroPicVert","no such heroId");
+            Log.e("getHeroPicVert", "no such heroId");
             return null;
         }
     }

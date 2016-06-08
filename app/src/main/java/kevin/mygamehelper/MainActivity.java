@@ -22,7 +22,7 @@ import java.util.List;
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
     @Bind(R.id.id_viewpager_cont)
-    ViewPager mViewPagerCont;
+    ViewPager mViewPager;
     private FragmentPagerAdapter mFrgPageAdapter;
     private List<Fragment> mFragments;
 
@@ -81,9 +81,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             }
         };
 
-        mViewPagerCont.setAdapter(mFrgPageAdapter);
+        mViewPager.setAdapter(mFrgPageAdapter);
 
-        mViewPagerCont.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {            }
 
@@ -121,7 +121,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 imgMe.setImageResource(R.mipmap.ic_me_click);
                 break;
         }
-        mViewPagerCont.setCurrentItem(i);
+        mViewPager.setCurrentItem(i);
     }
 
     @Override

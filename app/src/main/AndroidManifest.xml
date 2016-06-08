@@ -62,6 +62,10 @@
         <activity android:name="kevin.mygamehelper.data.NotFoundActivity">
 
         </activity>
+
+        <activity android:name="kevin.mygamehelper.news.NewsActivity">
+
+        </activity>
     </application>
 
 </manifest>

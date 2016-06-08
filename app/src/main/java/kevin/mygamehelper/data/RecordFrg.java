@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import java.util.Collections;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import kevin.Constant.Configure;
 import kevin.api.dota2.bean.Dota2GameOutline;
 import kevin.api.dota2.bean.Dota2MatchDetails;
 import kevin.api.dota2.bean.Dota2Players;
@@ -45,6 +47,7 @@ public class RecordFrg extends Fragment implements IFieldGettor {
 
     private ArrayList<RecordItem> data;
 
+    private int matchCount;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -66,7 +69,7 @@ public class RecordFrg extends Fragment implements IFieldGettor {
         this.detials = detials;
         this.matches = matches;
         this.account = account;
-        showCount = matches.size();
+        showCount = Configure.MATCH_COUNT;;
         data = new ArrayList<>();
         setFieldGettor(new SimpleFieldGettor());
 
@@ -75,30 +78,31 @@ public class RecordFrg extends Fragment implements IFieldGettor {
 
     private void initData() {
         Dota2Players[] accountDetials = new Dota2Players[showCount];
-
+        Log.e("recordfrg", showCount + " " +matches.size() );
+        showCount = showCount > matches.size() ?  matches.size() : showCount;
         for (int i = 0; i < showCount; i++) {
             accountDetials[i] = (detials[i].getPlayer(account));
         }
 
-        ArrayList<Float> array = getFieldAsList(accountDetials, "kills", 20);
+        ArrayList<Float> array = getFieldAsList(accountDetials, "kills", showCount);
         prepareData(array, "kills");
-        array = getFieldAsList(accountDetials, "deaths", 20);
+        array = getFieldAsList(accountDetials, "deaths", showCount);
         prepareData(array, "deaths");
-        array = getFieldAsList(accountDetials, "assists", 20);
+        array = getFieldAsList(accountDetials, "assists", showCount);
         prepareData(array, "assists");
-        array = getFieldAsList(accountDetials, "last_hits", 20);
+        array = getFieldAsList(accountDetials, "last_hits", showCount);
         prepareData(array, "last_hits");
-        array = getFieldAsList(accountDetials, "denies", 20);
+        array = getFieldAsList(accountDetials, "denies", showCount);
         prepareData(array, "denies");
-        array = getFieldAsList(accountDetials, "gold_per_min", 20);
+        array = getFieldAsList(accountDetials, "gold_per_min", showCount);
         prepareData(array, "gold_per_min");
-        array = getFieldAsList(accountDetials, "xp_per_min", 20);
+        array = getFieldAsList(accountDetials, "xp_per_min", showCount);
         prepareData(array, "xp_per_min");
-        array = getFieldAsList(accountDetials, "hero_damage", 20);
+        array = getFieldAsList(accountDetials, "hero_damage", showCount);
         prepareData(array, "hero_damage");
-        array = getFieldAsList(accountDetials, "tower_damage", 20);
+        array = getFieldAsList(accountDetials, "tower_damage", showCount);
         prepareData(array, "tower_damage");
-        array = getFieldAsList(accountDetials, "hero_healing", 20);
+        array = getFieldAsList(accountDetials, "hero_healing", showCount);
         prepareData(array, "hero_healing");
     }
 

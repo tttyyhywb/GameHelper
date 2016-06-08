@@ -3,7 +3,6 @@ package kevin.mygamehelper.data;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +14,11 @@ import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import kevin.Constant.Configure;
 import kevin.api.dota2.bean.Dota2GameOutline;
 import kevin.api.dota2.bean.Dota2MatchDetails;
 import kevin.api.dota2.bean.Dota2User;
-import kevin.mygamehelper.data.view.RadarView;
+import kevin.mygamehelper.common.widget.RadarView;
 
 /**
  * Created by Kevin on 2016/1/19.
@@ -44,7 +44,7 @@ public class RadarFrg extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dota2_preview_radar, container, false);
         ButterKnife.bind(this, view);
-        radarView.prepareEndHex(matches,detials,20,account);
+        radarView.prepareEndHex(matches,detials, Configure.MATCH_COUNT,account);
 
         return view;
     }

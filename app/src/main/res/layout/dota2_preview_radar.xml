@@ -27,7 +27,7 @@
             android:text="@string/twenty_times"
             android:textSize="10sp" />
 
-        <kevin.mygamehelper.data.view.RadarView
+        <kevin.mygamehelper.common.widget.RadarView
             android:id="@+id/radar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
